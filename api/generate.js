@@ -40,18 +40,20 @@ Rules:
 - Start with "Dear Hiring Manager," and close with the applicant's name
 - Output only the letter — no preamble, no explanation`;
 
-    const apiKey = process.env.GEMINI_API_KEY;
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { maxOutputTokens: 1000, temperature: 0.8 },
-        }),
-      }
-    );
+    const apiKey = process.env.GROQ_API_KEY;
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: 'llama-3.3-70b-versatile',
+        max_tokens: 1000,
+        temperature: 0.8,
+        messages: [{ role: 'user', content: prompt }],
+      }),
+    });
 
     if (!response.ok) {
       const err = await response.json().catch(() => ({}));
@@ -59,7 +61,7 @@ Rules:
     }
 
     const data = await response.json();
-    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+    const text = data?.choices?.[0]?.message?.content;
 
     if (!text) return res.status(500).json({ error: 'Empty response from AI. Please try again.' });
 
