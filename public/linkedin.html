@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Free AI LinkedIn Summary Generator — Create a professional LinkedIn About section in seconds. No signup required."/>
+  <meta name="keywords" content="LinkedIn summary generator, LinkedIn about section, AI LinkedIn writer, professional bio generator"/>
+  <title>AI LinkedIn Summary Generator — Free | CoverCraft AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bricolage+Grotesque:wght@700;800&display=swap" rel="stylesheet"/>
+  <script src="https://5gvci.com/act/files/service-worker.min.js?r=sw" data-zone="11181975"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#f7f8fa;--white:#fff;--border:#e4e7ec;--border2:#d0d5dd;--text:#101828;--sub:#475467;--muted:#98a2b3;--accent:#2563eb;--accent-h:#1d4ed8;--accent-s:#eff6ff;--error:#dc2626;--r:10px}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;-webkit-font-smoothing:antialiased}
+    nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,5vw,3rem);height:58px}
+    .brand{font-family:'Bricolage Grotesque',sans-serif;font-size:1.05rem;font-weight:800;color:var(--accent);text-decoration:none}
+    .nav-links{display:flex;gap:16px;align-items:center}
+    .nav-links a{font-size:0.82rem;color:var(--sub);text-decoration:none;font-weight:500}
+    .nav-links a:hover{color:var(--accent)}
+    .hero{background:#fff;border-bottom:1px solid var(--border);text-align:center;padding:clamp(2rem,5vw,3.5rem) clamp(1rem,5vw,2rem) clamp(1.5rem,3vw,2.5rem)}
+    .hero-pill{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);padding:4px 12px;border-radius:999px;background:var(--accent-s);border:1px solid #bfdbfe;margin-bottom:1rem}
+    h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.7rem,4vw,2.6rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:0.75rem}
+    h1 mark{background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{font-size:0.95rem;color:var(--sub);max-width:440px;margin:0 auto}
+    .page{max-width:720px;margin:0 auto;padding:clamp(1.5rem,4vw,2.5rem) clamp(1rem,4vw,1.5rem) 5rem}
+    .card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.25rem,3vw,2rem);margin-bottom:1rem}
+    .card-head{margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+    .card-head h2{font-size:1rem;font-weight:600;margin-bottom:2px}
+    .card-head p{font-size:0.82rem;color:var(--sub)}
+    .grid{display:grid;gap:1rem}
+    .grid-2{grid-template-columns:1fr 1fr}
+    @media(max-width:540px){.grid-2{grid-template-columns:1fr}}
+    .field{display:flex;flex-direction:column;gap:5px}
+    label{font-size:0.8rem;font-weight:500;color:var(--sub)}
+    .req{color:var(--error);margin-left:1px}
+    input,textarea,select{font-family:'Inter',sans-serif;font-size:0.9rem;color:var(--text);background:#fff;border:1px solid var(--border2);border-radius:8px;padding:9px 12px;width:100%;outline:none;transition:border-color 0.15s,box-shadow 0.15s}
+    input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.1)}
+    input::placeholder,textarea::placeholder{color:var(--muted)}
+    textarea{resize:vertical;min-height:100px;line-height:1.55}
+    input.err,textarea.err{border-color:var(--error)}
+    .field-err{font-size:0.75rem;color:var(--error);display:none}
+    .char-count{font-size:0.75rem;color:var(--muted);text-align:right}
+    .tone-wrap{display:flex;gap:7px;flex-wrap:wrap}
+    .tone-btn{padding:6px 14px;border-radius:999px;font-size:0.8rem;font-weight:500;border:1px solid var(--border2);background:#fff;color:var(--sub);cursor:pointer;transition:all 0.14s;font-family:'Inter',sans-serif}
+    .tone-btn:hover{border-color:var(--accent);color:var(--accent)}
+    .tone-btn.on{background:var(--accent-s);border-color:var(--accent);color:var(--accent);font-weight:600}
+    .btn-primary{width:100%;padding:11px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:'Inter',sans-serif;font-size:0.92rem;font-weight:600;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:0.25rem}
+    .btn-primary:hover:not(:disabled){background:var(--accent-h)}
+    .btn-primary:disabled{opacity:0.55;cursor:not-allowed}
+    .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,0.35);border-top-color:#fff;border-radius:50%;animation:spin 0.65s linear infinite;display:none}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    #out-card{display:none}
+    .out-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.5rem;font-size:0.9rem;line-height:1.8;white-space:pre-wrap;word-break:break-word;max-height:400px;overflow-y:auto}
+    .out-actions{display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap}
+    .btn-sec{padding:8px 16px;border-radius:8px;font-size:0.82rem;font-weight:500;cursor:pointer;transition:all 0.14s;border:1px solid var(--border2);background:#fff;color:var(--sub);font-family:'Inter',sans-serif;display:flex;align-items:center;gap:5px}
+    .btn-sec:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-s)}
+    .btn-sec.green{border-color:#a7f3d0;color:#059669;background:#f0fdf4}
+    #toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--text);color:#fff;padding:10px 20px;border-radius:999px;font-size:0.83rem;font-weight:500;transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1);z-index:999;pointer-events:none;white-space:nowrap}
+    #toast.show{transform:translateX(-50%) translateY(0)}
+    #toast.ok{background:#059669}
+    #toast.bad{background:var(--error)}
+    footer{text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);font-size:0.78rem;color:var(--muted)}
+    footer a{color:var(--accent);text-decoration:none}
+    .other-tools{margin-top:2.5rem}
+    .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.75rem}
+    .tool-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1rem;text-decoration:none;transition:border-color 0.15s}
+    .tool-card:hover{border-color:var(--accent)}
+    .tool-card h3{font-size:0.88rem;font-weight:600;color:var(--text);margin-bottom:3px}
+    .tool-card p{font-size:0.78rem;color:var(--sub)}
+    .sec-label{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+    .sec-title{font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="brand">CoverCraft AI</a>
+  <div class="nav-links">
+    <a href="/">Cover Letter</a>
+    <a href="/linkedin.html">LinkedIn</a>
+    <a href="/interview.html">Interview Prep</a>
+    <a href="/score.html">Score My Letter</a>
+  </div>
+</nav>
+<header class="hero">
+  <div class="hero-pill">✦ Free AI Tool</div>
+  <h1>LinkedIn Summary<br><mark>Generator</mark></h1>
+  <p>Create a compelling LinkedIn About section that attracts recruiters and opportunities — in seconds.</p>
+</header>
+<main class="page">
+  <div class="card">
+    <div class="card-head">
+      <h2>Your details</h2>
+      <p>Fill in your background and we'll write a summary that stands out.</p>
+    </div>
+    <form id="form" novalidate>
+      <div class="grid">
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="f-name">Your name <span class="req">*</span></label>
+            <input type="text" id="f-name" placeholder="e.g. Farhan Ahmad" maxlength="80" required/>
+            <span class="field-err" id="e-name">Enter your name</span>
+          </div>
+          <div class="field">
+            <label for="f-title">Current/target job title <span class="req">*</span></label>
+            <input type="text" id="f-title" placeholder="e.g. Marketing Manager" maxlength="100" required/>
+            <span class="field-err" id="e-title">Enter your job title</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-exp">Your experience & skills <span class="req">*</span></label>
+          <textarea id="f-exp" placeholder="e.g. 5 years in digital marketing, managed campaigns for tech startups, skilled in SEO, email marketing, and social media growth..." maxlength="800" required></textarea>
+          <div class="char-count" id="c-exp">0 / 800</div>
+          <span class="field-err" id="e-exp">Describe your experience</span>
+        </div>
+        <div class="field">
+          <label for="f-goal">What you're looking for <span class="req">*</span></label>
+          <textarea id="f-goal" placeholder="e.g. Seeking a senior marketing role at a fast-growing startup where I can lead growth campaigns and build a team..." maxlength="400" required></textarea>
+          <div class="char-count" id="c-goal">0 / 400</div>
+          <span class="field-err" id="e-goal">Describe what you're looking for</span>
+        </div>
+        <div class="field">
+          <label>Tone</label>
+          <div class="tone-wrap">
+            <button type="button" class="tone-btn on" data-t="Professional">Professional</button>
+            <button type="button" class="tone-btn" data-t="Friendly">Friendly</button>
+            <button type="button" class="tone-btn" data-t="Bold">Bold</button>
+            <button type="button" class="tone-btn" data-t="Storytelling">Storytelling</button>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary" id="gen-btn">
+          <div class="spinner" id="spin"></div>
+          <span id="btn-txt">Generate LinkedIn Summary →</span>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="card" id="out-card">
+    <div class="card-head"><h2>Your LinkedIn Summary</h2><p>Copy and paste this into your LinkedIn About section.</p></div>
+    <div class="out-box" id="out-txt"></div>
+    <div class="out-actions">
+      <button class="btn-sec" id="btn-copy">📋 Copy</button>
+      <button class="btn-sec" id="btn-regen">🔄 Regenerate</button>
+    </div>
+  </div>
+  <div class="other-tools">
+    <div class="sec-label">More free tools</div>
+    <h2 class="sec-title">Everything you need for your job search</h2>
+    <div class="tools-grid">
+      <a href="/" class="tool-card"><h3>✍️ Cover Letter Generator</h3><p>Write a tailored cover letter in 30 seconds</p></a>
+      <a href="/interview.html" class="tool-card"><h3>🎤 Interview Prep</h3><p>AI-generated questions for your role</p></a>
+      <a href="/score.html" class="tool-card"><h3>⭐ Score My Cover Letter</h3><p>Get AI feedback and improvement tips</p></a>
+    </div>
+  </div>
+</main>
+<footer><p>Made by <strong>CoverCraft AI</strong> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p></footer>
+<div id="toast" role="alert"></div>
+<script>
+  let tone = 'Professional';
+  let lastResult = '';
+
+  function toast(msg, type='ok') {
+    const el = document.getElementById('toast');
+    el.textContent = msg; el.className = `show ${type}`;
+    clearTimeout(el._t); el._t = setTimeout(() => el.className = '', 3000);
+  }
+
+  function counter(id, cid, max) {
+    const el = document.getElementById(id), ct = document.getElementById(cid);
+    if (!el || !ct) return;
+    el.addEventListener('input', () => { ct.textContent = `${el.value.length} / ${max}`; });
+  }
+  counter('f-exp','c-exp',800); counter('f-goal','c-goal',400);
+
+  document.querySelectorAll('.tone-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.tone-btn').forEach(x => x.classList.remove('on'));
+      b.classList.add('on'); tone = b.dataset.t;
+    });
+  });
+
+  function validate() {
+    const checks = [{id:'f-name',eid:'e-name'},{id:'f-title',eid:'e-title'},{id:'f-exp',eid:'e-exp',min:20},{id:'f-goal',eid:'e-goal',min:10}];
+    let ok = true;
+    checks.forEach(c => {
+      const el = document.getElementById(c.id), em = document.getElementById(c.eid);
+      const bad = !el.value.trim() || (c.min && el.value.trim().length < c.min);
+      el.classList.toggle('err', bad); em.style.display = bad ? 'block' : 'none';
+      if (bad) ok = false;
+    });
+    return ok;
+  }
+
+  function san(s='') { return s.replace(/[<>]/g,'').replace(/ignore (previous|all) instructions?/gi,'').trim().slice(0,1000); }
+
+  async function generate() {
+    if (!validate()) { toast('Fill in all required fields', 'bad'); return; }
+    const name = san(document.getElementById('f-name').value);
+    const title = san(document.getElementById('f-title').value);
+    const exp = san(document.getElementById('f-exp').value);
+    const goal = san(document.getElementById('f-goal').value);
+    const btn = document.getElementById('gen-btn');
+    const sp = document.getElementById('spin');
+    const tx = document.getElementById('btn-txt');
+    btn.disabled = true; sp.style.display = 'block'; tx.textContent = 'Writing your summary…';
+    document.getElementById('out-card').style.display = 'none';
+    try {
+      const res = await fetch('/api/generate', {
+        method: 'POST', credentials: 'same-origin',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+          action: 'linkedin',
+          name, title, experience: exp, goal, tone
+        })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Something went wrong');
+      lastResult = data.summary;
+      document.getElementById('out-txt').textContent = data.summary;
+      document.getElementById('out-card').style.display = 'block';
+      document.getElementById('out-card').scrollIntoView({behavior:'smooth',block:'start'});
+      toast('Summary ready!');
+    } catch(err) { toast(err.message, 'bad'); }
+    finally { btn.disabled = false; sp.style.display = 'none'; tx.textContent = 'Generate LinkedIn Summary →'; }
+  }
+
+  document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); generate(); });
+  document.getElementById('btn-regen').addEventListener('click', generate);
+  document.getElementById('btn-copy').addEventListener('click', async () => {
+    if (!lastResult) return;
+    await navigator.clipboard.writeText(lastResult);
+    const b = document.getElementById('btn-copy');
+    b.classList.add('green'); b.textContent = '✓ Copied!';
+    toast('Copied!');
+    setTimeout(() => { b.classList.remove('green'); b.textContent = '📋 Copy'; }, 2500);
+  });
+
+  ['f-name','f-title','f-exp','f-goal'].forEach(id => {
+    document.getElementById(id).addEventListener('input', function() {
+      this.classList.remove('err');
+      const eid = 'e-' + id.slice(2);
+      const em = document.getElementById(eid);
+      if (em) em.style.display = 'none';
+    });
+  });
+</script>
+</body>
+</html>

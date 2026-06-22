@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Free AI Interview Questions Generator — Get tailored interview questions and model answers for any job role. No signup required."/>
+  <meta name="keywords" content="interview questions generator, AI interview prep, job interview practice, interview preparation tool"/>
+  <title>AI Interview Questions Generator — Free | CoverCraft AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bricolage+Grotesque:wght@700;800&display=swap" rel="stylesheet"/>
+  <script src="https://5gvci.com/act/files/service-worker.min.js?r=sw" data-zone="11181975"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#f7f8fa;--white:#fff;--border:#e4e7ec;--border2:#d0d5dd;--text:#101828;--sub:#475467;--muted:#98a2b3;--accent:#2563eb;--accent-h:#1d4ed8;--accent-s:#eff6ff;--error:#dc2626;--r:10px}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;-webkit-font-smoothing:antialiased}
+    nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,5vw,3rem);height:58px}
+    .brand{font-family:'Bricolage Grotesque',sans-serif;font-size:1.05rem;font-weight:800;color:var(--accent);text-decoration:none}
+    .nav-links{display:flex;gap:16px;align-items:center}
+    .nav-links a{font-size:0.82rem;color:var(--sub);text-decoration:none;font-weight:500}
+    .nav-links a:hover{color:var(--accent)}
+    .hero{background:#fff;border-bottom:1px solid var(--border);text-align:center;padding:clamp(2rem,5vw,3.5rem) clamp(1rem,5vw,2rem) clamp(1.5rem,3vw,2.5rem)}
+    .hero-pill{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);padding:4px 12px;border-radius:999px;background:var(--accent-s);border:1px solid #bfdbfe;margin-bottom:1rem}
+    h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.7rem,4vw,2.6rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:0.75rem}
+    h1 mark{background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{font-size:0.95rem;color:var(--sub);max-width:440px;margin:0 auto}
+    .page{max-width:720px;margin:0 auto;padding:clamp(1.5rem,4vw,2.5rem) clamp(1rem,4vw,1.5rem) 5rem}
+    .card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.25rem,3vw,2rem);margin-bottom:1rem}
+    .card-head{margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+    .card-head h2{font-size:1rem;font-weight:600;margin-bottom:2px}
+    .card-head p{font-size:0.82rem;color:var(--sub)}
+    .grid{display:grid;gap:1rem}
+    .grid-2{grid-template-columns:1fr 1fr}
+    @media(max-width:540px){.grid-2{grid-template-columns:1fr}}
+    .field{display:flex;flex-direction:column;gap:5px}
+    label{font-size:0.8rem;font-weight:500;color:var(--sub)}
+    .req{color:var(--error);margin-left:1px}
+    input,textarea,select{font-family:'Inter',sans-serif;font-size:0.9rem;color:var(--text);background:#fff;border:1px solid var(--border2);border-radius:8px;padding:9px 12px;width:100%;outline:none;transition:border-color 0.15s,box-shadow 0.15s}
+    input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.1)}
+    input::placeholder,textarea::placeholder{color:var(--muted)}
+    textarea{resize:vertical;min-height:90px;line-height:1.55}
+    input.err,textarea.err{border-color:var(--error)}
+    .field-err{font-size:0.75rem;color:var(--error);display:none}
+    .btn-primary{width:100%;padding:11px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:'Inter',sans-serif;font-size:0.92rem;font-weight:600;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:0.25rem}
+    .btn-primary:hover:not(:disabled){background:var(--accent-h)}
+    .btn-primary:disabled{opacity:0.55;cursor:not-allowed}
+    .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,0.35);border-top-color:#fff;border-radius:50%;animation:spin 0.65s linear infinite;display:none}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    #out-card{display:none}
+    .q-list{display:flex;flex-direction:column;gap:1rem}
+    .q-item{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem}
+    .q-num{font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+    .q-text{font-size:0.92rem;font-weight:600;color:var(--text);margin-bottom:8px}
+    .q-answer{font-size:0.85rem;color:var(--sub);line-height:1.6;border-top:1px solid var(--border);padding-top:8px;margin-top:4px}
+    .q-answer-label{font-size:0.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+    .out-actions{display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap}
+    .btn-sec{padding:8px 16px;border-radius:8px;font-size:0.82rem;font-weight:500;cursor:pointer;transition:all 0.14s;border:1px solid var(--border2);background:#fff;color:var(--sub);font-family:'Inter',sans-serif;display:flex;align-items:center;gap:5px}
+    .btn-sec:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-s)}
+    #toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--text);color:#fff;padding:10px 20px;border-radius:999px;font-size:0.83rem;font-weight:500;transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1);z-index:999;pointer-events:none;white-space:nowrap}
+    #toast.show{transform:translateX(-50%) translateY(0)}
+    #toast.ok{background:#059669}
+    #toast.bad{background:var(--error)}
+    footer{text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);font-size:0.78rem;color:var(--muted)}
+    footer a{color:var(--accent);text-decoration:none}
+    .other-tools{margin-top:2.5rem}
+    .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.75rem}
+    .tool-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1rem;text-decoration:none;transition:border-color 0.15s}
+    .tool-card:hover{border-color:var(--accent)}
+    .tool-card h3{font-size:0.88rem;font-weight:600;color:var(--text);margin-bottom:3px}
+    .tool-card p{font-size:0.78rem;color:var(--sub)}
+    .sec-label{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+    .sec-title{font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="brand">CoverCraft AI</a>
+  <div class="nav-links">
+    <a href="/">Cover Letter</a>
+    <a href="/linkedin.html">LinkedIn</a>
+    <a href="/interview.html">Interview Prep</a>
+    <a href="/score.html">Score My Letter</a>
+  </div>
+</nav>
+<header class="hero">
+  <div class="hero-pill">✦ Free AI Tool</div>
+  <h1>Interview Questions<br><mark>Generator</mark></h1>
+  <p>Get tailored interview questions with model answers for any job role — walk in prepared and confident.</p>
+</header>
+<main class="page">
+  <div class="card">
+    <div class="card-head">
+      <h2>The role you're interviewing for</h2>
+      <p>More detail = more targeted questions.</p>
+    </div>
+    <form id="form" novalidate>
+      <div class="grid">
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="f-job">Job title <span class="req">*</span></label>
+            <input type="text" id="f-job" placeholder="e.g. Marketing Manager" maxlength="100" required/>
+            <span class="field-err" id="e-job">Enter the job title</span>
+          </div>
+          <div class="field">
+            <label for="f-co">Company <span class="req">*</span></label>
+            <input type="text" id="f-co" placeholder="e.g. Google" maxlength="100" required/>
+            <span class="field-err" id="e-co">Enter the company name</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-jd">Job description / key requirements</label>
+          <textarea id="f-jd" placeholder="Paste key parts of the job description for more targeted questions..." maxlength="1000"></textarea>
+        </div>
+        <div class="field">
+          <label for="f-exp">Your experience</label>
+          <textarea id="f-exp" placeholder="Brief summary of your background so answer examples are relevant to you..." maxlength="500"></textarea>
+        </div>
+        <div class="field">
+          <label for="f-count">Number of questions</label>
+          <select id="f-count">
+            <option value="5">5 questions</option>
+            <option value="8" selected>8 questions</option>
+            <option value="10">10 questions</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary" id="gen-btn">
+          <div class="spinner" id="spin"></div>
+          <span id="btn-txt">Generate Interview Questions →</span>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="card" id="out-card">
+    <div class="card-head"><h2>Your interview questions</h2><p>Study these questions and practice your answers before your interview.</p></div>
+    <div class="q-list" id="q-list"></div>
+    <div class="out-actions">
+      <button class="btn-sec" id="btn-copy">📋 Copy all</button>
+      <button class="btn-sec" id="btn-regen">🔄 Regenerate</button>
+    </div>
+  </div>
+  <div class="other-tools">
+    <div class="sec-label">More free tools</div>
+    <h2 class="sec-title">Everything you need for your job search</h2>
+    <div class="tools-grid">
+      <a href="/" class="tool-card"><h3>✍️ Cover Letter Generator</h3><p>Write a tailored cover letter in 30 seconds</p></a>
+      <a href="/linkedin.html" class="tool-card"><h3>💼 LinkedIn Summary</h3><p>Write a compelling LinkedIn About section</p></a>
+      <a href="/score.html" class="tool-card"><h3>⭐ Score My Cover Letter</h3><p>Get AI feedback and improvement tips</p></a>
+    </div>
+  </div>
+</main>
+<footer><p>Made by <strong>CoverCraft AI</strong> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p></footer>
+<div id="toast" role="alert"></div>
+<script>
+  let lastRaw = '';
+
+  function toast(msg, type='ok') {
+    const el = document.getElementById('toast');
+    el.textContent = msg; el.className = `show ${type}`;
+    clearTimeout(el._t); el._t = setTimeout(() => el.className = '', 3000);
+  }
+
+  function validate() {
+    const checks = [{id:'f-job',eid:'e-job'},{id:'f-co',eid:'e-co'}];
+    let ok = true;
+    checks.forEach(c => {
+      const el = document.getElementById(c.id), em = document.getElementById(c.eid);
+      const bad = !el.value.trim();
+      el.classList.toggle('err', bad); em.style.display = bad ? 'block' : 'none';
+      if (bad) ok = false;
+    });
+    return ok;
+  }
+
+  function san(s='') { return s.replace(/[<>]/g,'').trim().slice(0,1000); }
+
+  function renderQuestions(text) {
+    lastRaw = text;
+    const list = document.getElementById('q-list');
+    list.innerHTML = '';
+    // Try to parse Q&A pairs split by numbered questions
+    const blocks = text.split(/\n(?=\d+[\.\)])/);
+    blocks.forEach((block, i) => {
+      if (!block.trim()) return;
+      const lines = block.trim().split('\n');
+      const qLine = lines[0].replace(/^\d+[\.\)]\s*/, '').trim();
+      const rest = lines.slice(1).join('\n').trim();
+      const answerMatch = rest.match(/(?:answer|tip|model answer|suggested answer)[:\-]?\s*([\s\S]+)/i);
+      const answer = answerMatch ? answerMatch[1].trim() : rest;
+
+      const item = document.createElement('div');
+      item.className = 'q-item';
+      item.innerHTML = `<div class="q-num">Question ${i+1}</div><div class="q-text"></div>${answer ? '<div class="q-answer-label">Model answer</div><div class="q-answer"></div>' : ''}`;
+      item.querySelector('.q-text').textContent = qLine;
+      if (answer) item.querySelector('.q-answer').textContent = answer;
+      list.appendChild(item);
+    });
+    if (list.children.length === 0) {
+      // Fallback: just show raw text
+      const item = document.createElement('div');
+      item.className = 'q-item';
+      item.style.whiteSpace = 'pre-wrap';
+      item.textContent = text;
+      list.appendChild(item);
+    }
+  }
+
+  async function generate() {
+    if (!validate()) { toast('Fill in all required fields', 'bad'); return; }
+    const job = san(document.getElementById('f-job').value);
+    const company = san(document.getElementById('f-co').value);
+    const jd = san(document.getElementById('f-jd').value);
+    const exp = san(document.getElementById('f-exp').value);
+    const count = parseInt(document.getElementById('f-count').value, 10);
+    const btn = document.getElementById('gen-btn');
+    const sp = document.getElementById('spin');
+    const tx = document.getElementById('btn-txt');
+    btn.disabled = true; sp.style.display = 'block'; tx.textContent = 'Generating questions…';
+    document.getElementById('out-card').style.display = 'none';
+    try {
+      const res = await fetch('/api/generate', {
+        method: 'POST', credentials: 'same-origin',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ action: 'interview', job, company, jd, experience: exp, count })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Something went wrong');
+      renderQuestions(data.questions);
+      document.getElementById('out-card').style.display = 'block';
+      document.getElementById('out-card').scrollIntoView({behavior:'smooth',block:'start'});
+      toast('Questions ready!');
+    } catch(err) { toast(err.message, 'bad'); }
+    finally { btn.disabled = false; sp.style.display = 'none'; tx.textContent = 'Generate Interview Questions →'; }
+  }
+
+  document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); generate(); });
+  document.getElementById('btn-regen').addEventListener('click', generate);
+  document.getElementById('btn-copy').addEventListener('click', async () => {
+    if (!lastRaw) return;
+    await navigator.clipboard.writeText(lastRaw);
+    toast('Copied all questions!');
+  });
+</script>
+</body>
+</html>

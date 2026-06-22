@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aicover-letter.vercel.app/sitemap.xml

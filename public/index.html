@@ -61,12 +61,20 @@
       letter-spacing: -0.02em;
     }
     .nav-right { display: flex; align-items: center; gap: 10px; }
+    .nav-tool-link { font-size:0.82rem;color:var(--sub);text-decoration:none;font-weight:500; }
+    .nav-tool-link:hover { color:var(--accent); }
+    @media(max-width:600px) { .nav-tool-link { display:none; } }
     .badge {
       font-size: 0.72rem; font-weight: 600;
       padding: 3px 10px; border-radius: 999px;
       background: var(--accent-s); color: var(--accent);
       border: 1px solid #bfdbfe;
     }
+
+
+    .auth-toggle { font-size: 0.82rem; color: var(--sub); text-align: center; }
+    .auth-toggle a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    #auth-error { font-size: 0.8rem; color: var(--error); margin-bottom: 8px; display: none; }
 
     /* HERO */
     .hero {
@@ -343,6 +351,107 @@
     }
     footer strong { color: var(--sub); }
 
+    /* AI DETECTOR / HUMANIZER */
+    .btn-sec.purple { border-color: #ddd6fe; color: #7c3aed; background: #f5f3ff; }
+    .btn-sec.purple:hover { background: #ede9fe; border-color: #c4b5fd; }
+    #ai-card { display: none; }
+    .disclaimer { font-style: italic; color: var(--muted); }
+    .use-notice {
+      background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px;
+      padding: 0.85rem 1rem; font-size: 0.78rem; color: #92400e;
+      line-height: 1.55; margin-bottom: 1.25rem;
+    }
+    .score-empty {
+      background: var(--bg); border: 1px dashed var(--border2);
+      border-radius: 8px; padding: 1.5rem; text-align: center;
+      font-size: 0.85rem; color: var(--sub);
+    }
+    .score-row { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .pie-wrap { position: relative; width: 120px; height: 120px; flex-shrink: 0; }
+    .pie-wrap svg circle { transition: stroke-dasharray 0.6s ease; }
+    .pie-center {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .pie-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--text); }
+    .pie-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .score-legend { flex: 1; min-width: 180px; }
+    .legend-item { font-size: 0.88rem; color: var(--sub); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .legend-item strong { color: var(--text); }
+    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+    .dot.red { background: #dc2626; }
+    .dot.green { background: #059669; }
+    .score-note { font-size: 0.78rem; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+    .humanize-bar {
+      margin-top: 1.5rem; padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .btn-primary.small { width: auto; padding: 9px 18px; font-size: 0.85rem; }
+    .word-note { font-size: 0.78rem; color: var(--muted); }
+
+    /* STANDALONE HUMANIZER */
+    .standalone-actions { display: flex; gap: 8px; margin-top: 0.75rem; flex-wrap: wrap; }
+    #standalone-result { margin-top: 1rem; }
+
+    /* PRICING */
+    .premium-section { margin-top: 3rem; }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 1rem; max-width: 600px;
+    }
+    .price-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 1.5rem; position: relative;
+    }
+    .price-card.highlight { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.08); }
+    .price-badge {
+      position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: #fff; font-size: 0.68rem; font-weight: 700;
+      padding: 3px 12px; border-radius: 999px; white-space: nowrap;
+    }
+    .price-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .price {
+      font-family: 'Bricolage Grotesque', sans-serif; font-size: 2rem; font-weight: 800;
+      margin-bottom: 1rem; color: var(--text);
+    }
+    .price span { font-size: 0.9rem; font-weight: 500; color: var(--muted); }
+    .price-card ul { list-style: none; margin-bottom: 1.25rem; }
+    .price-card li { font-size: 0.84rem; color: var(--sub); margin-bottom: 8px; }
+
+    /* USAGE BARS */
+    .usage-bar-wrap { margin-top: 0.5rem; }
+    .usage-label { font-size: 0.78rem; color: var(--sub); margin-bottom: 4px; }
+    .usage-bar { height: 7px; border-radius: 999px; background: var(--bg); border: 1px solid var(--border); overflow: hidden; }
+    .usage-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s ease; border-radius: 999px; }
+    .usage-fill.full { background: var(--error); }
+
+    /* AD DOTS */
+    .ad-dots { display: flex; gap: 6px; justify-content: center; margin: 1rem 0; }
+    .ad-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border2); transition: background 0.2s; }
+    .ad-dot.done { background: var(--success); }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(16,24,40,0.5); backdrop-filter: blur(2px);
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: var(--white); border-radius: 14px; padding: 1.75rem;
+      max-width: 380px; width: 100%; position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .modal h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .modal p { font-size: 0.86rem; color: var(--sub); margin-bottom: 1.1rem; line-height: 1.55; }
+    .modal input { margin-bottom: 0.75rem; }
+    .modal-close {
+      position: absolute; top: 12px; right: 14px;
+      background: none; border: none; font-size: 1.3rem; color: var(--muted);
+      cursor: pointer; line-height: 1;
+    }
+
     /* SCROLLBAR */
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
@@ -353,13 +462,42 @@
       .btn-sec { justify-content: center; }
     }
   </style>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       MONETAG SETUP — replace ZONE_ID once you have one from your dashboard
+       ════════════════════════════════════════════════════════════════════
+       1. Sign up at monetag.com → add this site → create a
+          "Rewarded Interstitial" zone → copy its numeric Zone ID.
+       2. Replace YOUR_ZONE_ID below with that number in BOTH places
+          (the script src and MONETAG_SHOW_FN).
+       3. Monetag also gives you a separate site-verification snippet/file
+          during onboarding — add that too, it's usually a one-line meta
+          tag or a small file at /your-verification-file.html.
+       Until you do this, the "Watch ad" button shows a friendly error
+       instead of crashing, so the rest of the site still works. -->
+  <script src="https://YOUR_ZONE_ID.monetag.com/sdk.js" data-zone="YOUR_ZONE_ID" data-sdk="show_YOUR_ZONE_ID"></script>
+  <script>
+    // Must match the data-sdk attribute above, e.g. 'show_123456'
+    const MONETAG_SHOW_FN = 'show_YOUR_ZONE_ID';
+  </script>
+
+<!-- Monetag service worker registration -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' })
+      .catch(err => console.warn('SW registration failed:', err));
+  }
+</script>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="brand">CoverCraft AI</a>
+  <a href="/" class="brand">CoverCraft AI</a>
   <div class="nav-right">
-    <span class="badge">Free Forever</span>
+    <a href="/linkedin.html" class="nav-tool-link">LinkedIn</a>
+    <a href="/interview.html" class="nav-tool-link">Interview</a>
+    <a href="/score.html" class="nav-tool-link">Score</a>
+    <span class="badge" id="plan-badge">5 free/day</span>
   </div>
 </nav>
 
@@ -496,7 +634,81 @@
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
         Regenerate
       </button>
+      <button class="btn-sec purple" id="btn-check-ai">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        Check AI-Written %
+      </button>
     </div>
+  </div>
+
+  <!-- AI DETECTOR + HUMANIZER -->
+  <div class="card" id="ai-card">
+    <div class="card-head">
+      <h2>AI Content Checker</h2>
+      <p>Estimate how AI-detectable your text is, then humanize it to sound more natural. <span class="disclaimer">Heuristic estimate — not a certified detector.</span></p>
+    </div>
+
+    <div class="use-notice">
+      ⚠️ <strong>Intended use:</strong> This tool is for improving the natural flow of your own writing — not for misrepresenting AI-generated work as entirely human-made in academic, certification, or other contexts where that violates a stated policy. Always follow your school's, employer's, or platform's rules on AI use.
+    </div>
+
+    <div id="score-empty" class="score-empty">
+      <p>Click <strong>"Check AI-Written %"</strong> above to analyze your cover letter, or paste any text below.</p>
+    </div>
+
+    <div id="score-result" style="display:none;">
+      <div class="score-row">
+        <div class="pie-wrap">
+          <svg viewBox="0 0 120 120" width="120" height="120" id="pie-svg">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#e4e7ec" stroke-width="14"/>
+            <circle cx="60" cy="60" r="50" fill="none" id="pie-ai" stroke="#dc2626" stroke-width="14" stroke-dasharray="0 314" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+          </svg>
+          <div class="pie-center">
+            <div class="pie-num" id="pie-num">0%</div>
+            <div class="pie-label">AI</div>
+          </div>
+        </div>
+        <div class="score-legend">
+          <div class="legend-item"><span class="dot red"></span> AI-written: <strong id="ai-pct">0%</strong></div>
+          <div class="legend-item"><span class="dot green"></span> Human-like: <strong id="human-pct">0%</strong></div>
+          <p class="score-note" id="score-note"></p>
+        </div>
+      </div>
+
+      <div class="humanize-bar">
+        <button class="btn-primary small" id="btn-humanize">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          Humanize This Content
+        </button>
+        <span class="word-note" id="word-note">Free plan: up to 200 words per humanize</span>
+      </div>
+    </div>
+
+    <div id="humanized-result" style="display:none;">
+      <div class="card-head" style="margin-top:1.5rem;">
+        <h2>Humanized Version</h2>
+        <p>Rewritten to sound more natural. New AI score below.</p>
+      </div>
+      <div class="out-box" id="humanized-txt"></div>
+      <div class="out-actions">
+        <button class="btn-sec" id="btn-copy-h">Copy humanized text</button>
+        <button class="btn-sec" id="btn-recheck-h">Re-check AI %</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STANDALONE HUMANIZER -->
+  <div class="card" id="standalone-card">
+    <div class="card-head">
+      <h2>Humanize Any Text</h2>
+      <p>Paste any AI-generated text — essay, email, post — to check and humanize it.</p>
+    </div>
+    <textarea id="standalone-input" placeholder="Paste your text here (up to 200 words on free plan)..." style="min-height:140px;"></textarea>
+    <div class="standalone-actions">
+      <button class="btn-sec" id="btn-standalone-check">Check AI %</button>
+      <button class="btn-primary small" id="btn-standalone-humanize" style="width:auto;">Humanize</button>
+    </div>
+    <div id="standalone-result"></div>
   </div>
 
   <!-- FEATURES -->
@@ -509,7 +721,7 @@
       <div class="feat"><div class="feat-icon">🔒</div><h3>Private & Secure</h3><p>Your data is never stored or sold. Each generation is discarded immediately after use.</p></div>
       <div class="feat"><div class="feat-icon">🌍</div><h3>Works Anywhere</h3><p>Any device, any country. Generate, copy and download from your phone or desktop.</p></div>
       <div class="feat"><div class="feat-icon">🎯</div><h3>Job Description Matching</h3><p>Paste the job description and AI tailors your letter to exactly what the employer wants.</p></div>
-      <div class="feat"><div class="feat-icon">💸</div><h3>100% Free</h3><p>No credit card, no trial period, no hidden fees. Up to 10 cover letters per day, free.</p></div>
+      <div class="feat"><div class="feat-icon">🧬</div><h3>AI Detector & Humanizer</h3><p>Check how AI-detectable your text is and rewrite it to sound naturally human.</p></div>
     </div>
   </section>
 
@@ -538,35 +750,138 @@
     </div>
   </section>
 
+  <!-- LIMITS INFO -->
+  <section class="premium-section" id="limits-section">
+    <div class="sec-label">Free plan</div>
+    <h2 class="sec-title">How daily limits work</h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Standard</h3>
+        <div class="price" style="font-size:1.3rem;">5 letters<span> / day</span></div>
+        <ul>
+          <li>✓ 5 cover letters per day</li>
+          <li>✓ 2000 humanizer words per day</li>
+          <li>✓ AI detector — unlimited checks</li>
+          <li>✓ All 5 tones</li>
+        </ul>
+        <div class="usage-bar-wrap">
+          <div class="usage-label"><span id="usage-letters-label">0 / 5 letters</span></div>
+          <div class="usage-bar"><div class="usage-fill" id="usage-letters-fill"></div></div>
+          <div class="usage-label" style="margin-top:8px;"><span id="usage-words-label">0 / 2000 words</span></div>
+          <div class="usage-bar"><div class="usage-fill" id="usage-words-fill"></div></div>
+        </div>
+      </div>
+      <div class="price-card highlight">
+        <span class="price-badge">No payment needed</span>
+        <h3>Unlocked (watch ads)</h3>
+        <div class="price" style="font-size:1.3rem;">10 letters<span> / day</span></div>
+        <ul>
+          <li>✓ 10 cover letters per day</li>
+          <li>✓ 4000 humanizer words per day</li>
+          <li>✓ Same daily limits, no signup</li>
+          <li>✓ Resets every day at midnight UTC</li>
+        </ul>
+        <button class="btn-primary small" id="btn-unlock" style="width:100%;">Watch 5 ads to unlock →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- AD UNLOCK MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <button class="modal-close" id="modal-close">×</button>
+      <h3 id="ad-modal-title">Unlock higher daily limits</h3>
+      <p id="ad-modal-sub">Watch <strong id="ads-remaining-text">5</strong> short ads to double today's limits to 10 cover letters and 4000 humanizer words. No payment, no signup.</p>
+      <div id="ad-progress-dots" class="ad-dots"></div>
+      <button class="btn-primary small" id="btn-watch-ad" style="width:100%;">▶ Watch ad</button>
+      <p style="font-size:0.75rem;color:var(--muted);text-align:center;margin-top:10px;">This is a placeholder ad simulator — swap in a real ad network (e.g. Adsterra, Monetag) before launch.</p>
+    </div>
+  </div>
+
 </main>
 
 <footer>
   <p>Made by <strong>AIProfit PK</strong> · Free forever · No account needed</p>
+  <p style="margin-top:8px;"><a href="/privacy.html" style="color:#2563eb;text-decoration:none;margin-right:14px;">Privacy Policy</a><a href="/terms.html" style="color:#2563eb;text-decoration:none;">Terms of Service</a></p>
 </footer>
 
 <div id="toast" role="alert"></div>
 
 <script>
-  const LIMIT = 10;
-  const SK = 'ccraft_use';
+  // No-auth, cookie+IP tracked usage. The server sets an httpOnly cookie on
+  // first request (see api/generate.js) — we just always send credentials so
+  // that cookie round-trips with every call.
+  async function apiCall(body) {
+    const res = await fetch('/api/generate', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      const err = new Error(data.error || 'Something went wrong.');
+      err.limitHit = data.limitHit;
+      err.canUnlock = data.canUnlock;
+      throw err;
+    }
+    return data;
+  }
+
+  // ── Daily usage display ────────────────────────────────────────────────
+  let lastUsage = null;
+
+  async function refreshUsage() {
+    try {
+      const data = await apiCall({ action: 'usage' });
+      lastUsage = data;
+      renderUsage(data);
+    } catch (err) {
+      console.warn('Could not load usage:', err.message);
+    }
+  }
+
+  function renderUsage(u) {
+    const badge = document.getElementById('plan-badge');
+    badge.textContent = u.bonusUnlocked ? `${u.lettersLimit} unlocked/day` : `${u.lettersLimit} free/day`;
+
+    const lLabel = document.getElementById('usage-letters-label');
+    const lFill = document.getElementById('usage-letters-fill');
+    if (lLabel && lFill) {
+      lLabel.textContent = `${u.lettersUsed} / ${u.lettersLimit} letters`;
+      const pct = Math.min(100, (u.lettersUsed / u.lettersLimit) * 100);
+      lFill.style.width = pct + '%';
+      lFill.classList.toggle('full', pct >= 100);
+    }
+    const wLabel = document.getElementById('usage-words-label');
+    const wFill = document.getElementById('usage-words-fill');
+    if (wLabel && wFill) {
+      wLabel.textContent = `${u.wordsUsed} / ${u.wordsLimit} words`;
+      const pct = Math.min(100, (u.wordsUsed / u.wordsLimit) * 100);
+      wFill.style.width = pct + '%';
+      wFill.classList.toggle('full', pct >= 100);
+    }
+
+    const unlockBtn = document.getElementById('btn-unlock');
+    if (unlockBtn) {
+      if (u.bonusUnlocked) {
+        unlockBtn.textContent = '✓ Unlocked for today';
+        unlockBtn.disabled = true;
+        unlockBtn.style.opacity = '0.7';
+      } else {
+        unlockBtn.textContent = `Watch ${u.adsRequired - u.adsWatched} more ads to unlock →`;
+        unlockBtn.disabled = false;
+        unlockBtn.style.opacity = '1';
+      }
+    }
+  }
+
+  refreshUsage();
+</script>
+
+<script>
   let tone = 'Professional';
   let lastLetter = '';
-
-  // Usage tracking
-  function getUse() {
-    try {
-      const d = sessionStorage.getItem(SK);
-      if (!d) return { n: 0, day: tod() };
-      const p = JSON.parse(d);
-      return p.day === tod() ? p : { n: 0, day: tod() };
-    } catch { return { n: 0, day: tod() }; }
-  }
-  function incUse() {
-    const u = getUse(); u.n++;
-    try { sessionStorage.setItem(SK, JSON.stringify(u)); } catch {}
-  }
-  function tod() { return new Date().toISOString().slice(0,10); }
-  function left() { return Math.max(0, LIMIT - getUse().n); }
 
   // Toast
   function toast(msg, type='ok') {
@@ -695,14 +1010,7 @@ Rules:
     document.getElementById('out-card').style.display = 'none';
 
     try {
-      const res = await fetch('/api/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ job, company: co, name, jd, experience: exp, whyJob: why, tone })
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || 'Something went wrong. Please try again.');
+      const data = await apiCall({ job, company: co, name, jd, experience: exp, whyJob: why, tone });
       const text = data?.letter;
       if (!text) throw new Error('No response received. Please try again.');
 
@@ -710,12 +1018,18 @@ Rules:
       document.getElementById('out-txt').textContent = text;
       document.getElementById('out-card').style.display = 'block';
       document.getElementById('out-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      incUse();
       setStep(3);
-      toast(`Cover letter ready — ${left()} generations left today`);
+      await refreshUsage();
+      const remaining = lastUsage ? Math.max(0, lastUsage.lettersLimit - lastUsage.lettersUsed) : '';
+      toast(`Cover letter ready — ${remaining} left today`);
 
     } catch(err) {
-      toast(err.message || 'Something went wrong. Please try again.', 'bad');
+      if (err.limitHit) {
+        toast(err.message, 'bad');
+        openModal();
+      } else {
+        toast(err.message || 'Something went wrong. Please try again.', 'bad');
+      }
       setStep(1);
     } finally {
       setLoad(false);
@@ -750,6 +1064,199 @@ Rules:
     a.click();
     toast('Downloaded as cover-letter.txt');
   });
+
+  // ───────────────────────────────────────────────────────────────────────
+  // AI DETECTOR + HUMANIZER
+  // ───────────────────────────────────────────────────────────────────────
+  // Real word-usage tracking happens server-side (lib/usage.js via Redis).
+  // addHWUsed() here is a no-op kept only so existing call sites don't error;
+  // refreshUsage() is what actually updates the displayed numbers.
+  function addHWUsed() { /* no-op — server is source of truth, see refreshUsage() */ }
+
+  function renderScore(result, prefix) {
+    const ai = result.aiPercent, human = result.humanPercent;
+    const empty = document.getElementById(prefix === '' ? 'score-empty' : null);
+    if (prefix === '') {
+      document.getElementById('score-empty').style.display = 'none';
+      document.getElementById('score-result').style.display = 'block';
+      const circumference = 2 * Math.PI * 50;
+      const aiLen = (ai / 100) * circumference;
+      document.getElementById('pie-ai').setAttribute('stroke-dasharray', `${aiLen} ${circumference}`);
+      document.getElementById('pie-num').textContent = `${ai}%`;
+      document.getElementById('ai-pct').textContent = `${ai}%`;
+      document.getElementById('human-pct').textContent = `${human}%`;
+      const note = document.getElementById('score-note');
+      if (ai >= 70) note.textContent = 'This text reads as strongly AI-written. Consider humanizing it.';
+      else if (ai >= 40) note.textContent = 'Mixed signals — some AI patterns detected.';
+      else note.textContent = 'Reads mostly natural / human-like.';
+    }
+  }
+
+  function buildPieSVG(ai, idSuffix) {
+    const circumference = 2 * Math.PI * 50;
+    const aiLen = (ai / 100) * circumference;
+    return `
+      <div class="pie-wrap">
+        <svg viewBox="0 0 120 120" width="100" height="100">
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#e4e7ec" stroke-width="14"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#dc2626" stroke-width="14"
+            stroke-dasharray="${aiLen} ${circumference}" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+        </svg>
+        <div class="pie-center"><div class="pie-num">${ai}%</div><div class="pie-label">AI</div></div>
+      </div>`;
+  }
+
+  // Check AI % on the generated cover letter
+  document.getElementById('btn-check-ai').addEventListener('click', async () => {
+    if (!lastLetter) { toast('Generate a cover letter first', 'bad'); return; }
+    document.getElementById('ai-card').style.display = 'block';
+    document.getElementById('ai-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    try {
+      const data = await apiCall({ action: 'detect', text: lastLetter });
+      renderScore(data, '');
+    } catch (err) { toast(err.message, 'bad'); }
+  });
+
+  // Humanize the cover letter
+  document.getElementById('btn-humanize').addEventListener('click', async () => {
+    const wordCount = lastLetter.trim().split(/\s+/).length;
+    const btn = document.getElementById('btn-humanize');
+    btn.disabled = true; btn.textContent = 'Humanizing…';
+    try {
+      const data = await apiCall({ action: 'humanize', text: lastLetter });
+      document.getElementById('humanized-txt').textContent = data.humanized;
+      document.getElementById('humanized-result').style.display = 'block';
+      addHWUsed(wordCount);
+      toast('Humanized successfully');
+      refreshUsage();
+    } catch (err) {
+      if (err.limitHit) { openModal(); } else { toast(err.message, 'bad'); }
+    }
+    finally { btn.disabled = false; btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Humanize This Content`; }
+  });
+
+  document.getElementById('btn-copy-h').addEventListener('click', async () => {
+    const t = document.getElementById('humanized-txt').textContent;
+    if (!t) return;
+    await navigator.clipboard.writeText(t);
+    toast('Humanized text copied');
+  });
+
+  document.getElementById('btn-recheck-h').addEventListener('click', async () => {
+    const t = document.getElementById('humanized-txt').textContent;
+    if (!t) return;
+    try {
+      const data = await apiCall({ action: 'detect', text: t });
+      toast(`Re-checked: ${data.aiPercent}% AI-likely`);
+    } catch (err) { toast(err.message, 'bad'); }
+  });
+
+  // ── Standalone humanizer tool ──────────────────────────────────────────
+  document.getElementById('btn-standalone-check').addEventListener('click', async () => {
+    const text = document.getElementById('standalone-input').value.trim();
+    if (text.length < 30) { toast('Paste at least 30 characters', 'bad'); return; }
+    const out = document.getElementById('standalone-result');
+    out.innerHTML = '<p style="font-size:0.85rem;color:var(--muted);">Analyzing…</p>';
+    try {
+      const data = await apiCall({ action: 'detect', text });
+      out.innerHTML = `<div class="score-row" style="margin-top:1rem;">${buildPieSVG(data.aiPercent)}<div class="score-legend">
+        <div class="legend-item"><span class="dot red"></span> AI-written: <strong>${data.aiPercent}%</strong></div>
+        <div class="legend-item"><span class="dot green"></span> Human-like: <strong>${data.humanPercent}%</strong></div></div></div>`;
+    } catch (err) { toast(err.message, 'bad'); out.innerHTML = ''; }
+  });
+
+  document.getElementById('btn-standalone-humanize').addEventListener('click', async () => {
+    const text = document.getElementById('standalone-input').value.trim();
+    if (text.length < 20) { toast('Paste at least 20 characters', 'bad'); return; }
+
+    const btn = document.getElementById('btn-standalone-humanize');
+    btn.disabled = true; const orig = btn.textContent; btn.textContent = 'Humanizing…';
+    const out = document.getElementById('standalone-result');
+    try {
+      const data = await apiCall({ action: 'humanize', text });
+      const box = document.createElement('div');
+      box.className = 'out-box';
+      box.style.marginTop = '1rem';
+      box.textContent = data.humanized; // textContent — safe against XSS, unlike innerHTML
+      out.innerHTML = '';
+      out.appendChild(box);
+      toast('Humanized successfully');
+      refreshUsage();
+    } catch (err) {
+      if (err.limitHit) { openModal(); } else { toast(err.message, 'bad'); }
+    }
+    finally { btn.disabled = false; btn.textContent = orig; }
+  });
+
+  // ── Ad-unlock modal ─────────────────────────────────────────────────────
+  function openModal() {
+    document.getElementById('modal-overlay').classList.add('show');
+    renderAdDots();
+  }
+  function closeModal() { document.getElementById('modal-overlay').classList.remove('show'); }
+  document.getElementById('btn-unlock').addEventListener('click', openModal);
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-overlay').addEventListener('click', e => {
+    if (e.target.id === 'modal-overlay') closeModal();
+  });
+
+  function renderAdDots() {
+    const total = lastUsage?.adsRequired || 5;
+    const done = lastUsage?.adsWatched || 0;
+    const wrap = document.getElementById('ad-progress-dots');
+    wrap.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'ad-dot' + (i < done ? ' done' : '');
+      wrap.appendChild(dot);
+    }
+    const remaining = Math.max(0, total - done);
+    document.getElementById('ads-remaining-text').textContent = remaining;
+  }
+
+  // Real Monetag rewarded-ad integration.
+  // show_XXX() is created globally by the Monetag SDK <script> tag in <head>
+  // (see MONETAG_ZONE_ID setup below) — it returns a Promise that resolves
+  // once the user finishes watching the ad.
+  document.getElementById('btn-watch-ad').addEventListener('click', async () => {
+    const btn = document.getElementById('btn-watch-ad');
+    btn.disabled = true;
+    const orig = btn.textContent;
+    btn.textContent = '▶ Loading ad…';
+
+    try {
+      // MONETAG_SHOW_FN is set near the top of this file once you add your zone ID.
+      if (typeof window[MONETAG_SHOW_FN] !== 'function') {
+        throw new Error('Ad network not configured yet — add your Monetag zone ID to go live.');
+      }
+
+      const result = await window[MONETAG_SHOW_FN]({ type: 'end' });
+
+      // Monetag resolves with reward_event_type: 'valued' if the ad was watched
+      // fully, or 'not_valued' if skipped/interrupted — only count real views.
+      if (result?.reward_event_type && result.reward_event_type !== 'valued') {
+        toast('Ad was skipped — watch the full ad to count toward your unlock.', 'bad');
+        return;
+      }
+
+      const data = await apiCall({ action: 'watch_ad' });
+      lastUsage = { ...lastUsage, adsWatched: data.adsWatched, bonusUnlocked: data.bonusUnlocked };
+      renderAdDots();
+      if (data.bonusUnlocked) {
+        toast('Unlocked! 10 letters & 4000 words today.');
+        await refreshUsage();
+        closeModal();
+      } else {
+        toast(`Ad watched — ${data.adsRequired - data.adsWatched} more to go`);
+      }
+    } catch (err) {
+      toast(err.message || 'Ad failed to load. Please try again.', 'bad');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = orig;
+    }
+  });
 </script>
+
 </body>
 </html>

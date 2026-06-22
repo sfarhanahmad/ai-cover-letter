@@ -1,11 +1,33 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/generate.js", "use": "@vercel/node" },
-    { "src": "public/**", "use": "@vercel/static" }
+    { "src": "api/generate.js", "use": "@vercel/node", "config": { "includeFiles": "lib/**" } },
+    { "src": "public/**", "use": "@vercel/static" },
+    { "src": "sw.js", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/api/generate", "dest": "/api/generate.js" },
+    { "src": "/sw.js", "dest": "/sw.js" },
     { "src": "/(.*)", "dest": "/public/$1" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://5gvci.com https://YOUR_ZONE_ID.monetag.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://5gvci.com; frame-ancestors 'none'; worker-src 'self';" }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        { "key": "Service-Worker-Allowed", "value": "/" },
+        { "key": "Cache-Control", "value": "no-cache" }
+      ]
+    }
   ]
 }
