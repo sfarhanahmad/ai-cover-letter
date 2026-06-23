@@ -200,7 +200,17 @@ async function handleHumanize(req, res) {
     const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey) return res.status(500).json({ error: 'Service temporarily unavailable.' });
 
-    const prompt = `Rewrite the following text so it reads naturally, the way a real person would write it. Vary sentence length, remove robotic or overly formal phrasing, avoid generic transition words like "furthermore" or "moreover", keep contractions where natural, and keep the original meaning and facts completely intact. Do not add new claims. Output only the rewritten text, nothing else.
+    const prompt = `You are an expert editor rewriting AI-generated text to sound fully human. Apply ALL rules below:
+
+1. Mix sentence lengths aggressively — some very short (3-5 words), some longer
+2. Start some sentences with: And, But, So, Look, Honestly, Here's the thing
+3. Use contractions everywhere: don't, it's, you'll, that's, I've, we're, they're
+4. DELETE these words entirely: furthermore, moreover, in conclusion, leverage, delve, seamlessly, robust, cutting-edge, game-changer, paradigm, tapestry, testament, "it is important to note", "in today's", "in the realm of", "plays a crucial role", unleash, unlock
+5. Swap formal for casual: utilize→use, facilitate→help, implement→set up, demonstrate→show, endeavor→try
+6. Occasionally use em-dashes — like this — and ellipses... for natural rhythm
+7. Vary paragraph length — some single-sentence paragraphs are fine
+8. Keep every fact, number, name, and meaning exactly intact
+9. Output ONLY the rewritten text, no explanation or preamble
 
 Text:
 """
@@ -212,8 +222,8 @@ ${text.slice(0, 6000)}
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
       body: JSON.stringify({
         model: 'llama-3.3-70b-versatile',
-        max_tokens: 1500,
-        temperature: 0.9,
+        max_tokens: 2000,
+        temperature: 1.1,
         messages: [{ role: 'user', content: prompt }],
       }),
     });
