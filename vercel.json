@@ -15,18 +15,19 @@
       "source": "/(.*)",
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://5gvci.com https://enjoymyself.life; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://5gvci.com https://enjoymyself.life; frame-ancestors 'none'; worker-src 'self';" }
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.monetag.com https://enjoymyself.life https://5gvci.com https://*.5gvci.com https://*.hilltopads.net https://*.adsprofitnetwork.com blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https: wss:; frame-src https:; worker-src 'self' blob:; child-src 'self' blob:; frame-ancestors 'self';" }
       ]
     },
     {
       "source": "/sw.js",
       "headers": [
         { "key": "Service-Worker-Allowed", "value": "/" },
-        { "key": "Cache-Control", "value": "no-cache" }
+        { "key": "Cache-Control", "value": "no-cache" },
+        { "key": "Content-Type", "value": "application/javascript" }
       ]
     }
   ]
