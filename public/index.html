@@ -465,7 +465,7 @@
   </style>
 
   <script>
-    const MONETAG_SHOW_FN = 'show_252463';
+    const MONETAG_SHOW_FN = 'show_11186459';
   </script>
 
 <!-- Monetag service worker registration -->
@@ -818,6 +818,11 @@
   // ── Daily usage display ────────────────────────────────────────────────
   let lastUsage = null;
 
+  function left() {
+    if (!lastUsage) return 999;
+    return Math.max(0, lastUsage.lettersLimit - lastUsage.lettersUsed);
+  }
+
   async function refreshUsage() {
     try {
       const data = await apiCall({ action: 'usage' });
@@ -864,9 +869,7 @@
   }
 
   refreshUsage();
-</script>
 
-<script>
   let tone = 'Professional';
   let lastLetter = '';
 
