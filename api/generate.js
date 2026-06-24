@@ -103,39 +103,83 @@ function sanitize(s = '') {
     .slice(0, 1000);
 }
 
-// ── Free heuristic AI-detector ──────────────────────────────────────────
-// Estimates "AI-likelihood" using sentence-length variance (burstiness),
-// repeated sentence openers, and common AI-stock phrases.
+// ── Heuristic AI-detector ───────────────────────────────────────────────
 // This is a heuristic estimate, NOT a scientifically validated detector.
 function scoreText(text) {
   const sentences = (text.match(/[^.!?]+[.!?]+/g) || [text]).map(s => s.trim()).filter(Boolean);
   if (sentences.length < 2) return { aiPercent: 50, humanPercent: 50, sentences: sentences.length };
 
+  const lower = text.toLowerCase();
+  const words = text.split(/\s+/);
+
+  // 1. Burstiness — AI has uniform sentence lengths, humans vary a lot
   const lengths = sentences.map(s => s.split(/\s+/).length);
   const mean = lengths.reduce((a, b) => a + b, 0) / lengths.length;
   const variance = lengths.reduce((a, b) => a + (b - mean) ** 2, 0) / lengths.length;
-  const stdDev = Math.sqrt(variance);
-  const burstiness = stdDev / (mean || 1);
+  const burstiness = Math.sqrt(variance) / (mean || 1);
 
-  const openers = sentences.map(s => s.split(/\s+/).slice(0, 2).join(' ').toLowerCase());
+  // 2. Opener variety — AI repeats openers like "I", "The", "This"
+  const openers = sentences.map(s => s.split(/\s+/)[0].toLowerCase());
   const uniqueOpeners = new Set(openers).size;
   const openerRepeatRatio = 1 - (uniqueOpeners / openers.length);
 
+  // 3. AI buzzword phrases — strong signal
   const aiPhrases = [
     'in today\'s', 'it is important to note', 'furthermore', 'moreover',
     'in conclusion', 'leverage', 'delve into', 'plays a crucial role',
-    'in the realm of', 'unlock', 'unleash', 'seamlessly', 'robust solution',
-    'cutting-edge', 'game-changer', 'paradigm', 'tapestry', 'testament to',
+    'in the realm of', 'seamlessly', 'robust', 'cutting-edge', 'game-changer',
+    'paradigm', 'tapestry', 'testament to', 'it\'s worth noting', 'navigating',
+    'landscape', 'foster', 'underscore', 'pivotal', 'holistic', 'utilize',
+    'facilitate', 'demonstrate', 'endeavor', 'commence', 'subsequently',
+    'in summary', 'to summarize', 'as mentioned', 'it should be noted',
+    'it is worth', 'one must', 'we must', 'this allows', 'this ensures',
+    'this enables', 'in order to', 'due to the fact', 'as a result of',
   ];
-  const lower = text.toLowerCase();
   const phraseHits = aiPhrases.reduce((n, p) => n + (lower.includes(p) ? 1 : 0), 0);
 
-  let aiScore = 50;
-  aiScore += (0.35 - Math.min(burstiness, 0.6)) * 100;
-  aiScore += openerRepeatRatio * 25;
-  aiScore += phraseHits * 6;
-  aiScore = Math.max(2, Math.min(98, Math.round(aiScore)));
+  // 4. Human signals — contractions, casual starters, informal punctuation
+  const humanSignals = [
+    "don\'t", "can\'t", "won\'t", "i\'ve", "i\'m", "i\'ll", "you\'re",
+    "it\'s", "that\'s", "they\'re", "we\'re", "isn\'t", "wasn\'t",
+    "honestly", "look,", "but here", "so i", "and i", "tbh", "basically",
+    "actually", "kind of", "sort of", "you know", "the thing is",
+  ];
+  const humanHits = humanSignals.reduce((n, p) => n + (lower.includes(p) ? 1 : 0), 0);
 
+  // 5. Passive voice ratio — AI overuses passive voice
+  const passivePatterns = /\b(is|are|was|were|be|been|being)\s+\w+ed\b/gi;
+  const passiveCount = (text.match(passivePatterns) || []).length;
+  const passiveRatio = passiveCount / sentences.length;
+
+  // 6. Average word length — AI uses longer, more formal words
+  const avgWordLen = words.reduce((a, b) => a + b.length, 0) / words.length;
+
+  // Score calculation
+  let aiScore = 42; // baseline slightly below 50
+
+  // Burstiness: low = AI-like uniform, high = human-like varied
+  if (burstiness < 0.25) aiScore += 20;
+  else if (burstiness < 0.4) aiScore += 10;
+  else if (burstiness > 0.6) aiScore -= 15;
+  else if (burstiness > 0.5) aiScore -= 8;
+
+  // Opener repetition
+  aiScore += openerRepeatRatio * 20;
+
+  // AI phrases: each hit adds significant score
+  aiScore += Math.min(phraseHits * 8, 32);
+
+  // Human signals: each hit reduces AI score
+  aiScore -= Math.min(humanHits * 5, 25);
+
+  // Passive voice
+  aiScore += Math.min(passiveRatio * 15, 12);
+
+  // Word length: formal vocabulary = more AI-like
+  if (avgWordLen > 5.5) aiScore += 8;
+  else if (avgWordLen < 4.2) aiScore -= 8;
+
+  aiScore = Math.max(2, Math.min(96, Math.round(aiScore)));
   return { aiPercent: aiScore, humanPercent: 100 - aiScore, sentences: sentences.length };
 }
 
