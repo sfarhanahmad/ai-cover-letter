@@ -1,226 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Monetag Multitag -->
+  <script>(function(s){s.dataset.zone='11194135',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <script>(function(s){s.dataset.zone='11194140',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Free AI Cover Letter Scorer — Get instant feedback, a score out of 100, and improvement tips for your cover letter."/>
-  <meta name="keywords" content="cover letter scorer, cover letter feedback, cover letter review, AI cover letter checker"/>
-  <title>AI Cover Letter Scorer — Free Feedback | CoverCraft AI</title>
+  <meta name="description" content="Free AI Cover Letter Scorer — Get a score out of 100 with detailed feedback to improve your cover letter."/>
+  <title>Score My Cover Letter — Free | CoverCraft AI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bricolage+Grotesque:wght@700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--bg:#f7f8fa;--white:#fff;--border:#e4e7ec;--border2:#d0d5dd;--text:#101828;--sub:#475467;--muted:#98a2b3;--accent:#2563eb;--accent-h:#1d4ed8;--accent-s:#eff6ff;--success:#059669;--error:#dc2626;--r:10px}
-    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;-webkit-font-smoothing:antialiased}
-    nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,5vw,3rem);height:58px}
-    .brand{font-family:'Bricolage Grotesque',sans-serif;font-size:1.05rem;font-weight:800;color:var(--accent);text-decoration:none}
-    .nav-links{display:flex;gap:16px;align-items:center}
-    .nav-links a{font-size:0.82rem;color:var(--sub);text-decoration:none;font-weight:500}
-    .nav-links a:hover{color:var(--accent)}
-    .hero{background:#fff;border-bottom:1px solid var(--border);text-align:center;padding:clamp(2rem,5vw,3.5rem) clamp(1rem,5vw,2rem) clamp(1.5rem,3vw,2.5rem)}
-    .hero-pill{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);padding:4px 12px;border-radius:999px;background:var(--accent-s);border:1px solid #bfdbfe;margin-bottom:1rem}
-    h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.7rem,4vw,2.6rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:0.75rem}
-    h1 mark{background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .hero p{font-size:0.95rem;color:var(--sub);max-width:440px;margin:0 auto}
+    :root{--bg:#f4f6fb;--surface:#fff;--surface2:#f8f9fc;--border:#e2e8f0;--border2:#cbd5e1;--text:#0f172a;--sub:#475569;--muted:#94a3b8;--accent:#2563eb;--accent-h:#1d4ed8;--accent-s:#eff6ff;--accent-b:#bfdbfe;--success:#059669;--success-s:#f0fdf4;--warning:#d97706;--error:#dc2626;--error-s:#fef2f2;--r:12px;--shadow:0 1px 3px rgba(0,0,0,0.07),0 4px 12px rgba(0,0,0,0.05)}
+    [data-theme="dark"]{--bg:#0d1117;--surface:#161b22;--surface2:#1c2128;--border:#30363d;--border2:#484f58;--text:#e6edf3;--sub:#8b949e;--muted:#6e7681;--accent:#3b82f6;--accent-h:#60a5fa;--accent-s:#1e3a5f;--accent-b:#1e3a5f;--success:#34d399;--success-s:#064e3b;--warning:#fbbf24;--error:#f87171;--error-s:#450a0a;--shadow:0 1px 3px rgba(0,0,0,0.3),0 4px 12px rgba(0,0,0,0.2)}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s}
+    nav{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,5vw,2.5rem);height:60px}
+    .brand{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.03em;display:flex;align-items:center;gap:8px}
+    .brand-icon{width:28px;height:28px;background:var(--accent);border-radius:7px;display:flex;align-items:center;justify-content:center}
+    .brand-icon svg{width:15px;height:15px}
+    .nav-links{display:flex;align-items:center;gap:4px}
+    .nav-link{font-size:.82rem;font-weight:500;color:var(--sub);text-decoration:none;padding:5px 10px;border-radius:7px;transition:all .15s}
+    .nav-link:hover,.nav-link.active{color:var(--accent);background:var(--accent-s)}
+    @media(max-width:640px){.nav-links{display:none}}
+    .theme-btn{width:34px;height:34px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--sub);transition:all .15s}
+    .theme-btn:hover{background:var(--accent-s);color:var(--accent)}
+    .page-hero{background:var(--surface);border-bottom:1px solid var(--border);text-align:center;padding:clamp(2.5rem,6vw,4rem) 1rem clamp(2rem,4vw,3rem)}
+    .hero-pill{display:inline-flex;align-items:center;gap:6px;font-size:.73rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);padding:4px 12px;border-radius:999px;background:var(--accent-s);border:1px solid var(--accent-b);margin-bottom:1.1rem}
+    .pulse{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.04em;margin-bottom:.75rem}
+    h1 .grad{background:linear-gradient(135deg,#f59e0b,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-sub{font-size:.95rem;color:var(--sub);max-width:440px;margin:0 auto}
     .page{max-width:720px;margin:0 auto;padding:clamp(1.5rem,4vw,2.5rem) clamp(1rem,4vw,1.5rem) 5rem}
-    .card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.25rem,3vw,2rem);margin-bottom:1rem}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.25rem,3vw,1.75rem);margin-bottom:1rem;box-shadow:var(--shadow)}
     .card-head{margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
-    .card-head h2{font-size:1rem;font-weight:600;margin-bottom:2px}
-    .card-head p{font-size:0.82rem;color:var(--sub)}
-    .grid{display:grid;gap:1rem}
-    .field{display:flex;flex-direction:column;gap:5px}
-    label{font-size:0.8rem;font-weight:500;color:var(--sub)}
-    .req{color:var(--error);margin-left:1px}
-    textarea{font-family:'Inter',sans-serif;font-size:0.9rem;color:var(--text);background:#fff;border:1px solid var(--border2);border-radius:8px;padding:9px 12px;width:100%;outline:none;transition:border-color 0.15s,box-shadow 0.15s;resize:vertical;line-height:1.55}
-    textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.1)}
+    .card-head h2{font-size:1rem;font-weight:700;margin-bottom:2px}
+    .card-head p{font-size:.82rem;color:var(--sub)}
+    .field{display:flex;flex-direction:column;gap:5px;margin-bottom:1rem}
+    label{font-size:.79rem;font-weight:600;color:var(--sub)}
+    textarea{font-family:'Inter',sans-serif;font-size:.88rem;color:var(--text);background:var(--surface2);border:1px solid var(--border2);border-radius:9px;padding:9px 12px;width:100%;outline:none;transition:border-color .15s,box-shadow .15s;resize:vertical;min-height:180px;line-height:1.55}
+    textarea:focus{border-color:var(--accent);background:var(--surface);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
     textarea::placeholder{color:var(--muted)}
     textarea.err{border-color:var(--error)}
-    .field-err{font-size:0.75rem;color:var(--error);display:none}
-    .btn-primary{width:100%;padding:11px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:'Inter',sans-serif;font-size:0.92rem;font-weight:600;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;justify-content:center;gap:8px}
-    .btn-primary:hover:not(:disabled){background:var(--accent-h)}
-    .btn-primary:disabled{opacity:0.55;cursor:not-allowed}
-    .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,0.35);border-top-color:#fff;border-radius:50%;animation:spin 0.65s linear infinite;display:none}
+    .btn-primary{width:100%;padding:12px 22px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-family:'Inter',sans-serif;font-size:.92rem;font-weight:600;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px}
+    .btn-primary:hover:not(:disabled){background:var(--accent-h);transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,99,235,.25)}
+    .btn-primary:disabled{opacity:.5;cursor:not-allowed}
+    .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .65s linear infinite;display:none}
     @keyframes spin{to{transform:rotate(360deg)}}
     #out-card{display:none}
-    .score-big{text-align:center;padding:1.5rem 0 1rem}
-    .score-circle{width:110px;height:110px;border-radius:50%;border:6px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 0.75rem;position:relative}
-    .score-circle.high{border-color:var(--success)}
-    .score-circle.mid{border-color:#f59e0b}
-    .score-circle.low{border-color:var(--error)}
-    .score-num{font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;font-weight:800;line-height:1}
-    .score-max{font-size:0.75rem;color:var(--muted)}
-    .score-label{font-size:0.88rem;font-weight:600}
-    .feedback-sections{display:flex;flex-direction:column;gap:1rem;margin-top:1.25rem}
-    .fb-section{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem}
-    .fb-section h3{font-size:0.88rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px}
-    .fb-section p{font-size:0.85rem;color:var(--sub);line-height:1.6}
-    .out-actions{display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap}
-    .btn-sec{padding:8px 16px;border-radius:8px;font-size:0.82rem;font-weight:500;cursor:pointer;transition:all 0.14s;border:1px solid var(--border2);background:#fff;color:var(--sub);font-family:'Inter',sans-serif;display:flex;align-items:center;gap:5px;text-decoration:none}
+    /* Score display */
+    .score-hero{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+    .score-big{position:relative;width:120px;height:120px;flex-shrink:0}
+    .score-big svg circle{transition:stroke-dasharray .8s cubic-bezier(.4,0,.2,1)}
+    .score-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+    .score-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:2rem;font-weight:800;line-height:1}
+    .score-den{font-size:.72rem;color:var(--muted);margin-top:2px}
+    .score-grade-wrap{flex:1;min-width:200px}
+    .score-grade{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.5rem;font-weight:800;line-height:1;margin-bottom:.5rem}
+    .score-overall{font-size:.85rem;color:var(--sub);line-height:1.6;max-width:380px}
+    /* Category bars */
+    .cat-list{display:flex;flex-direction:column;gap:14px;margin-bottom:1.5rem}
+    .cat-item{}
+    .cat-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
+    .cat-name{font-size:.82rem;font-weight:600}
+    .cat-score{font-size:.8rem;color:var(--muted);font-weight:600}
+    .cat-bar{height:7px;border-radius:4px;background:var(--surface2);border:1px solid var(--border);overflow:hidden}
+    .cat-fill{height:100%;border-radius:4px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+    .cat-feedback{font-size:.8rem;color:var(--sub);margin-top:5px;line-height:1.5}
+    /* Strengths / improvements */
+    .feedback-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+    @media(max-width:520px){.feedback-grid{grid-template-columns:1fr}}
+    .fb-box{padding:1rem;border-radius:10px;border:1px solid}
+    .fb-box.green{background:var(--success-s);border-color:#a7f3d0}
+    .fb-box.red{background:var(--error-s);border-color:#fecaca}
+    [data-theme="dark"] .fb-box.green{background:#064e3b;border-color:#065f46}
+    [data-theme="dark"] .fb-box.red{background:#450a0a;border-color:#7f1d1d}
+    .fb-box h4{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
+    .fb-box.green h4{color:var(--success)}
+    .fb-box.red h4{color:var(--error)}
+    .fb-box ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+    .fb-box li{font-size:.8rem;color:var(--sub);display:flex;align-items:flex-start;gap:6px;line-height:1.45}
+    .fb-box li::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:6px}
+    .fb-box.green li::before{background:var(--success)}
+    .fb-box.red li::before{background:var(--error)}
+    .out-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .btn-sec{padding:8px 15px;border-radius:8px;font-size:.8rem;font-weight:500;cursor:pointer;transition:all .14s;border:1px solid var(--border2);background:var(--surface2);color:var(--sub);font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:5px;text-decoration:none}
     .btn-sec:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-s)}
-    #toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--text);color:#fff;padding:10px 20px;border-radius:999px;font-size:0.83rem;font-weight:500;transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1);z-index:999;pointer-events:none;white-space:nowrap}
+    .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1rem}
+    .tool-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem;text-decoration:none;display:block;transition:border-color .15s,transform .15s;box-shadow:var(--shadow)}
+    .tool-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+    .tool-card h3{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:3px}
+    .tool-card p{font-size:.76rem;color:var(--sub)}
+    .sec-eyebrow{font-size:.71rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+    .sec-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;letter-spacing:-.03em;margin-bottom:1rem}
+    #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--text);color:var(--surface);padding:10px 22px;border-radius:999px;font-size:.82rem;font-weight:500;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:2000;pointer-events:none;white-space:nowrap}
     #toast.show{transform:translateX(-50%) translateY(0)}
-    #toast.ok{background:var(--success)}
-    #toast.bad{background:var(--error)}
-    footer{text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);font-size:0.78rem;color:var(--muted)}
+    #toast.ok{background:var(--success);color:#fff}
+    #toast.bad{background:var(--error);color:#fff}
+    footer{text-align:center;padding:2.5rem 1rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--muted)}
     footer a{color:var(--accent);text-decoration:none}
-    .other-tools{margin-top:2.5rem}
-    .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.75rem}
-    .tool-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1rem;text-decoration:none;transition:border-color 0.15s}
-    .tool-card:hover{border-color:var(--accent)}
-    .tool-card h3{font-size:0.88rem;font-weight:600;color:var(--text);margin-bottom:3px}
-    .tool-card p{font-size:0.78rem;color:var(--sub)}
-    .sec-label{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
-    .sec-title{font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem}
+    .btn-note{font-size:.74rem;color:var(--muted);text-align:center;margin-top:5px}
+    .section{margin-top:2.5rem}
   </style>
 </head>
 <body>
 <nav>
-  <a href="/" class="brand">CoverCraft AI</a>
+  <a href="/" class="brand">
+    <div class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+    CoverCraft AI
+  </a>
   <div class="nav-links">
-    <a href="/">Cover Letter</a>
-    <a href="/linkedin.html">LinkedIn</a>
-    <a href="/interview.html">Interview Prep</a>
-    <a href="/score.html">Score My Letter</a>
+    <a href="/" class="nav-link">Cover Letter</a>
+    <a href="/linkedin.html" class="nav-link">LinkedIn</a>
+    <a href="/interview.html" class="nav-link">Interview</a>
+    <a href="/score.html" class="nav-link active">Score</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode">
+      <svg id="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg id="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
   </div>
 </nav>
-<header class="hero">
-  <div class="hero-pill">✦ Free AI Tool</div>
-  <h1>Score My<br><mark>Cover Letter</mark></h1>
-  <p>Paste your cover letter and get an instant score out of 100, plus specific tips to improve it.</p>
+
+<header class="page-hero">
+  <div class="hero-pill"><span class="pulse"></span> Free AI Tool</div>
+  <h1>Score My<br><span class="grad">Cover Letter</span></h1>
+  <p class="hero-sub">Paste your letter and get an instant score out of 100 with detailed feedback on what to fix.</p>
 </header>
+
 <main class="page">
   <div class="card">
-    <div class="card-head">
-      <h2>Paste your cover letter</h2>
-      <p>We'll score it across 5 categories and give you actionable feedback.</p>
+    <div class="card-head"><h2>Paste your cover letter</h2><p>Add the job description for a more accurate, role-specific score.</p></div>
+    <div class="field">
+      <label for="f-letter">Your cover letter <span style="color:var(--error)">*</span></label>
+      <textarea id="f-letter" placeholder="Paste your cover letter here (min 100 characters)..." style="min-height:220px;" maxlength="6000"></textarea>
     </div>
-    <form id="form" novalidate>
-      <div class="grid">
-        <div class="field">
-          <label for="f-letter">Your cover letter <span class="req">*</span></label>
-          <textarea id="f-letter" placeholder="Paste your cover letter here..." style="min-height:220px" maxlength="5000" required></textarea>
-          <span class="field-err" id="e-letter">Paste your cover letter (at least 100 characters)</span>
-        </div>
-        <div class="field">
-          <label for="f-jd">Job description (optional — improves scoring accuracy)</label>
-          <textarea id="f-jd" placeholder="Paste the job description here for more targeted feedback..." maxlength="1000"></textarea>
-        </div>
-        <button type="submit" class="btn-primary" id="gen-btn">
-          <div class="spinner" id="spin"></div>
-          <span id="btn-txt">Score My Cover Letter →</span>
-        </button>
-      </div>
-    </form>
+    <div class="field">
+      <label for="f-jd">Job description <span style="font-weight:400;color:var(--muted);font-size:.73rem">(optional — improves accuracy)</span></label>
+      <textarea id="f-jd" placeholder="Paste the job description to get a relevance score..." style="min-height:100px;" maxlength="1000"></textarea>
+    </div>
+    <button class="btn-primary" id="score-btn">
+      <div class="spinner" id="spin"></div>
+      <svg id="score-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span id="btn-txt">Score My Cover Letter</span>
+    </button>
+    <p class="btn-note">Free · Unlimited checks · No signup</p>
   </div>
+
   <div class="card" id="out-card">
-    <div class="card-head"><h2>Your cover letter score</h2></div>
-    <div class="score-big">
-      <div class="score-circle" id="score-circle">
-        <div class="score-num" id="score-num">--</div>
-        <div class="score-max">/100</div>
+    <div class="card-head"><h2>Your results</h2><p>Here's how your cover letter performs across 5 key dimensions.</p></div>
+
+    <div class="score-hero">
+      <div class="score-big">
+        <svg viewBox="0 0 120 120" width="120" height="120">
+          <circle cx="60" cy="60" r="50" fill="none" stroke="var(--border)" stroke-width="12"/>
+          <circle cx="60" cy="60" r="50" fill="none" id="score-ring" stroke="var(--accent)" stroke-width="12" stroke-dasharray="0 314" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+        </svg>
+        <div class="score-center">
+          <div class="score-num" id="score-num">--</div>
+          <div class="score-den">/100</div>
+        </div>
       </div>
-      <div class="score-label" id="score-label"></div>
+      <div class="score-grade-wrap">
+        <div class="score-grade" id="score-grade">--</div>
+        <div class="score-overall" id="score-overall">Your results will appear here after scoring.</div>
+      </div>
     </div>
-    <div class="feedback-sections" id="fb-sections"></div>
+
+    <div class="cat-list" id="cat-list"></div>
+
+    <div class="feedback-grid" id="feedback-grid"></div>
+
     <div class="out-actions">
-      <a href="/" class="btn-sec">✍️ Rewrite with AI</a>
-      <button class="btn-sec" id="btn-regen">🔄 Re-score</button>
+      <a href="/" class="btn-sec">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        Generate better letter
+      </a>
+      <button class="btn-sec" id="btn-rescore">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        Score again
+      </button>
     </div>
   </div>
-  <div class="other-tools">
-    <div class="sec-label">More free tools</div>
-    <h2 class="sec-title">Everything you need for your job search</h2>
+
+  <section class="section">
+    <div class="sec-eyebrow">More free tools</div>
+    <h2 class="sec-title">Everything for your job search</h2>
     <div class="tools-grid">
-      <a href="/" class="tool-card"><h3>✍️ Cover Letter Generator</h3><p>Write a tailored cover letter in 30 seconds</p></a>
-      <a href="/linkedin.html" class="tool-card"><h3>💼 LinkedIn Summary</h3><p>Write a compelling LinkedIn About section</p></a>
-      <a href="/interview.html" class="tool-card"><h3>🎤 Interview Prep</h3><p>AI-generated questions for your role</p></a>
+      <a href="/" class="tool-card"><div style="font-size:1.3rem;margin-bottom:6px">✍️</div><h3>Cover Letter Generator</h3><p>Tailored letter in 30 seconds</p></a>
+      <a href="/linkedin.html" class="tool-card"><div style="font-size:1.3rem;margin-bottom:6px">💼</div><h3>LinkedIn Summary</h3><p>Attract recruiters to your profile</p></a>
+      <a href="/interview.html" class="tool-card"><div style="font-size:1.3rem;margin-bottom:6px">🎤</div><h3>Interview Prep</h3><p>Role-specific questions & answers</p></a>
     </div>
-  </div>
+  </section>
 </main>
-<footer><p>Made by <strong>CoverCraft AI</strong> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p></footer>
-<div id="toast" role="alert"></div>
+
+<footer><p>Made by <strong>CoverCraft AI</strong> · Free forever · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p></footer>
+<div id="toast" role="alert" aria-live="polite"></div>
+
 <script>
-  function toast(msg, type='ok') {
-    const el = document.getElementById('toast');
-    el.textContent = msg; el.className = `show ${type}`;
-    clearTimeout(el._t); el._t = setTimeout(() => el.className = '', 3000);
+  (function(){const s=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',s);updateIcon(s)})();
+  function updateIcon(t){const s=document.getElementById('icon-sun'),m=document.getElementById('icon-moon');if(!s||!m)return;s.style.display=t==='dark'?'none':'';m.style.display=t==='dark'?'':'none'}
+  document.getElementById('theme-toggle').addEventListener('click',()=>{const c=document.documentElement.getAttribute('data-theme')||'light';const n=c==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('theme',n);updateIcon(n)});
+
+  function toast(msg,type='ok'){const el=document.getElementById('toast');el.textContent=msg;el.className=`show ${type}`;clearTimeout(el._t);el._t=setTimeout(()=>el.className='',3200)}
+
+  function gradeColor(score){
+    if(score>=85)return'var(--success)';
+    if(score>=70)return'#2563eb';
+    if(score>=55)return'var(--warning)';
+    return'var(--error)';
+  }
+  function letterGrade(score){
+    if(score>=93)return'A+';if(score>=90)return'A';if(score>=87)return'A-';
+    if(score>=83)return'B+';if(score>=80)return'B';if(score>=77)return'B-';
+    if(score>=73)return'C+';if(score>=70)return'C';if(score>=67)return'C-';
+    if(score>=60)return'D';return'F';
   }
 
-  function validate() {
-    const el = document.getElementById('f-letter');
-    const em = document.getElementById('e-letter');
-    const bad = el.value.trim().length < 100;
-    el.classList.toggle('err', bad); em.style.display = bad ? 'block' : 'none';
-    return !bad;
-  }
+  function renderResult(data){
+    const score=data.score||0;
+    const grade=data.grade||letterGrade(score);
+    const color=gradeColor(score);
+    const circumference=2*Math.PI*50;
+    document.getElementById('score-ring').setAttribute('stroke',''+color);
+    document.getElementById('score-ring').setAttribute('stroke-dasharray',`${(score/100)*circumference} ${circumference}`);
+    document.getElementById('score-num').textContent=score;
+    document.getElementById('score-num').style.color=color;
+    document.getElementById('score-grade').textContent=grade;
+    document.getElementById('score-grade').style.color=color;
+    document.getElementById('score-overall').textContent=data.overall||'';
 
-  function san(s='') { return s.replace(/[<>]/g,'').trim().slice(0,5000); }
-
-  function renderScore(data) {
-    const score = Math.min(100, Math.max(0, parseInt(data.score, 10) || 0));
-    const circle = document.getElementById('score-circle');
-    document.getElementById('score-num').textContent = score;
-    circle.className = 'score-circle ' + (score >= 75 ? 'high' : score >= 50 ? 'mid' : 'low');
-    const labels = {high:'Strong cover letter',mid:'Needs some work',low:'Needs significant improvement'};
-    document.getElementById('score-label').textContent = score >= 75 ? labels.high : score >= 50 ? labels.mid : labels.low;
-
-    const sections = document.getElementById('fb-sections');
-    sections.innerHTML = '';
-    const categories = data.categories || [];
-    const icons = ['🎯','✍️','💡','📋','⚡'];
-    categories.forEach((cat, i) => {
-      const div = document.createElement('div');
-      div.className = 'fb-section';
-      const icon = icons[i] || '📌';
-      div.innerHTML = `<h3>${icon} <span></span></h3><p></p>`;
-      div.querySelector('span').textContent = cat.name;
-      div.querySelector('p').textContent = cat.feedback;
-      sections.appendChild(div);
+    const catList=document.getElementById('cat-list');
+    catList.innerHTML='';
+    (data.categories||[]).forEach(cat=>{
+      const pct=cat.max?Math.round((cat.score/cat.max)*100):50;
+      const barColor=gradeColor(pct);
+      catList.innerHTML+=`<div class="cat-item">
+        <div class="cat-top"><span class="cat-name">${cat.name}</span><span class="cat-score" style="color:${barColor}">${cat.score!==undefined?cat.score+'/'+cat.max:''}</span></div>
+        <div class="cat-bar"><div class="cat-fill" style="width:${pct}%;background:${barColor}"></div></div>
+        ${cat.feedback?`<div class="cat-feedback">${cat.feedback}</div>`:''}
+      </div>`;
     });
 
-    if (data.overall) {
-      const div = document.createElement('div');
-      div.className = 'fb-section';
-      div.style.borderColor = '#bfdbfe';
-      div.style.background = '#eff6ff';
-      div.innerHTML = `<h3>📝 <span>Overall recommendation</span></h3><p></p>`;
-      div.querySelector('p').textContent = data.overall;
-      sections.appendChild(div);
+    const fg=document.getElementById('feedback-grid');
+    fg.innerHTML='';
+    if(data.strengths&&data.strengths.length){
+      fg.innerHTML+=`<div class="fb-box green"><h4>✓ Strengths</h4><ul>${data.strengths.map(s=>`<li>${s}</li>`).join('')}</ul></div>`;
     }
+    if(data.improvements&&data.improvements.length){
+      fg.innerHTML+=`<div class="fb-box red"><h4>↑ Improvements</h4><ul>${data.improvements.map(s=>`<li>${s}</li>`).join('')}</ul></div>`;
+    }
+
+    document.getElementById('out-card').style.display='block';
+    document.getElementById('out-card').scrollIntoView({behavior:'smooth',block:'start'});
   }
 
-  async function generate() {
-    if (!validate()) { toast('Paste your cover letter first', 'bad'); return; }
-    const letter = san(document.getElementById('f-letter').value);
-    const jd = san(document.getElementById('f-jd').value);
-    const btn = document.getElementById('gen-btn');
-    const sp = document.getElementById('spin');
-    const tx = document.getElementById('btn-txt');
-    btn.disabled = true; sp.style.display = 'block'; tx.textContent = 'Analyzing your letter…';
-    document.getElementById('out-card').style.display = 'none';
-    try {
-      const res = await fetch('/api/generate', {
-        method: 'POST', credentials: 'same-origin',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({ action: 'score', letter, jd })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Something went wrong');
-      renderScore(data);
-      document.getElementById('out-card').style.display = 'block';
-      document.getElementById('out-card').scrollIntoView({behavior:'smooth',block:'start'});
+  async function score(){
+    const letter=document.getElementById('f-letter').value.trim();
+    if(letter.length<100){document.getElementById('f-letter').classList.add('err');toast('Paste your cover letter (at least 100 characters)','bad');return}
+    document.getElementById('f-letter').classList.remove('err');
+    const jd=document.getElementById('f-jd').value.trim();
+    const btn=document.getElementById('score-btn'),sp=document.getElementById('spin'),tx=document.getElementById('btn-txt'),ic=document.getElementById('score-icon');
+    btn.disabled=true;sp.style.display='block';if(ic)ic.style.display='none';tx.textContent='Analyzing your letter…';
+    try{
+      const res=await fetch('/api/generate',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'score',letter,jd})});
+      const data=await res.json();
+      if(!res.ok)throw new Error(data.error||'Something went wrong');
+      renderResult(data);
       toast(`Score: ${data.score}/100`);
-    } catch(err) { toast(err.message, 'bad'); }
-    finally { btn.disabled = false; sp.style.display = 'none'; tx.textContent = 'Score My Cover Letter →'; }
+    }catch(err){toast(err.message,'bad')}
+    finally{btn.disabled=false;sp.style.display='none';if(ic)ic.style.display='';tx.textContent='Score My Cover Letter'}
   }
 
-  document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); generate(); });
-  document.getElementById('btn-regen').addEventListener('click', generate);
-  document.getElementById('f-letter').addEventListener('input', function() {
-    this.classList.remove('err');
-    document.getElementById('e-letter').style.display = 'none';
-  });
+  document.getElementById('score-btn').addEventListener('click',score);
+  document.getElementById('btn-rescore').addEventListener('click',score);
+  document.getElementById('f-letter').addEventListener('input',function(){this.classList.remove('err')});
 </script>
 </body>
 </html>

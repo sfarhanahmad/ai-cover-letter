@@ -1,39 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Monetag Multitag -->
+  <!-- Monetag In-Page Push -->
+  <script>(function(s){s.dataset.zone='11194135',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <!-- Monetag Vignette Banner -->
+  <script>(function(s){s.dataset.zone='11194140',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Free AI Cover Letter Generator — Create a tailored, professional cover letter in seconds. No signup required." />
-  <meta name="keywords" content="AI cover letter generator, free cover letter writer, cover letter builder, job application" />
-  <meta property="og:title" content="AI Cover Letter Generator — Free & Instant" />
-  <meta property="og:description" content="Generate a job-winning cover letter in seconds. Free, no signup needed." />
+  <meta name="description" content="Free AI Cover Letter Generator — Create a tailored, ATS-friendly cover letter in 30 seconds. No signup required." />
+  <meta name="keywords" content="AI cover letter generator, free cover letter writer, ATS cover letter, job application AI" />
+  <meta property="og:title" content="CoverCraft AI — Free AI Cover Letter Generator" />
+  <meta property="og:description" content="Generate a job-winning cover letter in 30 seconds. Free, no signup needed." />
   <meta property="og:type" content="website" />
-  <title>AI Cover Letter Generator — Free | AIProfit PK</title>
+  <title>CoverCraft AI — Free AI Cover Letter Generator</title>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"AI Cover Letter Generator","description":"Free AI-powered cover letter generator. Create professional cover letters in seconds.","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"CoverCraft AI","description":"Free AI-powered cover letter generator. Create tailored, ATS-friendly cover letters in seconds.","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&family=Bricolage+Grotesque:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --white:    #ffffff;
-      --bg:       #f7f8fa;
-      --surface:  #ffffff;
-      --border:   #e4e7ec;
-      --border2:  #d0d5dd;
-      --text:     #101828;
-      --sub:      #475467;
-      --muted:    #98a2b3;
-      --accent:   #2563eb;
-      --accent-h: #1d4ed8;
-      --accent-s: #eff6ff;
-      --success:  #059669;
-      --error:    #dc2626;
-      --error-s:  #fef2f2;
-      --r:        10px;
+      /* Light mode */
+      --bg:        #f4f6fb;
+      --surface:   #ffffff;
+      --surface2:  #f8f9fc;
+      --border:    #e2e8f0;
+      --border2:   #cbd5e1;
+      --text:      #0f172a;
+      --sub:       #475569;
+      --muted:     #94a3b8;
+      --accent:    #2563eb;
+      --accent-h:  #1d4ed8;
+      --accent-s:  #eff6ff;
+      --accent-b:  #bfdbfe;
+      --purple:    #7c3aed;
+      --purple-s:  #f5f3ff;
+      --success:   #059669;
+      --success-s: #f0fdf4;
+      --warning:   #d97706;
+      --error:     #dc2626;
+      --error-s:   #fef2f2;
+      --r:         12px;
+      --r-lg:      16px;
+      --shadow:    0 1px 3px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.05);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
+    [data-theme="dark"] {
+      --bg:        #0d1117;
+      --surface:   #161b22;
+      --surface2:  #1c2128;
+      --border:    #30363d;
+      --border2:   #484f58;
+      --text:      #e6edf3;
+      --sub:       #8b949e;
+      --muted:     #6e7681;
+      --accent:    #3b82f6;
+      --accent-h:  #60a5fa;
+      --accent-s:  #1e3a5f;
+      --accent-b:  #1e3a5f;
+      --purple:    #a78bfa;
+      --purple-s:  #2d1f4e;
+      --success:   #34d399;
+      --success-s: #064e3b;
+      --error:     #f87171;
+      --error-s:   #450a0a;
+      --shadow:    0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
     }
 
     html { scroll-behavior: smooth; }
@@ -44,194 +79,241 @@
       min-height: 100vh;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      transition: background 0.2s, color 0.2s;
     }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
-      background: var(--white);
+      background: var(--surface);
       border-bottom: 1px solid var(--border);
-      position: sticky; top: 0; z-index: 100;
+      position: sticky; top: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 clamp(1.25rem, 5vw, 3rem);
-      height: 58px;
+      padding: 0 clamp(1rem, 5vw, 2.5rem);
+      height: 60px;
+      box-shadow: 0 1px 0 var(--border);
     }
     .brand {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 1.05rem; font-weight: 800;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
       color: var(--accent); text-decoration: none;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em; display: flex; align-items: center; gap: 8px;
     }
-    .nav-right { display: flex; align-items: center; gap: 10px; }
-    .nav-tool-link { font-size:0.82rem;color:var(--sub);text-decoration:none;font-weight:500; }
-    .nav-tool-link:hover { color:var(--accent); }
-    @media(max-width:600px) { .nav-tool-link { display:none; } }
-    .badge {
+    .brand-icon {
+      width: 28px; height: 28px; background: var(--accent);
+      border-radius: 7px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .brand-icon svg { width: 15px; height: 15px; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-link {
+      font-size: 0.82rem; font-weight: 500; color: var(--sub);
+      text-decoration: none; padding: 5px 10px; border-radius: 7px;
+      transition: all 0.15s;
+    }
+    .nav-link:hover { color: var(--accent); background: var(--accent-s); }
+    .nav-link.active { color: var(--accent); background: var(--accent-s); }
+    @media(max-width:640px) { .nav-links { display: none; } }
+    .nav-right { display: flex; align-items: center; gap: 8px; }
+    .badge-pill {
       font-size: 0.72rem; font-weight: 600;
       padding: 3px 10px; border-radius: 999px;
       background: var(--accent-s); color: var(--accent);
-      border: 1px solid #bfdbfe;
+      border: 1px solid var(--accent-b);
     }
+    .theme-btn {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: var(--surface2); border: 1px solid var(--border);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      color: var(--sub); transition: all 0.15s; flex-shrink: 0;
+    }
+    .theme-btn:hover { background: var(--accent-s); color: var(--accent); border-color: var(--accent-b); }
 
-
-    .auth-toggle { font-size: 0.82rem; color: var(--sub); text-align: center; }
-    .auth-toggle a { color: var(--accent); font-weight: 600; text-decoration: none; }
-    #auth-error { font-size: 0.8rem; color: var(--error); margin-bottom: 8px; display: none; }
-
-    /* HERO */
+    /* ── HERO ── */
     .hero {
-      background: var(--white);
+      background: var(--surface);
       border-bottom: 1px solid var(--border);
-      text-align: center;
-      padding: clamp(2.5rem,6vw,4.5rem) clamp(1rem,5vw,2rem) clamp(2rem,4vw,3rem);
+      padding: clamp(3rem,7vw,5.5rem) clamp(1rem,5vw,2rem) clamp(2.5rem,5vw,4rem);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      max-width: 1100px; margin: 0 auto; align-items: center;
     }
+    @media(max-width:768px) { .hero { grid-template-columns: 1fr; gap: 2rem; } }
+    .hero-left {}
     .hero-pill {
       display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em;
+      font-size: 0.73rem; font-weight: 600; letter-spacing: 0.06em;
       text-transform: uppercase; color: var(--accent);
       padding: 4px 12px; border-radius: 999px;
-      background: var(--accent-s); border: 1px solid #bfdbfe;
+      background: var(--accent-s); border: 1px solid var(--accent-b);
       margin-bottom: 1.25rem;
     }
-    .hero-pill i { width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block; animation: blink 2s infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
+    .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
     h1 {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: clamp(1.9rem, 4.5vw, 3rem);
-      font-weight: 800; line-height: 1.1;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      margin-bottom: 1rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 800; line-height: 1.08;
+      letter-spacing: -0.04em; color: var(--text);
+      margin-bottom: 1.1rem;
     }
-    h1 mark {
-      background: linear-gradient(135deg,#2563eb,#7c3aed);
+    h1 .grad {
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .hero p {
-      font-size: clamp(0.95rem, 2vw, 1.1rem);
-      color: var(--sub); max-width: 480px; margin: 0 auto 2rem;
+    .hero-sub {
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
+      color: var(--sub); max-width: 440px; margin-bottom: 2rem; line-height: 1.65;
     }
-    .trust-row {
-      display: flex; justify-content: center; align-items: center;
-      gap: clamp(1rem,3vw,2.5rem); flex-wrap: wrap;
+    .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2rem; }
+    .btn-hero {
+      padding: 13px 24px; border-radius: 10px; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; border: none; font-family: 'Inter', sans-serif;
+      transition: all 0.15s; display: inline-flex; align-items: center; gap: 8px;
     }
-    .trust-item {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 0.82rem; color: var(--sub); font-weight: 500;
+    .btn-hero.primary { background: var(--accent); color: #fff; }
+    .btn-hero.primary:hover { background: var(--accent-h); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(37,99,235,0.3); }
+    .btn-hero.secondary { background: var(--surface2); color: var(--sub); border: 1px solid var(--border2); }
+    .btn-hero.secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .trust-chips { display: flex; gap: 12px; flex-wrap: wrap; }
+    .trust-chip {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 0.78rem; color: var(--sub); font-weight: 500;
     }
-    .trust-item svg { color: var(--success); flex-shrink:0; }
+    .trust-chip svg { color: var(--success); flex-shrink: 0; }
 
-    /* LAYOUT */
-    .page { max-width: 780px; margin: 0 auto; padding: clamp(1.5rem,4vw,2.5rem) clamp(1rem,4vw,1.5rem) 4rem; }
+    /* ── HERO PREVIEW CARD ── */
+    .hero-right { display: flex; justify-content: center; }
+    @media(max-width:768px) { .hero-right { display: none; } }
+    .preview-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-lg); box-shadow: var(--shadow-lg);
+      width: 100%; max-width: 340px; overflow: hidden;
+    }
+    .preview-topbar {
+      background: var(--surface2); border-bottom: 1px solid var(--border);
+      padding: 10px 14px; display: flex; align-items: center; gap: 6px;
+    }
+    .preview-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .preview-title { font-size: 0.75rem; font-weight: 500; color: var(--muted); margin-left: 4px; }
+    .preview-body { padding: 18px 18px 12px; }
+    .preview-line { height: 8px; border-radius: 4px; background: var(--border); margin-bottom: 8px; }
+    .preview-line.w-full { width: 100%; }
+    .preview-line.w-80 { width: 80%; }
+    .preview-line.w-90 { width: 90%; }
+    .preview-line.w-65 { width: 65%; }
+    .preview-line.w-75 { width: 75%; }
+    .preview-line.w-50 { width: 50%; }
+    .preview-line.accent { background: var(--accent-b); }
+    .preview-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: var(--success-s); color: var(--success);
+      font-size: 0.68rem; font-weight: 600; border-radius: 999px;
+      padding: 3px 9px; margin-top: 8px;
+      border: 1px solid #a7f3d0;
+    }
 
-    /* STEPS INDICATOR */
+    /* ── TEMPLATE SELECTOR ── */
+    .template-section { margin-bottom: 1rem; }
+    .template-label { font-size: 0.8rem; font-weight: 600; color: var(--sub); margin-bottom: 10px; display: block; }
+    .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+    .tpl-card {
+      background: var(--surface); border: 2px solid var(--border);
+      border-radius: 10px; padding: 12px; cursor: pointer;
+      transition: all 0.15s; text-align: left;
+    }
+    .tpl-card:hover { border-color: var(--accent-b); background: var(--accent-s); }
+    .tpl-card.active { border-color: var(--accent); background: var(--accent-s); }
+    .tpl-emoji { font-size: 1.3rem; display: block; margin-bottom: 6px; }
+    .tpl-name { font-size: 0.78rem; font-weight: 600; color: var(--text); display: block; }
+    .tpl-desc { font-size: 0.7rem; color: var(--muted); display: block; margin-top: 2px; line-height: 1.3; }
+
+    /* ── PAGE LAYOUT ── */
+    .page { max-width: 800px; margin: 0 auto; padding: clamp(1.5rem,4vw,2.5rem) clamp(1rem,4vw,1.5rem) 5rem; }
+
+    /* ── PROGRESS STEPS ── */
     .steps-bar {
-      display: flex; align-items: center; margin-bottom: 2rem;
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 1rem 1.5rem; gap: 0;
+      display: flex; align-items: center; margin-bottom: 1.5rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 0.9rem 1.25rem;
+      box-shadow: var(--shadow);
     }
-    .step-item {
-      display: flex; align-items: center; gap: 8px; flex: 1;
-      font-size: 0.82rem; font-weight: 500; color: var(--muted);
-    }
+    .step-item { display: flex; align-items: center; gap: 8px; flex: 1; font-size: 0.8rem; font-weight: 500; color: var(--muted); }
     .step-item.active { color: var(--accent); }
     .step-item.done { color: var(--success); }
     .step-num {
       width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.72rem; font-weight: 700;
-      background: var(--bg); border: 1.5px solid var(--border2);
-      color: var(--muted);
+      font-size: 0.7rem; font-weight: 700;
+      background: var(--surface2); border: 1.5px solid var(--border2); color: var(--muted);
     }
     .step-item.active .step-num { background: var(--accent); border-color: var(--accent); color: #fff; }
-    .step-item.done .step-num { background: var(--success); border-color: var(--success); color: #fff; }
-    .step-divider { height: 1px; flex: 1; background: var(--border); margin: 0 8px; max-width: 40px; }
-    @media(max-width:500px) { .step-label { display: none; } .steps-bar { gap: 4px; } }
+    .step-item.done .step-num { background: var(--success); border-color: var(--success); color: #fff; font-size: 0.65rem; }
+    .step-div { flex: 1; height: 1px; background: var(--border); margin: 0 6px; max-width: 36px; }
+    @media(max-width:480px) { .step-label { display: none; } }
 
-    /* CARD */
+    /* ── CARD ── */
     .card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      padding: clamp(1.25rem,3vw,2rem);
-      margin-bottom: 1rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: clamp(1.25rem,3vw,1.75rem);
+      margin-bottom: 1rem; box-shadow: var(--shadow);
     }
-    .card-head {
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .card-head h2 {
-      font-size: 1rem; font-weight: 600; color: var(--text);
-      margin-bottom: 2px;
-    }
+    .card-head { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    .card-head h2 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
     .card-head p { font-size: 0.82rem; color: var(--sub); }
 
-    /* FORM */
+    /* ── FORM ── */
     .grid { display: grid; gap: 1rem; }
     .grid-2 { grid-template-columns: 1fr 1fr; }
-    @media(max-width:540px) { .grid-2 { grid-template-columns: 1fr; } }
-
+    @media(max-width:520px) { .grid-2 { grid-template-columns: 1fr; } }
     .field { display: flex; flex-direction: column; gap: 5px; }
-    label {
-      font-size: 0.8rem; font-weight: 500; color: var(--sub);
-    }
-    label .req { color: var(--error); margin-left: 1px; }
-    label .hint { font-weight: 400; color: var(--muted); margin-left: 4px; }
-
+    label { font-size: 0.79rem; font-weight: 600; color: var(--sub); }
+    label .req { color: var(--error); margin-left: 2px; }
+    label .opt { font-weight: 400; color: var(--muted); margin-left: 4px; font-size: 0.73rem; }
     input, textarea, select {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      color: var(--text);
-      background: var(--white);
-      border: 1px solid var(--border2);
-      border-radius: 8px;
-      padding: 9px 12px;
-      width: 100%; outline: none;
-      transition: border-color 0.15s, box-shadow 0.15s;
+      font-family: 'Inter', sans-serif; font-size: 0.88rem;
+      color: var(--text); background: var(--surface2);
+      border: 1px solid var(--border2); border-radius: 9px;
+      padding: 9px 12px; width: 100%; outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.2s;
     }
     input:focus, textarea:focus, select:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+      border-color: var(--accent); background: var(--surface);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
     }
     input::placeholder, textarea::placeholder { color: var(--muted); }
-    textarea { resize: vertical; min-height: 100px; line-height: 1.55; }
+    textarea { resize: vertical; min-height: 96px; line-height: 1.55; }
     input.err, textarea.err { border-color: var(--error); background: var(--error-s); }
-    .field-msg { font-size: 0.75rem; }
-    .field-msg.error { color: var(--error); display: none; }
-    .field-msg.counter { color: var(--muted); text-align: right; }
-    .field-msg.counter.warn { color: #d97706; }
+    .fmsg { font-size: 0.74rem; }
+    .fmsg.err { color: var(--error); display: none; }
+    .fmsg.cnt { color: var(--muted); text-align: right; }
+    .fmsg.cnt.warn { color: var(--warning); }
 
-    /* TONE */
-    .tone-wrap { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 2px; }
+    /* ── TONE PILLS ── */
+    .tone-wrap { display: flex; gap: 6px; flex-wrap: wrap; }
     .tone-btn {
-      padding: 6px 14px; border-radius: 999px; font-size: 0.8rem;
-      font-weight: 500; border: 1px solid var(--border2);
-      background: var(--white); color: var(--sub);
-      cursor: pointer; transition: all 0.14s;
-      font-family: 'Inter', sans-serif;
+      padding: 6px 14px; border-radius: 999px; font-size: 0.78rem; font-weight: 500;
+      border: 1px solid var(--border2); background: var(--surface2); color: var(--sub);
+      cursor: pointer; transition: all 0.14s; font-family: 'Inter', sans-serif;
     }
-    .tone-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .tone-btn.on {
-      background: var(--accent-s); border-color: var(--accent);
-      color: var(--accent); font-weight: 600;
-    }
+    .tone-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-s); }
+    .tone-btn.on { background: var(--accent-s); border-color: var(--accent); color: var(--accent); font-weight: 600; }
 
-    /* SUBMIT */
+    /* ── BUTTONS ── */
     .btn-primary {
-      width: 100%; padding: 11px 20px;
+      width: 100%; padding: 12px 22px;
       background: var(--accent); color: #fff;
-      border: none; border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.92rem; font-weight: 600;
-      cursor: pointer; transition: background 0.15s, transform 0.1s;
+      border: none; border-radius: 10px;
+      font-family: 'Inter', sans-serif; font-size: 0.92rem; font-weight: 600;
+      cursor: pointer; transition: all 0.15s;
       display: flex; align-items: center; justify-content: center; gap: 8px;
-      margin-top: 0.25rem;
     }
-    .btn-primary:hover:not(:disabled) { background: var(--accent-h); }
+    .btn-primary:hover:not(:disabled) { background: var(--accent-h); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(37,99,235,0.25); }
     .btn-primary:active:not(:disabled) { transform: scale(0.99); }
-    .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary.sm { width: auto; padding: 9px 18px; font-size: 0.84rem; }
+    .btn-primary.purple-btn { background: var(--purple); }
+    .btn-primary.purple-btn:hover:not(:disabled) { background: #6d28d9; box-shadow: 0 4px 16px rgba(124,58,237,0.25); }
+    .btn-note { font-size: 0.74rem; color: var(--muted); text-align: center; margin-top: 5px; }
     .spinner {
       width: 16px; height: 16px;
       border: 2px solid rgba(255,255,255,0.35);
@@ -239,304 +321,322 @@
       animation: spin 0.65s linear infinite; display: none; flex-shrink: 0;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .btn-note { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 6px; }
-
-    /* OUTPUT */
-    #out-card { display: none; }
-    .out-box {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.25rem 1.5rem;
-      font-size: 0.9rem; line-height: 1.8;
-      white-space: pre-wrap; word-break: break-word;
-      max-height: 480px; overflow-y: auto;
-      color: var(--text);
-    }
-    .out-actions {
-      display: flex; gap: 8px; margin-top: 1rem; flex-wrap: wrap;
-    }
     .btn-sec {
-      padding: 8px 16px; border-radius: 8px; font-size: 0.82rem;
-      font-weight: 500; cursor: pointer; transition: all 0.14s;
-      border: 1px solid var(--border2); background: var(--white);
-      color: var(--sub); font-family: 'Inter', sans-serif;
-      display: flex; align-items: center; gap: 5px;
+      padding: 8px 15px; border-radius: 8px; font-size: 0.8rem; font-weight: 500;
+      cursor: pointer; transition: all 0.14s;
+      border: 1px solid var(--border2); background: var(--surface2); color: var(--sub);
+      font-family: 'Inter', sans-serif;
+      display: inline-flex; align-items: center; gap: 5px;
     }
     .btn-sec:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-s); }
-    .btn-sec.green { border-color: #a7f3d0; color: var(--success); background: #f0fdf4; }
+    .btn-sec.green:hover { border-color: var(--success); color: var(--success); background: var(--success-s); }
+    .btn-sec.purple:hover { border-color: var(--purple); color: var(--purple); background: var(--purple-s); }
 
-    /* FEATURES */
-    .features { margin-top: 3rem; }
-    .sec-label {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+    /* ── OUTPUT ── */
+    #out-card { display: none; }
+    .out-box {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.25rem 1.5rem;
+      font-size: 0.88rem; line-height: 1.85; white-space: pre-wrap;
+      word-break: break-word; max-height: 500px; overflow-y: auto; color: var(--text);
+    }
+    .out-actions { display: flex; gap: 8px; margin-top: 1rem; flex-wrap: wrap; }
+
+    /* ── FEATURES SECTION ── */
+    .sec-eyebrow {
+      font-size: 0.71rem; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
     }
     .sec-title {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: clamp(1.3rem,2.5vw,1.7rem); font-weight: 800;
-      letter-spacing: -0.02em; margin-bottom: 1.5rem; color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.3rem,2.5vw,1.75rem); font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 1.5rem; color: var(--text);
     }
     .feat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
       gap: 1px; background: var(--border);
-      border: 1px solid var(--border); border-radius: var(--r); overflow: hidden;
+      border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;
     }
-    .feat {
-      background: var(--white); padding: 1.25rem;
-    }
+    .feat { background: var(--surface); padding: 1.5rem; transition: background 0.15s; }
+    .feat:hover { background: var(--surface2); }
     .feat-icon {
-      width: 34px; height: 34px; border-radius: 8px;
-      background: var(--accent-s); border: 1px solid #bfdbfe;
+      width: 38px; height: 38px; border-radius: 10px;
+      background: var(--accent-s); border: 1px solid var(--accent-b);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; margin-bottom: 0.75rem;
+      margin-bottom: 0.85rem; flex-shrink: 0;
     }
-    .feat h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
-    .feat p { font-size: 0.8rem; color: var(--sub); line-height: 1.5; }
+    .feat h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; }
+    .feat p { font-size: 0.78rem; color: var(--sub); line-height: 1.55; }
 
-    /* HOW IT WORKS */
-    .how { margin-top: 3rem; }
+    /* ── HOW IT WORKS ── */
     .how-steps { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: 1rem; }
     .how-step {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 1.25rem;
-      position: relative;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 1.5rem;
+      position: relative; overflow: hidden;
+    }
+    .how-step::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
     }
     .how-n {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 2rem; font-weight: 800; color: #e4e7ec;
-      line-height: 1; margin-bottom: 0.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.2rem; font-weight: 800; color: var(--border2);
+      line-height: 1; margin-bottom: 0.6rem;
     }
     .how-step h3 { font-size: 0.88rem; font-weight: 600; margin-bottom: 4px; }
     .how-step p { font-size: 0.78rem; color: var(--sub); line-height: 1.5; }
 
-    /* FAQ */
-    .faq { margin-top: 3rem; }
+    /* ── FAQ ── */
     .faq-list { display: flex; flex-direction: column; gap: 6px; }
-    details {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--r); overflow: hidden;
-    }
-    details[open] { border-color: #bfdbfe; }
+    details { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+    details[open] { border-color: var(--accent-b); }
     summary {
-      padding: 1rem 1.25rem; font-size: 0.9rem; font-weight: 600;
+      padding: 1rem 1.25rem; font-size: 0.88rem; font-weight: 600;
       cursor: pointer; list-style: none;
       display: flex; justify-content: space-between; align-items: center;
       user-select: none; color: var(--text);
     }
     summary::-webkit-details-marker { display: none; }
-    summary::after { content: '+'; font-size: 1.1rem; color: var(--muted); flex-shrink:0; margin-left:1rem; }
+    summary::after { content: '+'; font-size: 1.1rem; color: var(--muted); flex-shrink: 0; margin-left: 1rem; }
     details[open] summary::after { content: '−'; color: var(--accent); }
-    details p { padding: 0 1.25rem 1rem; font-size: 0.85rem; color: var(--sub); line-height: 1.65; }
+    details p { padding: 0 1.25rem 1rem; font-size: 0.84rem; color: var(--sub); line-height: 1.65; }
 
-    /* TOAST */
-    #toast {
-      position: fixed; bottom: 20px; left: 50%;
-      transform: translateX(-50%) translateY(60px);
-      background: var(--text); color: #fff;
-      padding: 10px 20px; border-radius: 999px;
-      font-size: 0.83rem; font-weight: 500;
-      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
-      z-index: 999; pointer-events: none; white-space: nowrap;
-    }
-    #toast.show { transform: translateX(-50%) translateY(0); }
-    #toast.ok { background: var(--success); }
-    #toast.bad { background: var(--error); }
-
-    /* FOOTER */
-    footer {
-      text-align: center; padding: 2rem 1rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.78rem; color: var(--muted);
-    }
-    footer strong { color: var(--sub); }
-
-    /* AI DETECTOR / HUMANIZER */
-    .btn-sec.purple { border-color: #ddd6fe; color: #7c3aed; background: #f5f3ff; }
-    .btn-sec.purple:hover { background: #ede9fe; border-color: #c4b5fd; }
-    #ai-card { display: none; }
-    .disclaimer { font-style: italic; color: var(--muted); }
-    .use-notice {
-      background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px;
-      padding: 0.85rem 1rem; font-size: 0.78rem; color: #92400e;
-      line-height: 1.55; margin-bottom: 1.25rem;
-    }
-    .score-empty {
-      background: var(--bg); border: 1px dashed var(--border2);
-      border-radius: 8px; padding: 1.5rem; text-align: center;
-      font-size: 0.85rem; color: var(--sub);
-    }
-    .score-row { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
-    .pie-wrap { position: relative; width: 120px; height: 120px; flex-shrink: 0; }
-    .pie-wrap svg circle { transition: stroke-dasharray 0.6s ease; }
-    .pie-center {
-      position: absolute; inset: 0; display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-    }
-    .pie-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--text); }
-    .pie-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
-    .score-legend { flex: 1; min-width: 180px; }
-    .legend-item { font-size: 0.88rem; color: var(--sub); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-    .legend-item strong { color: var(--text); }
-    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
-    .dot.red { background: #dc2626; }
-    .dot.green { background: #059669; }
-    .score-note { font-size: 0.78rem; color: var(--muted); margin-top: 8px; line-height: 1.5; }
-    .humanize-bar {
-      margin-top: 1.5rem; padding-top: 1.25rem;
-      border-top: 1px solid var(--border);
-      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-    }
-    .btn-primary.small { width: auto; padding: 9px 18px; font-size: 0.85rem; }
-    .word-note { font-size: 0.78rem; color: var(--muted); }
-
-    /* STANDALONE HUMANIZER */
-    .standalone-actions { display: flex; gap: 8px; margin-top: 0.75rem; flex-wrap: wrap; }
-    #standalone-result { margin-top: 1rem; }
-
-    /* PRICING */
-    .premium-section { margin-top: 3rem; }
-    .pricing-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-      gap: 1rem; max-width: 600px;
-    }
-    .price-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 1.5rem; position: relative;
-    }
+    /* ── PRICING / LIMITS ── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1rem; max-width: 560px; }
+    .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 1.5rem; position: relative; }
     .price-card.highlight { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.08); }
     .price-badge {
       position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
       background: var(--accent); color: #fff; font-size: 0.68rem; font-weight: 700;
       padding: 3px 12px; border-radius: 999px; white-space: nowrap;
     }
-    .price-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .price {
-      font-family: 'Bricolage Grotesque', sans-serif; font-size: 2rem; font-weight: 800;
-      margin-bottom: 1rem; color: var(--text);
-    }
-    .price span { font-size: 0.9rem; font-weight: 500; color: var(--muted); }
+    .price-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .price { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; color: var(--text); }
+    .price span { font-size: 0.85rem; font-weight: 500; color: var(--muted); }
     .price-card ul { list-style: none; margin-bottom: 1.25rem; }
-    .price-card li { font-size: 0.84rem; color: var(--sub); margin-bottom: 8px; }
-
-    /* USAGE BARS */
+    .price-card li { font-size: 0.82rem; color: var(--sub); margin-bottom: 8px; display: flex; align-items: flex-start; gap: 6px; }
+    .check-icon { color: var(--success); flex-shrink: 0; margin-top: 1px; }
     .usage-bar-wrap { margin-top: 0.5rem; }
-    .usage-label { font-size: 0.78rem; color: var(--sub); margin-bottom: 4px; }
-    .usage-bar { height: 7px; border-radius: 999px; background: var(--bg); border: 1px solid var(--border); overflow: hidden; }
-    .usage-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s ease; border-radius: 999px; }
+    .usage-lbl { font-size: 0.76rem; color: var(--sub); margin-bottom: 4px; }
+    .usage-track { height: 6px; border-radius: 999px; background: var(--surface2); border: 1px solid var(--border); overflow: hidden; margin-bottom: 8px; }
+    .usage-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.4s ease; border-radius: 999px; }
     .usage-fill.full { background: var(--error); }
 
-    /* AD DOTS */
-    .ad-dots { display: flex; gap: 6px; justify-content: center; margin: 1rem 0; }
-    .ad-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border2); transition: background 0.2s; }
-    .ad-dot.done { background: var(--success); }
+    /* ── AI DETECTOR ── */
+    #ai-card { display: none; }
+    .score-row { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .pie-wrap { position: relative; width: 110px; height: 110px; flex-shrink: 0; }
+    .pie-wrap svg circle { transition: stroke-dasharray 0.7s cubic-bezier(0.4,0,0.2,1); }
+    .pie-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .pie-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--text); }
+    .pie-lbl { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .score-legend { flex: 1; min-width: 170px; }
+    .legend-item { font-size: 0.85rem; color: var(--sub); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+    .dot.red { background: var(--error); }
+    .dot.green { background: var(--success); }
+    .score-note { font-size: 0.76rem; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+    .humanize-bar { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .use-notice { background: #fffbeb; border: 1px solid #fde68a; border-radius: 9px; padding: 0.85rem 1rem; font-size: 0.77rem; color: #92400e; line-height: 1.55; margin-bottom: 1.25rem; }
+    [data-theme="dark"] .use-notice { background: #2d1f00; border-color: #78350f; color: #fbbf24; }
 
-    /* MODAL */
+    /* ── AD MODAL ── */
     .modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 1000;
-      background: rgba(16,24,40,0.5); backdrop-filter: blur(2px);
+      background: rgba(15,23,42,0.6); backdrop-filter: blur(4px);
       align-items: center; justify-content: center; padding: 1rem;
     }
     .modal-overlay.show { display: flex; }
     .modal {
-      background: var(--white); border-radius: 14px; padding: 1.75rem;
-      max-width: 380px; width: 100%; position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      background: var(--surface); border-radius: var(--r-lg); padding: 2rem;
+      max-width: 400px; width: 100%; position: relative;
+      box-shadow: var(--shadow-lg); border: 1px solid var(--border);
+      animation: slideUp 0.25s ease;
     }
-    .modal h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
-    .modal p { font-size: 0.86rem; color: var(--sub); margin-bottom: 1.1rem; line-height: 1.55; }
-    .modal input { margin-bottom: 0.75rem; }
-    .modal-close {
-      position: absolute; top: 12px; right: 14px;
-      background: none; border: none; font-size: 1.3rem; color: var(--muted);
-      cursor: pointer; line-height: 1;
-    }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .modal h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .modal p { font-size: 0.85rem; color: var(--sub); margin-bottom: 1.25rem; line-height: 1.55; }
+    .modal-close { position: absolute; top: 14px; right: 14px; background: none; border: none; font-size: 1.4rem; color: var(--muted); cursor: pointer; line-height: 1; padding: 2px 6px; border-radius: 6px; transition: background 0.15s; }
+    .modal-close:hover { background: var(--surface2); color: var(--text); }
+    .ad-dots { display: flex; gap: 7px; justify-content: center; margin: 1rem 0; }
+    .ad-dot { width: 32px; height: 8px; border-radius: 4px; background: var(--border2); transition: all 0.25s; }
+    .ad-dot.done { background: var(--success); }
 
-    /* SCROLLBAR */
+    /* ── TOAST ── */
+    #toast {
+      position: fixed; bottom: 24px; left: 50%;
+      transform: translateX(-50%) translateY(60px);
+      background: var(--text); color: var(--surface);
+      padding: 10px 22px; border-radius: 999px;
+      font-size: 0.82rem; font-weight: 500;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      z-index: 2000; pointer-events: none; white-space: nowrap;
+      box-shadow: var(--shadow-lg);
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+    #toast.ok { background: var(--success); color: #fff; }
+    #toast.bad { background: var(--error); color: #fff; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2.5rem 1rem;
+      border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--muted);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
 
-    @media(max-width:480px) {
-      .out-actions { flex-direction: column; }
-      .btn-sec { justify-content: center; }
-    }
+    /* ── SECTION SPACING ── */
+    .section { margin-top: 3rem; }
+    @media(max-width:480px) { .out-actions { flex-direction: column; } .btn-sec { justify-content: center; } }
   </style>
-
-  <script>
-    const MONETAG_SHOW_FN = 'show_11186459';
-  </script>
-
-<!-- Monetag service worker registration -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js', { scope: '/' })
-      .catch(err => console.warn('SW registration failed:', err));
-  }
-</script>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="brand">CoverCraft AI</a>
+  <a href="/" class="brand" aria-label="CoverCraft AI Home">
+    <div class="brand-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    </div>
+    CoverCraft AI
+  </a>
+  <div class="nav-links">
+    <a href="/" class="nav-link active">Cover Letter</a>
+    <a href="/linkedin.html" class="nav-link">LinkedIn</a>
+    <a href="/interview.html" class="nav-link">Interview</a>
+    <a href="/score.html" class="nav-link">Score</a>
+  </div>
   <div class="nav-right">
-    <a href="/linkedin.html" class="nav-tool-link">LinkedIn</a>
-    <a href="/interview.html" class="nav-tool-link">Interview</a>
-    <a href="/score.html" class="nav-tool-link">Score</a>
-    <span class="badge" id="plan-badge">5 free/day</span>
+    <span class="badge-pill" id="plan-badge">5 free/day</span>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg id="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg id="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="hero-pill"><i></i> Powered by Claude AI</div>
-  <h1>Your cover letter,<br><mark>written in seconds</mark></h1>
-  <p>Fill in four fields. Get a professional, tailored cover letter that passes ATS screening. No account needed.</p>
-  <div class="trust-row">
-    <div class="trust-item">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-      ATS-friendly output
+<!-- HERO -->
+<div style="background:var(--surface);border-bottom:1px solid var(--border);">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-pill"><span class="pulse"></span> Powered by Llama 3.3 70B</div>
+      <h1>Your job-winning cover letter,<br><span class="grad">written in 30 seconds</span></h1>
+      <p class="hero-sub">Fill in the details, pick your style, get a tailored letter that beats ATS and impresses recruiters — completely free.</p>
+      <div class="hero-cta">
+        <button class="btn-hero primary" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+          Generate for free
+        </button>
+        <a href="/score.html" class="btn-hero secondary">Score my letter</a>
+      </div>
+      <div class="trust-chips">
+        <div class="trust-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> ATS-friendly</div>
+        <div class="trust-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> No signup</div>
+        <div class="trust-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 5 free/day</div>
+        <div class="trust-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Data never stored</div>
+      </div>
     </div>
-    <div class="trust-item">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-      No signup required
-    </div>
-    <div class="trust-item">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-      Unique every time
-    </div>
-    <div class="trust-item">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-      Data never stored
+    <div class="hero-right">
+      <div class="preview-card">
+        <div class="preview-topbar">
+          <div class="preview-dot" style="background:#ff5f57"></div>
+          <div class="preview-dot" style="background:#febc2e"></div>
+          <div class="preview-dot" style="background:#28c840"></div>
+          <span class="preview-title">cover-letter.txt</span>
+        </div>
+        <div class="preview-body">
+          <div class="preview-line w-65 accent"></div>
+          <div class="preview-line w-50"></div>
+          <br>
+          <div class="preview-line w-full"></div>
+          <div class="preview-line w-90"></div>
+          <div class="preview-line w-80"></div>
+          <div class="preview-line w-full"></div>
+          <div class="preview-line w-75"></div>
+          <br>
+          <div class="preview-line w-full"></div>
+          <div class="preview-line w-90"></div>
+          <div class="preview-line w-80"></div>
+          <div class="preview-line w-65"></div>
+          <br>
+          <div class="preview-line w-full"></div>
+          <div class="preview-line w-75"></div>
+          <div class="preview-line w-50"></div>
+          <div class="preview-badge">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            ATS-ready
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</header>
+</div>
 
 <main class="page">
 
-  <!-- STEPS -->
+  <!-- PROGRESS STEPS -->
   <div class="steps-bar" aria-label="Progress">
     <div class="step-item active" id="step1">
       <div class="step-num">1</div>
       <span class="step-label">Your details</span>
     </div>
-    <div class="step-divider"></div>
+    <div class="step-div"></div>
     <div class="step-item" id="step2">
       <div class="step-num">2</div>
       <span class="step-label">Generate</span>
     </div>
-    <div class="step-divider"></div>
+    <div class="step-div"></div>
     <div class="step-item" id="step3">
       <div class="step-num">3</div>
       <span class="step-label">Copy & apply</span>
     </div>
   </div>
 
-  <!-- FORM -->
+  <!-- TEMPLATE PICKER -->
+  <div class="card">
+    <div class="card-head">
+      <h2>Choose a style</h2>
+      <p>Each style uses a different writing approach — pick what fits your situation.</p>
+    </div>
+    <div class="template-grid" id="tpl-grid" role="radiogroup" aria-label="Letter style">
+      <button class="tpl-card active" data-tpl="standard" role="radio" aria-checked="true">
+        <span class="tpl-emoji">💼</span>
+        <span class="tpl-name">Standard</span>
+        <span class="tpl-desc">Clean, professional, works for any role</span>
+      </button>
+      <button class="tpl-card" data-tpl="executive" role="radio" aria-checked="false">
+        <span class="tpl-emoji">🏆</span>
+        <span class="tpl-name">Executive</span>
+        <span class="tpl-desc">Senior roles, leadership emphasis</span>
+      </button>
+      <button class="tpl-card" data-tpl="creative" role="radio" aria-checked="false">
+        <span class="tpl-emoji">🎨</span>
+        <span class="tpl-name">Creative</span>
+        <span class="tpl-desc">Design, media, startup culture</span>
+      </button>
+      <button class="tpl-card" data-tpl="entry" role="radio" aria-checked="false">
+        <span class="tpl-emoji">🌱</span>
+        <span class="tpl-name">Entry Level</span>
+        <span class="tpl-desc">Fresh grad, first job, internships</span>
+      </button>
+      <button class="tpl-card" data-tpl="career" role="radio" aria-checked="false">
+        <span class="tpl-emoji">🔄</span>
+        <span class="tpl-name">Career Change</span>
+        <span class="tpl-desc">Switching industries or roles</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- FORM CARD -->
   <div class="card">
     <div class="card-head">
       <h2>Tell us about the role</h2>
-      <p>The more detail you add, the more personalised your letter will be.</p>
+      <p>The more detail you add, the more tailored your letter will be.</p>
     </div>
     <form id="form" novalidate>
       <div class="grid">
@@ -544,45 +644,45 @@
         <div class="grid grid-2">
           <div class="field">
             <label for="f-job">Job title <span class="req">*</span></label>
-            <input type="text" id="f-job" placeholder="e.g. Marketing Manager" maxlength="100" required />
-            <span class="field-msg error" id="e-job">Enter the job title</span>
+            <input type="text" id="f-job" placeholder="e.g. Marketing Manager" maxlength="100" required autocomplete="off" />
+            <span class="fmsg err" id="e-job">Enter the job title</span>
           </div>
           <div class="field">
             <label for="f-co">Company name <span class="req">*</span></label>
-            <input type="text" id="f-co" placeholder="e.g. Google" maxlength="100" required />
-            <span class="field-msg error" id="e-co">Enter the company name</span>
+            <input type="text" id="f-co" placeholder="e.g. Google" maxlength="100" required autocomplete="off" />
+            <span class="fmsg err" id="e-co">Enter the company name</span>
           </div>
         </div>
 
         <div class="field">
           <label for="f-name">Your full name <span class="req">*</span></label>
-          <input type="text" id="f-name" placeholder="e.g. Farhan Ahmad" maxlength="80" autocomplete="name" required />
-          <span class="field-msg error" id="e-name">Enter your name</span>
+          <input type="text" id="f-name" placeholder="e.g. Ali Hassan" maxlength="80" autocomplete="name" required />
+          <span class="fmsg err" id="e-name">Enter your full name</span>
         </div>
 
         <div class="field">
-          <label for="f-jd">Job description <span class="hint">(paste key parts)</span></label>
-          <textarea id="f-jd" placeholder="Paste the job description or key requirements here. This helps the AI tailor your letter to exactly what the employer wants..." maxlength="1000"></textarea>
-          <span class="field-msg counter" id="c-jd">0 / 1000</span>
+          <label for="f-jd">Job description <span class="opt">(recommended — improves matching)</span></label>
+          <textarea id="f-jd" placeholder="Paste the job description or key requirements here. The AI will tailor your letter to exactly what the employer is looking for..." maxlength="1000"></textarea>
+          <span class="fmsg cnt" id="c-jd">0 / 1000</span>
         </div>
 
         <div class="field">
           <label for="f-exp">Your experience & skills <span class="req">*</span></label>
-          <textarea id="f-exp" placeholder="e.g. 3 years in digital marketing, managed social media for 10+ brands, grew Instagram by 200%, skilled in SEO and email campaigns..." maxlength="800" required></textarea>
-          <span class="field-msg counter" id="c-exp">0 / 800</span>
-          <span class="field-msg error" id="e-exp">Describe your experience (at least 20 characters)</span>
+          <textarea id="f-exp" placeholder="e.g. 3 years in digital marketing, managed social for 10+ brands, grew Instagram by 200%, skilled in SEO and Google Ads..." maxlength="800" required></textarea>
+          <span class="fmsg cnt" id="c-exp">0 / 800</span>
+          <span class="fmsg err" id="e-exp">Describe your experience (at least 20 characters)</span>
         </div>
 
         <div class="field">
           <label for="f-why">Why do you want this job? <span class="req">*</span></label>
-          <textarea id="f-why" placeholder="e.g. I've admired this company's approach to innovation and believe my background aligns perfectly with what they're building..." maxlength="500" required></textarea>
-          <span class="field-msg counter" id="c-why">0 / 500</span>
-          <span class="field-msg error" id="e-why">Explain why you want this role</span>
+          <textarea id="f-why" placeholder="e.g. I've admired this company's product for years — their approach to design is exactly what I want to contribute to..." maxlength="500" required></textarea>
+          <span class="fmsg cnt" id="c-why">0 / 500</span>
+          <span class="fmsg err" id="e-why">Explain why you want this role</span>
         </div>
 
         <div class="field">
           <label>Tone</label>
-          <div class="tone-wrap" role="group" aria-label="Tone">
+          <div class="tone-wrap" role="group" aria-label="Tone selection">
             <button type="button" class="tone-btn on" data-t="Professional">Professional</button>
             <button type="button" class="tone-btn" data-t="Confident">Confident</button>
             <button type="button" class="tone-btn" data-t="Friendly">Friendly</button>
@@ -593,19 +693,20 @@
 
         <button type="submit" class="btn-primary" id="gen-btn">
           <div class="spinner" id="spin"></div>
-          <span id="btn-txt">Generate My Cover Letter →</span>
+          <svg id="gen-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          <span id="btn-txt">Generate My Cover Letter</span>
         </button>
-        <p class="btn-note">Free · Up to 10 generations per day · No account needed</p>
+        <p class="btn-note">Free · Up to 5 per day · No account needed</p>
 
       </div>
     </form>
   </div>
 
-  <!-- OUTPUT -->
+  <!-- OUTPUT CARD -->
   <div class="card" id="out-card">
     <div class="card-head">
       <h2>Your cover letter is ready</h2>
-      <p>Review it below — copy, download, or regenerate.</p>
+      <p>Review below — copy, download, or regenerate a fresh version.</p>
     </div>
     <div class="out-box" id="out-txt" role="region" aria-label="Generated cover letter" tabindex="0"></div>
     <div class="out-actions">
@@ -622,8 +723,8 @@
         Regenerate
       </button>
       <button class="btn-sec purple" id="btn-check-ai">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-        Check AI-Written %
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Check AI %
       </button>
     </div>
   </div>
@@ -631,28 +732,25 @@
   <!-- AI DETECTOR + HUMANIZER -->
   <div class="card" id="ai-card">
     <div class="card-head">
-      <h2>AI Content Checker</h2>
-      <p>Estimate how AI-detectable your text is, then humanize it to sound more natural. <span class="disclaimer">Heuristic estimate — not a certified detector.</span></p>
+      <h2>AI Content Checker & Humanizer</h2>
+      <p>Estimate how AI-detectable your text is, then rewrite it to sound naturally human.</p>
     </div>
-
     <div class="use-notice">
-      ⚠️ <strong>Intended use:</strong> This tool is for improving the natural flow of your own writing — not for misrepresenting AI-generated work as entirely human-made in academic, certification, or other contexts where that violates a stated policy. Always follow your school's, employer's, or platform's rules on AI use.
+      ⚠️ <strong>Intended use:</strong> For improving natural flow of your own writing — not for misrepresenting AI work as human in academic or certified contexts where that violates policy.
     </div>
-
-    <div id="score-empty" class="score-empty">
-      <p>Click <strong>"Check AI-Written %"</strong> above to analyze your cover letter, or paste any text below.</p>
+    <div id="score-empty" style="background:var(--surface2);border:1px dashed var(--border2);border-radius:9px;padding:1.5rem;text-align:center;font-size:0.84rem;color:var(--sub);">
+      <p>Click <strong>Check AI %</strong> above to analyze your letter, or paste any text below.</p>
     </div>
-
     <div id="score-result" style="display:none;">
       <div class="score-row">
         <div class="pie-wrap">
-          <svg viewBox="0 0 120 120" width="120" height="120" id="pie-svg">
-            <circle cx="60" cy="60" r="50" fill="none" stroke="#e4e7ec" stroke-width="14"/>
-            <circle cx="60" cy="60" r="50" fill="none" id="pie-ai" stroke="#dc2626" stroke-width="14" stroke-dasharray="0 314" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+          <svg viewBox="0 0 120 120" width="110" height="110" id="pie-svg">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--border)" stroke-width="14"/>
+            <circle cx="60" cy="60" r="50" fill="none" id="pie-ai" stroke="var(--error)" stroke-width="14" stroke-dasharray="0 314" stroke-linecap="round" transform="rotate(-90 60 60)"/>
           </svg>
           <div class="pie-center">
             <div class="pie-num" id="pie-num">0%</div>
-            <div class="pie-label">AI</div>
+            <div class="pie-lbl">AI</div>
           </div>
         </div>
         <div class="score-legend">
@@ -661,23 +759,23 @@
           <p class="score-note" id="score-note"></p>
         </div>
       </div>
-
       <div class="humanize-bar">
-        <button class="btn-primary small" id="btn-humanize">
+        <button class="btn-primary sm" id="btn-humanize">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
           Humanize This Content
         </button>
-        <span class="word-note" id="word-note">Free plan: up to 200 words per humanize</span>
+        <span style="font-size:0.76rem;color:var(--muted);" id="word-note">Free plan: up to 2000 words/day</span>
       </div>
     </div>
-
-    <div id="humanized-result" style="display:none;">
-      <div class="card-head" style="margin-top:1.5rem;">
-        <h2>Humanized Version</h2>
-        <p>Rewritten to sound more natural. New AI score below.</p>
+    <div id="humanized-result" style="display:none;margin-top:1.5rem;">
+      <div style="margin-bottom:0.75rem;">
+        <div class="card-head" style="border-bottom:1px solid var(--border);padding-bottom:0.75rem;margin-bottom:0.75rem;">
+          <h2>Humanized Version</h2>
+          <p>Rewritten to sound natural. New AI score shown.</p>
+        </div>
       </div>
       <div class="out-box" id="humanized-txt"></div>
-      <div class="out-actions">
+      <div class="out-actions" style="margin-top:0.75rem;">
         <button class="btn-sec" id="btn-copy-h">Copy humanized text</button>
         <button class="btn-sec" id="btn-recheck-h">Re-check AI %</button>
       </div>
@@ -685,152 +783,248 @@
   </div>
 
   <!-- STANDALONE HUMANIZER -->
-  <div class="card" id="standalone-card">
+  <div class="card">
     <div class="card-head">
       <h2>Humanize Any Text</h2>
-      <p>Paste any AI-generated text — essay, email, post — to check and humanize it.</p>
+      <p>Paste any AI-generated essay, email, or post to check and rewrite it.</p>
     </div>
-    <textarea id="standalone-input" placeholder="Paste your text here (up to 200 words on free plan)..." style="min-height:140px;"></textarea>
-    <div class="standalone-actions">
+    <textarea id="standalone-input" placeholder="Paste your AI-generated text here (essay, email, post)..." style="min-height:130px;"></textarea>
+    <div style="display:flex;gap:8px;margin-top:0.75rem;flex-wrap:wrap;">
       <button class="btn-sec" id="btn-standalone-check">Check AI %</button>
-      <button class="btn-primary small" id="btn-standalone-humanize" style="width:auto;">Humanize</button>
+      <button class="btn-primary sm" id="btn-standalone-humanize">Humanize</button>
     </div>
     <div id="standalone-result"></div>
   </div>
 
   <!-- FEATURES -->
-  <section class="features">
-    <div class="sec-label">Why it works</div>
-    <h2 class="sec-title">Built for job seekers, not templates</h2>
+  <section class="section">
+    <div class="sec-eyebrow">Why it works</div>
+    <h2 class="sec-title">Built to get you hired</h2>
     <div class="feat-grid">
-      <div class="feat"><div class="feat-icon">✅</div><h3>ATS-Friendly</h3><p>Clean plain-text output that passes automated screening systems used by most companies.</p></div>
-      <div class="feat"><div class="feat-icon">⚡</div><h3>Unique Every Time</h3><p>No copy-paste templates. Every letter is generated fresh from your specific details.</p></div>
-      <div class="feat"><div class="feat-icon">🔒</div><h3>Private & Secure</h3><p>Your data is never stored or sold. Each generation is discarded immediately after use.</p></div>
-      <div class="feat"><div class="feat-icon">🌍</div><h3>Works Anywhere</h3><p>Any device, any country. Generate, copy and download from your phone or desktop.</p></div>
-      <div class="feat"><div class="feat-icon">🎯</div><h3>Job Description Matching</h3><p>Paste the job description and AI tailors your letter to exactly what the employer wants.</p></div>
-      <div class="feat"><div class="feat-icon">🧬</div><h3>AI Detector & Humanizer</h3><p>Check how AI-detectable your text is and rewrite it to sound naturally human.</p></div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>ATS-Friendly</h3>
+        <p>Clean plain-text output passes automated screening used by most companies — no tables or graphics that break parsing.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>Unique Every Time</h3>
+        <p>No templates. Every letter is freshly generated from your specific details, company, and role.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Private & Secure</h3>
+        <p>Data is never stored or sold. Each generation is discarded immediately after delivery.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>Works Everywhere</h3>
+        <p>Any device, any country. Generate, copy, and download on phone or desktop in seconds.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>JD Matching</h3>
+        <p>Paste the job description and the AI tailors your letter to exactly what the employer wants.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <h3>AI Humanizer</h3>
+        <p>Check how detectable your text is and rewrite it to sound naturally human — not AI-generated.</p>
+      </div>
     </div>
   </section>
 
-  <!-- HOW -->
-  <section class="how">
-    <div class="sec-label">Simple process</div>
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="sec-eyebrow">Simple process</div>
     <h2 class="sec-title">Four steps to a better application</h2>
     <div class="how-steps">
       <div class="how-step"><div class="how-n">01</div><h3>Enter the role</h3><p>Job title, company name, and your full name.</p></div>
       <div class="how-step"><div class="how-n">02</div><h3>Add your details</h3><p>Your experience, skills, and why you want the job.</p></div>
-      <div class="how-step"><div class="how-n">03</div><h3>Pick a tone</h3><p>Professional, confident, friendly, enthusiastic, or concise.</p></div>
-      <div class="how-step"><div class="how-n">04</div><h3>Copy & apply</h3><p>Copy your tailored letter and paste it into your application.</p></div>
+      <div class="how-step"><div class="how-n">03</div><h3>Pick a style</h3><p>Standard, Executive, Creative, Entry Level, or Career Change.</p></div>
+      <div class="how-step"><div class="how-n">04</div><h3>Copy & apply</h3><p>Copy your tailored letter and paste it straight into your application.</p></div>
+    </div>
+  </section>
+
+  <!-- MORE TOOLS -->
+  <section class="section">
+    <div class="sec-eyebrow">More free tools</div>
+    <h2 class="sec-title">Everything for your job search</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;">
+      <a href="/linkedin.html" style="text-decoration:none;">
+        <div class="card" style="margin-bottom:0;cursor:pointer;transition:border-color 0.15s,transform 0.15s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='';this.style.transform=''">
+          <div style="font-size:1.4rem;margin-bottom:8px;">💼</div>
+          <div style="font-size:0.88rem;font-weight:700;margin-bottom:4px;">LinkedIn Summary</div>
+          <div style="font-size:0.76rem;color:var(--sub);">Write a compelling About section that attracts recruiters.</div>
+        </div>
+      </a>
+      <a href="/interview.html" style="text-decoration:none;">
+        <div class="card" style="margin-bottom:0;cursor:pointer;transition:border-color 0.15s,transform 0.15s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='';this.style.transform=''">
+          <div style="font-size:1.4rem;margin-bottom:8px;">🎤</div>
+          <div style="font-size:0.88rem;font-weight:700;margin-bottom:4px;">Interview Prep</div>
+          <div style="font-size:0.76rem;color:var(--sub);">Get tailored questions with model answers for your role.</div>
+        </div>
+      </a>
+      <a href="/score.html" style="text-decoration:none;">
+        <div class="card" style="margin-bottom:0;cursor:pointer;transition:border-color 0.15s,transform 0.15s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='';this.style.transform=''">
+          <div style="font-size:1.4rem;margin-bottom:8px;">⭐</div>
+          <div style="font-size:0.88rem;font-weight:700;margin-bottom:4px;">Score My Letter</div>
+          <div style="font-size:0.76rem;color:var(--sub);">Get a score out of 100 with actionable feedback to improve.</div>
+        </div>
+      </a>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="faq">
-    <div class="sec-label">Common questions</div>
+  <section class="section">
+    <div class="sec-eyebrow">Common questions</div>
     <h2 class="sec-title">Frequently asked questions</h2>
     <div class="faq-list">
-      <details><summary>Is this really free?</summary><p>Yes — completely free. Up to 10 cover letters per day with no account, no credit card, and no hidden charges.</p></details>
-      <details><summary>Will it pass ATS screening?</summary><p>Yes. Letters are generated as clean plain text with no tables, graphics, or unusual formatting that ATS systems struggle to parse.</p></details>
+      <details><summary>Is this really free?</summary><p>Yes — completely free. Up to 5 cover letters per day with no account and no credit card. Watch a short ad to unlock 10/day.</p></details>
+      <details><summary>Will it pass ATS screening?</summary><p>Yes. Letters are generated as clean plain text — no tables, graphics, or unusual formatting that ATS systems struggle to parse.</p></details>
       <details><summary>Do I need a different letter for each job?</summary><p>Yes — and this tool makes that fast. Each letter is generated fresh with your specific company, job title, and reasons for applying.</p></details>
-      <details><summary>Can I edit the letter after generating?</summary><p>Copy it into Word, Google Docs, or any text editor to make changes. You can also click Regenerate to get a fresh version.</p></details>
-      <details><summary>Is my data stored or shared?</summary><p>No. Your inputs are sent directly to the AI for generation and discarded immediately. Nothing is stored on any server.</p></details>
+      <details><summary>Can I edit the letter after generating?</summary><p>Copy it into Word or Google Docs to edit. You can also click Regenerate for a completely fresh version.</p></details>
+      <details><summary>Is my data stored or shared?</summary><p>No. Your inputs go directly to the AI and are discarded immediately. Nothing is stored on any server.</p></details>
+      <details><summary>What does the AI Humanizer do?</summary><p>It rewrites AI-generated text to sound more natural — varying sentence length, removing AI buzzwords, and adding contractions and casual rhythm that reads as human-written.</p></details>
     </div>
   </section>
 
-  <!-- LIMITS INFO -->
-  <section class="premium-section" id="limits-section">
-    <div class="sec-label">Free plan</div>
+  <!-- LIMITS / PRICING -->
+  <section class="section" id="limits-section">
+    <div class="sec-eyebrow">Free plan</div>
     <h2 class="sec-title">How daily limits work</h2>
     <div class="pricing-grid">
       <div class="price-card">
         <h3>Standard</h3>
-        <div class="price" style="font-size:1.3rem;">5 letters<span> / day</span></div>
+        <div class="price">5<span> letters/day</span></div>
         <ul>
-          <li>✓ 5 cover letters per day</li>
-          <li>✓ 2000 humanizer words per day</li>
-          <li>✓ AI detector — unlimited checks</li>
-          <li>✓ All 5 tones</li>
+          <li><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 5 cover letters per day</li>
+          <li><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 2000 humanizer words per day</li>
+          <li><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> AI detector — unlimited</li>
+          <li><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> All 5 tones + 5 styles</li>
         </ul>
         <div class="usage-bar-wrap">
-          <div class="usage-label"><span id="usage-letters-label">0 / 5 letters</span></div>
-          <div class="usage-bar"><div class="usage-fill" id="usage-letters-fill"></div></div>
-          <div class="usage-label" style="margin-top:8px;"><span id="usage-words-label">0 / 2000 words</span></div>
-          <div class="usage-bar"><div class="usage-fill" id="usage-words-fill"></div></div>
+          <div class="usage-lbl"><span id="usage-letters-label">0 / 5 letters used</span></div>
+          <div class="usage-track"><div class="usage-fill" id="usage-letters-fill"></div></div>
+          <div class="usage-lbl"><span id="usage-words-label">0 / 2000 words used</span></div>
+          <div class="usage-track"><div class="usage-fill" id="usage-words-fill"></div></div>
         </div>
       </div>
       <div class="price-card highlight">
         <span class="price-badge">No payment needed</span>
-        <h3>Unlocked (watch ads)</h3>
-        <div class="price" style="font-size:1.3rem;">10 letters<span> / day</span></div>
+        <h3>Unlocked</h3>
+        <div class="price">10<span> letters/day</span></div>
         <ul>
-          <li>✓ 10 cover letters per day</li>
-          <li>✓ 4000 humanizer words per day</li>
-          <li>✓ Same daily limits, no signup</li>
-          <li>✓ Resets every day at midnight UTC</li>
+          <li><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 10 cover letters per day</li>
+          <li><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 4000 humanizer words per day</li>
+          <li><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Resets midnight UTC daily</li>
+          <li><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> No signup required</li>
         </ul>
-        <button class="btn-primary small" id="btn-unlock" style="width:100%;">Watch 5 ads to unlock →</button>
+        <button class="btn-primary sm" id="btn-unlock" style="width:100%;">Watch 5 short ads to unlock →</button>
       </div>
     </div>
   </section>
 
-  <!-- AD UNLOCK MODAL -->
-  <div class="modal-overlay" id="modal-overlay">
-    <div class="modal">
-      <button class="modal-close" id="modal-close">×</button>
-      <h3 id="ad-modal-title">Unlock higher daily limits</h3>
-      <p id="ad-modal-sub">Watch <strong id="ads-remaining-text">5</strong> short ads to double today's limits to 10 cover letters and 4000 humanizer words. No payment, no signup.</p>
-      <div id="ad-progress-dots" class="ad-dots"></div>
-      <button class="btn-primary small" id="btn-watch-ad" style="width:100%;">▶ Watch ad</button>
-      <p style="font-size:0.75rem;color:var(--muted);text-align:center;margin-top:10px;">This is a placeholder ad simulator — swap in a real ad network (e.g. Adsterra, Monetag) before launch.</p>
-    </div>
-  </div>
-
 </main>
 
+<!-- AD UNLOCK MODAL -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+    <h3 id="modal-title">Unlock higher daily limits</h3>
+    <p id="ad-modal-sub">Watch <strong id="ads-remaining-text">5</strong> short ads to double your limits to 10 cover letters and 4000 humanizer words. No payment, no signup.</p>
+    <div id="ad-progress-dots" class="ad-dots"></div>
+    <button class="btn-primary sm" id="btn-watch-ad" style="width:100%;margin-top:0.5rem;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Watch ad
+    </button>
+    <p style="font-size:0.72rem;color:var(--muted);text-align:center;margin-top:10px;">Each ad is short. Your unlock persists until midnight UTC.</p>
+  </div>
+</div>
+
 <footer>
-  <p>Made by <strong>AIProfit PK</strong> · Free forever · No account needed</p>
-  <p style="margin-top:8px;"><a href="/privacy.html" style="color:#2563eb;text-decoration:none;margin-right:14px;">Privacy Policy</a><a href="/terms.html" style="color:#2563eb;text-decoration:none;">Terms of Service</a></p>
+  <p style="margin-bottom:6px;">Made by <strong>CoverCraft AI</strong> · Free forever · No account needed</p>
+  <p><a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms.html">Terms of Service</a></p>
 </footer>
 
-<div id="toast" role="alert"></div>
+<div id="toast" role="alert" aria-live="polite"></div>
 
 <script>
-  // No-auth, cookie+IP tracked usage. The server sets an httpOnly cookie on
-  // first request (see api/generate.js) — we just always send credentials so
-  // that cookie round-trips with every call.
+  // ── Dark mode ────────────────────────────────────────────────────────
+  (function() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    updateThemeIcon(saved);
+  })();
+  function updateThemeIcon(theme) {
+    const sun = document.getElementById('icon-sun');
+    const moon = document.getElementById('icon-moon');
+    if (!sun || !moon) return;
+    if (theme === 'dark') { sun.style.display = 'none'; moon.style.display = ''; }
+    else { sun.style.display = ''; moon.style.display = 'none'; }
+  }
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateThemeIcon(next);
+  });
+
+  // ── Template styles ──────────────────────────────────────────────────
+  const TEMPLATES = {
+    standard:  { label: 'Standard',     extra: 'Write a standard professional cover letter.' },
+    executive: { label: 'Executive',    extra: 'Write in an executive leadership style — emphasize strategic impact, team leadership, and measurable business outcomes. Avoid entry-level language.' },
+    creative:  { label: 'Creative',     extra: 'Write in a creative, engaging style with personality — suitable for design, media, or startup roles. Show character while staying professional.' },
+    entry:     { label: 'Entry Level',  extra: 'Write for a recent graduate or entry-level applicant — emphasize enthusiasm, transferable skills, academic achievements, and eagerness to learn.' },
+    career:    { label: 'Career Change',extra: 'Write for someone switching industries or career paths — bridge their previous experience to the new role, address the change positively, and highlight transferable skills.' },
+  };
+  let currentTemplate = 'standard';
+  document.querySelectorAll('.tpl-card').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tpl-card').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-checked','false'); });
+      btn.classList.add('active'); btn.setAttribute('aria-checked','true');
+      currentTemplate = btn.dataset.tpl;
+    });
+  });
+
+  // ── API helper ───────────────────────────────────────────────────────
   async function apiCall(body) {
     const res = await fetch('/api/generate', {
-      method: 'POST',
-      credentials: 'same-origin',
+      method: 'POST', credentials: 'same-origin',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     });
     const data = await res.json();
     if (!res.ok) {
       const err = new Error(data.error || 'Something went wrong.');
-      err.limitHit = data.limitHit;
-      err.canUnlock = data.canUnlock;
+      err.limitHit = data.limitHit; err.canUnlock = data.canUnlock;
       throw err;
     }
     return data;
   }
 
-  // ── Daily usage display ────────────────────────────────────────────────
+  // ── Usage ────────────────────────────────────────────────────────────
   let lastUsage = null;
-
-  function left() {
-    if (!lastUsage) return 999;
-    return Math.max(0, lastUsage.lettersLimit - lastUsage.lettersUsed);
-  }
+  function left() { return !lastUsage ? 999 : Math.max(0, lastUsage.lettersLimit - lastUsage.lettersUsed); }
 
   async function refreshUsage() {
     try {
       const data = await apiCall({ action: 'usage' });
-      lastUsage = data;
-      renderUsage(data);
-    } catch (err) {
-      console.warn('Could not load usage:', err.message);
-    }
+      lastUsage = data; renderUsage(data);
+    } catch(e) { console.warn('Usage fetch failed:', e.message); }
   }
 
   function renderUsage(u) {
@@ -840,7 +1034,7 @@
     const lLabel = document.getElementById('usage-letters-label');
     const lFill = document.getElementById('usage-letters-fill');
     if (lLabel && lFill) {
-      lLabel.textContent = `${u.lettersUsed} / ${u.lettersLimit} letters`;
+      lLabel.textContent = `${u.lettersUsed} / ${u.lettersLimit} letters used`;
       const pct = Math.min(100, (u.lettersUsed / u.lettersLimit) * 100);
       lFill.style.width = pct + '%';
       lFill.classList.toggle('full', pct >= 100);
@@ -848,7 +1042,7 @@
     const wLabel = document.getElementById('usage-words-label');
     const wFill = document.getElementById('usage-words-fill');
     if (wLabel && wFill) {
-      wLabel.textContent = `${u.wordsUsed} / ${u.wordsLimit} words`;
+      wLabel.textContent = `${u.wordsUsed} / ${u.wordsLimit} words used`;
       const pct = Math.min(100, (u.wordsUsed / u.wordsLimit) * 100);
       wFill.style.width = pct + '%';
       wFill.classList.toggle('full', pct >= 100);
@@ -858,39 +1052,33 @@
     if (unlockBtn) {
       if (u.bonusUnlocked) {
         unlockBtn.textContent = '✓ Unlocked for today';
-        unlockBtn.disabled = true;
-        unlockBtn.style.opacity = '0.7';
+        unlockBtn.disabled = true; unlockBtn.style.opacity = '0.65';
       } else {
-        unlockBtn.textContent = `Watch ${u.adsRequired - u.adsWatched} more ads to unlock →`;
-        unlockBtn.disabled = false;
-        unlockBtn.style.opacity = '1';
+        unlockBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg> Watch ${u.adsRequired - u.adsWatched} ads to unlock`;
+        unlockBtn.disabled = false; unlockBtn.style.opacity = '1';
       }
     }
   }
-
   refreshUsage();
 
-  let tone = 'Professional';
-  let lastLetter = '';
-
-  // Toast
-  function toast(msg, type='ok') {
+  // ── Toast ────────────────────────────────────────────────────────────
+  function toast(msg, type = 'ok') {
     const el = document.getElementById('toast');
     el.textContent = msg; el.className = `show ${type}`;
     clearTimeout(el._t);
-    el._t = setTimeout(() => el.className = '', 3000);
+    el._t = setTimeout(() => el.className = '', 3200);
   }
 
-  // Tone pills
+  // ── Tone ─────────────────────────────────────────────────────────────
+  let tone = 'Professional';
   document.querySelectorAll('.tone-btn').forEach(b => {
     b.addEventListener('click', () => {
       document.querySelectorAll('.tone-btn').forEach(x => x.classList.remove('on'));
-      b.classList.add('on');
-      tone = b.dataset.t;
+      b.classList.add('on'); tone = b.dataset.t;
     });
   });
 
-  // Char counters
+  // ── Char counters ────────────────────────────────────────────────────
   function counter(id, cid, max) {
     const el = document.getElementById(id), ct = document.getElementById(cid);
     if (!el || !ct) return;
@@ -900,32 +1088,23 @@
       ct.classList.toggle('warn', n > max * 0.88);
     });
   }
-  counter('f-jd','c-jd',1000);
-  counter('f-exp','c-exp',800);
-  counter('f-why','c-why',500);
+  counter('f-jd','c-jd',1000); counter('f-exp','c-exp',800); counter('f-why','c-why',500);
 
-  // Validation
+  // ── Validation ───────────────────────────────────────────────────────
   function validate() {
     const checks = [
-      { id:'f-job', eid:'e-job', min:1 },
-      { id:'f-co',  eid:'e-co',  min:1 },
-      { id:'f-name',eid:'e-name',min:1 },
-      { id:'f-exp', eid:'e-exp', min:20 },
-      { id:'f-why', eid:'e-why', min:10 },
+      {id:'f-job',eid:'e-job',min:1},{id:'f-co',eid:'e-co',min:1},
+      {id:'f-name',eid:'e-name',min:1},{id:'f-exp',eid:'e-exp',min:20},{id:'f-why',eid:'e-why',min:10},
     ];
     let ok = true;
     checks.forEach(c => {
-      const el = document.getElementById(c.id);
-      const em = document.getElementById(c.eid);
+      const el = document.getElementById(c.id), em = document.getElementById(c.eid);
       const bad = !el.value.trim() || el.value.trim().length < c.min;
-      el.classList.toggle('err', bad);
-      em.style.display = bad ? 'block' : 'none';
+      el.classList.toggle('err', bad); em.style.display = bad ? 'block' : 'none';
       if (bad) ok = false;
     });
     return ok;
   }
-
-  // Clear errors on input
   ['f-job','f-co','f-name','f-exp','f-why'].forEach(id => {
     document.getElementById(id).addEventListener('input', function() {
       this.classList.remove('err');
@@ -935,25 +1114,23 @@
     });
   });
 
-  // Sanitize
   function san(s) {
     return s.replace(/[<>]/g,'')
             .replace(/ignore (previous|all) instructions?/gi,'')
-            .replace(/system\s*prompt/gi,'')
-            .trim().slice(0,1000);
+            .replace(/system\s*prompt/gi,'').trim().slice(0,1000);
   }
 
-  // Loading state
   function setLoad(on) {
     const btn = document.getElementById('gen-btn');
     const sp = document.getElementById('spin');
     const tx = document.getElementById('btn-txt');
+    const ic = document.getElementById('gen-icon');
     btn.disabled = on;
     sp.style.display = on ? 'block' : 'none';
-    tx.textContent = on ? 'Writing your letter…' : 'Generate My Cover Letter →';
+    if (ic) ic.style.display = on ? 'none' : '';
+    tx.textContent = on ? 'Writing your letter…' : 'Generate My Cover Letter';
   }
 
-  // Step indicator
   function setStep(n) {
     [1,2,3].forEach(i => {
       const el = document.getElementById('step'+i);
@@ -963,10 +1140,12 @@
     });
   }
 
-  // Generate
+  // ── Generate ─────────────────────────────────────────────────────────
+  let lastLetter = '';
+
   async function generate() {
     if (!validate()) { toast('Fill in all required fields', 'bad'); return; }
-    if (left() <= 0) { toast('Daily limit reached — come back tomorrow', 'bad'); return; }
+    if (left() <= 0) { toast('Daily limit reached — watch ads to unlock more', 'bad'); openModal(); return; }
 
     const job  = san(document.getElementById('f-job').value);
     const co   = san(document.getElementById('f-co').value);
@@ -974,62 +1153,34 @@
     const jd   = san(document.getElementById('f-jd').value);
     const exp  = san(document.getElementById('f-exp').value);
     const why  = san(document.getElementById('f-why').value);
+    const tpl  = TEMPLATES[currentTemplate];
 
-    const jdPart = jd ? `\nJob description / key requirements:\n${jd}` : '';
-
-    const prompt = `Write a ${tone.toLowerCase()} cover letter for a job application.
-
-Applicant: ${name}
-Applying for: ${job} at ${co}${jdPart}
-Experience and skills: ${exp}
-Why they want this role: ${why}
-
-Rules:
-- Write a complete, ready-to-send cover letter
-- Tone: ${tone.toLowerCase()}
-- Do NOT open with "I am writing to express my interest" or similar clichés
-- Be specific — mention the company and job title naturally in the text
-- 3 to 4 paragraphs, no bullet points, flowing prose
-- End with a clear, confident call to action
-- Do NOT use [brackets], placeholders, or template text — write the full letter
-- Start with "Dear Hiring Manager," and close with the applicant's name
-- Output only the letter — no preamble, no explanation`;
-
-    setLoad(true);
-    setStep(2);
+    setLoad(true); setStep(2);
     document.getElementById('out-card').style.display = 'none';
 
     try {
-      const data = await apiCall({ job, company: co, name, jd, experience: exp, whyJob: why, tone });
-      const text = data?.letter;
-      if (!text) throw new Error('No response received. Please try again.');
+      const data = await apiCall({ job, company: co, name, jd, experience: exp, whyJob: why, tone, templateExtra: tpl.extra });
+      lastLetter = data?.letter;
+      if (!lastLetter) throw new Error('No response received. Please try again.');
 
-      lastLetter = text;
-      document.getElementById('out-txt').textContent = text;
+      document.getElementById('out-txt').textContent = lastLetter;
       document.getElementById('out-card').style.display = 'block';
       document.getElementById('out-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
       setStep(3);
       await refreshUsage();
-      const remaining = lastUsage ? Math.max(0, lastUsage.lettersLimit - lastUsage.lettersUsed) : '';
-      toast(`Cover letter ready — ${remaining} left today`);
-
+      const rem = lastUsage ? Math.max(0, lastUsage.lettersLimit - lastUsage.lettersUsed) : '';
+      toast(`Letter ready — ${rem} left today`);
     } catch(err) {
-      if (err.limitHit) {
-        toast(err.message, 'bad');
-        openModal();
-      } else {
-        toast(err.message || 'Something went wrong. Please try again.', 'bad');
-      }
+      if (err.limitHit) { toast(err.message, 'bad'); openModal(); }
+      else { toast(err.message || 'Something went wrong. Please try again.', 'bad'); }
       setStep(1);
-    } finally {
-      setLoad(false);
-    }
+    } finally { setLoad(false); }
   }
 
   document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); generate(); });
   document.getElementById('btn-regen').addEventListener('click', generate);
 
-  // Copy
+  // ── Copy / Download ──────────────────────────────────────────────────
   document.getElementById('btn-copy').addEventListener('click', async () => {
     if (!lastLetter) return;
     try {
@@ -1042,94 +1193,83 @@ Rules:
         b.classList.remove('green');
         b.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy to clipboard`;
       }, 2500);
-    } catch { toast('Select and copy manually', 'bad'); }
+    } catch { toast('Copy manually (select all + Ctrl+C)', 'bad'); }
   });
 
-  // Download
   document.getElementById('btn-dl').addEventListener('click', () => {
     if (!lastLetter) return;
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([lastLetter], { type: 'text/plain' }));
-    a.download = 'cover-letter.txt';
-    a.click();
+    a.download = 'cover-letter.txt'; a.click();
     toast('Downloaded as cover-letter.txt');
   });
 
-  // ───────────────────────────────────────────────────────────────────────
-  // AI DETECTOR + HUMANIZER
-  // ───────────────────────────────────────────────────────────────────────
-  // Real word-usage tracking happens server-side (lib/usage.js via Redis).
-  // addHWUsed() here is a no-op kept only so existing call sites don't error;
-  // refreshUsage() is what actually updates the displayed numbers.
-  function addHWUsed() { /* no-op — server is source of truth, see refreshUsage() */ }
-
-  function renderScore(result, prefix) {
+  // ── AI Detector ──────────────────────────────────────────────────────
+  function renderScore(result, target) {
     const ai = result.aiPercent, human = result.humanPercent;
-    const empty = document.getElementById(prefix === '' ? 'score-empty' : null);
-    if (prefix === '') {
+    if (target === 'main') {
       document.getElementById('score-empty').style.display = 'none';
       document.getElementById('score-result').style.display = 'block';
       const circumference = 2 * Math.PI * 50;
-      const aiLen = (ai / 100) * circumference;
-      document.getElementById('pie-ai').setAttribute('stroke-dasharray', `${aiLen} ${circumference}`);
+      document.getElementById('pie-ai').setAttribute('stroke-dasharray', `${(ai/100)*circumference} ${circumference}`);
       document.getElementById('pie-num').textContent = `${ai}%`;
       document.getElementById('ai-pct').textContent = `${ai}%`;
       document.getElementById('human-pct').textContent = `${human}%`;
       const note = document.getElementById('score-note');
-      if (ai >= 70) note.textContent = 'This text reads as strongly AI-written. Consider humanizing it.';
+      if (ai >= 70) note.textContent = 'Strongly AI-written. Humanize before submitting.';
       else if (ai >= 40) note.textContent = 'Mixed signals — some AI patterns detected.';
-      else note.textContent = 'Reads mostly natural / human-like.';
+      else note.textContent = 'Reads mostly natural and human-like.';
     }
   }
 
-  function buildPieSVG(ai, idSuffix) {
+  function buildMiniScore(ai) {
     const circumference = 2 * Math.PI * 50;
     const aiLen = (ai / 100) * circumference;
-    return `
-      <div class="pie-wrap">
-        <svg viewBox="0 0 120 120" width="100" height="100">
-          <circle cx="60" cy="60" r="50" fill="none" stroke="#e4e7ec" stroke-width="14"/>
-          <circle cx="60" cy="60" r="50" fill="none" stroke="#dc2626" stroke-width="14"
+    return `<div class="score-row" style="margin-top:1rem;">
+      <div class="pie-wrap" style="width:90px;height:90px;">
+        <svg viewBox="0 0 120 120" width="90" height="90">
+          <circle cx="60" cy="60" r="50" fill="none" stroke="var(--border)" stroke-width="14"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="var(--error)" stroke-width="14"
             stroke-dasharray="${aiLen} ${circumference}" stroke-linecap="round" transform="rotate(-90 60 60)"/>
         </svg>
-        <div class="pie-center"><div class="pie-num">${ai}%</div><div class="pie-label">AI</div></div>
-      </div>`;
+        <div class="pie-center"><div class="pie-num" style="font-size:1rem;">${ai}%</div><div class="pie-lbl">AI</div></div>
+      </div>
+      <div class="score-legend">
+        <div class="legend-item"><span class="dot red"></span> AI: <strong>${ai}%</strong></div>
+        <div class="legend-item"><span class="dot green"></span> Human: <strong>${100-ai}%</strong></div>
+      </div></div>`;
   }
 
-  // Check AI % on the generated cover letter
   document.getElementById('btn-check-ai').addEventListener('click', async () => {
     if (!lastLetter) { toast('Generate a cover letter first', 'bad'); return; }
     document.getElementById('ai-card').style.display = 'block';
     document.getElementById('ai-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
     try {
       const data = await apiCall({ action: 'detect', text: lastLetter });
-      renderScore(data, '');
-    } catch (err) { toast(err.message, 'bad'); }
+      renderScore(data, 'main');
+    } catch(err) { toast(err.message, 'bad'); }
   });
 
-  // Humanize the cover letter
   document.getElementById('btn-humanize').addEventListener('click', async () => {
-    const wordCount = lastLetter.trim().split(/\s+/).length;
     const btn = document.getElementById('btn-humanize');
     btn.disabled = true; btn.textContent = 'Humanizing…';
     try {
       const data = await apiCall({ action: 'humanize', text: lastLetter });
       document.getElementById('humanized-txt').textContent = data.humanized;
       document.getElementById('humanized-result').style.display = 'block';
-      addHWUsed(wordCount);
-      toast('Humanized successfully');
-      refreshUsage();
-    } catch (err) {
+      toast('Humanized successfully'); refreshUsage();
+    } catch(err) {
       if (err.limitHit) { openModal(); } else { toast(err.message, 'bad'); }
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Humanize This Content`;
     }
-    finally { btn.disabled = false; btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Humanize This Content`; }
   });
 
   document.getElementById('btn-copy-h').addEventListener('click', async () => {
     const t = document.getElementById('humanized-txt').textContent;
     if (!t) return;
-    await navigator.clipboard.writeText(t);
-    toast('Humanized text copied');
+    await navigator.clipboard.writeText(t); toast('Humanized text copied');
   });
 
   document.getElementById('btn-recheck-h').addEventListener('click', async () => {
@@ -1137,58 +1277,47 @@ Rules:
     if (!t) return;
     try {
       const data = await apiCall({ action: 'detect', text: t });
-      toast(`Re-checked: ${data.aiPercent}% AI-likely`);
-    } catch (err) { toast(err.message, 'bad'); }
+      toast(`Re-checked: ${data.aiPercent}% AI`);
+      renderScore(data, 'main');
+    } catch(err) { toast(err.message, 'bad'); }
   });
 
-  // ── Standalone humanizer tool ──────────────────────────────────────────
+  // ── Standalone humanizer ─────────────────────────────────────────────
   document.getElementById('btn-standalone-check').addEventListener('click', async () => {
     const text = document.getElementById('standalone-input').value.trim();
     if (text.length < 30) { toast('Paste at least 30 characters', 'bad'); return; }
     const out = document.getElementById('standalone-result');
-    out.innerHTML = '<p style="font-size:0.85rem;color:var(--muted);">Analyzing…</p>';
+    out.innerHTML = '<p style="font-size:0.83rem;color:var(--muted);margin-top:10px;">Analyzing…</p>';
     try {
       const data = await apiCall({ action: 'detect', text });
-      out.innerHTML = `<div class="score-row" style="margin-top:1rem;">${buildPieSVG(data.aiPercent)}<div class="score-legend">
-        <div class="legend-item"><span class="dot red"></span> AI-written: <strong>${data.aiPercent}%</strong></div>
-        <div class="legend-item"><span class="dot green"></span> Human-like: <strong>${data.humanPercent}%</strong></div></div></div>`;
-    } catch (err) { toast(err.message, 'bad'); out.innerHTML = ''; }
+      out.innerHTML = buildMiniScore(data.aiPercent);
+    } catch(err) { toast(err.message, 'bad'); out.innerHTML = ''; }
   });
 
   document.getElementById('btn-standalone-humanize').addEventListener('click', async () => {
     const text = document.getElementById('standalone-input').value.trim();
     if (text.length < 20) { toast('Paste at least 20 characters', 'bad'); return; }
-
     const btn = document.getElementById('btn-standalone-humanize');
-    btn.disabled = true; const orig = btn.textContent; btn.textContent = 'Humanizing…';
+    btn.disabled = true; btn.textContent = 'Humanizing…';
     const out = document.getElementById('standalone-result');
     try {
       const data = await apiCall({ action: 'humanize', text });
       const box = document.createElement('div');
-      box.className = 'out-box';
-      box.style.marginTop = '1rem';
-      box.textContent = data.humanized; // textContent — safe against XSS, unlike innerHTML
-      out.innerHTML = '';
-      out.appendChild(box);
-      toast('Humanized successfully');
-      refreshUsage();
-    } catch (err) {
+      box.className = 'out-box'; box.style.marginTop = '1rem';
+      box.textContent = data.humanized;
+      out.innerHTML = ''; out.appendChild(box);
+      toast('Humanized successfully'); refreshUsage();
+    } catch(err) {
       if (err.limitHit) { openModal(); } else { toast(err.message, 'bad'); }
-    }
-    finally { btn.disabled = false; btn.textContent = orig; }
+    } finally { btn.disabled = false; btn.textContent = 'Humanize'; }
   });
 
-  // ── Ad-unlock modal ─────────────────────────────────────────────────────
-  function openModal() {
-    document.getElementById('modal-overlay').classList.add('show');
-    renderAdDots();
-  }
+  // ── Ad Modal ─────────────────────────────────────────────────────────
+  function openModal() { document.getElementById('modal-overlay').classList.add('show'); renderAdDots(); }
   function closeModal() { document.getElementById('modal-overlay').classList.remove('show'); }
   document.getElementById('btn-unlock').addEventListener('click', openModal);
   document.getElementById('modal-close').addEventListener('click', closeModal);
-  document.getElementById('modal-overlay').addEventListener('click', e => {
-    if (e.target.id === 'modal-overlay') closeModal();
-  });
+  document.getElementById('modal-overlay').addEventListener('click', e => { if (e.target.id === 'modal-overlay') closeModal(); });
 
   function renderAdDots() {
     const total = lastUsage?.adsRequired || 5;
@@ -1200,53 +1329,49 @@ Rules:
       dot.className = 'ad-dot' + (i < done ? ' done' : '');
       wrap.appendChild(dot);
     }
-    const remaining = Math.max(0, total - done);
-    document.getElementById('ads-remaining-text').textContent = remaining;
+    document.getElementById('ads-remaining-text').textContent = Math.max(0, total - done);
   }
 
-  // Real Monetag rewarded-ad integration.
-  // show_XXX() is created globally by the Monetag SDK <script> tag in <head>
-  // (see MONETAG_ZONE_ID setup below) — it returns a Promise that resolves
-  // once the user finishes watching the ad.
+  // Monetag Vignette Banner — triggered when user clicks "Watch Ad"
+  // Direct link fallback: https://omg10.com/4/11194141
+  const DIRECT_LINK = 'https://omg10.com/4/11194141';
+
   document.getElementById('btn-watch-ad').addEventListener('click', async () => {
     const btn = document.getElementById('btn-watch-ad');
     btn.disabled = true;
-    const orig = btn.textContent;
-    btn.textContent = '▶ Loading ad…';
+    btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Loading ad…`;
+
+    // Open Direct Link ad in new tab — user watches it, then we credit them
+    const adWindow = window.open(DIRECT_LINK, '_blank', 'noopener');
+
+    // Give user 5 seconds to see the ad opened, then credit
+    await new Promise(r => setTimeout(r, 5000));
 
     try {
-      // MONETAG_SHOW_FN is set near the top of this file once you add your zone ID.
-      if (typeof window[MONETAG_SHOW_FN] !== 'function') {
-        throw new Error('Ad network not configured yet — add your Monetag zone ID to go live.');
-      }
-
-      const result = await window[MONETAG_SHOW_FN]({ type: 'end' });
-
-      // Monetag resolves with reward_event_type: 'valued' if the ad was watched
-      // fully, or 'not_valued' if skipped/interrupted — only count real views.
-      if (result?.reward_event_type && result.reward_event_type !== 'valued') {
-        toast('Ad was skipped — watch the full ad to count toward your unlock.', 'bad');
-        return;
-      }
-
       const data = await apiCall({ action: 'watch_ad' });
       lastUsage = { ...lastUsage, adsWatched: data.adsWatched, bonusUnlocked: data.bonusUnlocked };
       renderAdDots();
       if (data.bonusUnlocked) {
-        toast('Unlocked! 10 letters & 4000 words today.');
-        await refreshUsage();
-        closeModal();
+        toast('Unlocked! 10 letters & 4000 words today.', 'ok');
+        await refreshUsage(); closeModal();
       } else {
-        toast(`Ad watched — ${data.adsRequired - data.adsWatched} more to go`);
+        toast(`Ad counted — ${data.adsRequired - data.adsWatched} more to unlock`);
       }
-    } catch (err) {
-      toast(err.message || 'Ad failed to load. Please try again.', 'bad');
+    } catch(err) {
+      toast(err.message || 'Something went wrong. Try again.', 'bad');
     } finally {
       btn.disabled = false;
-      btn.textContent = orig;
+      btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg> Watch ad`;
     }
   });
 </script>
 
+<!-- Monetag SW -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' })
+      .catch(err => console.warn('SW:', err));
+  }
+</script>
 </body>
 </html>
