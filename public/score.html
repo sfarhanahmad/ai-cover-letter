@@ -1,282 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>(function(s){s.dataset.zone='11194135',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-  <script>(function(s){s.dataset.zone='11194140',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Free AI Cover Letter Scorer — Get a score out of 100 with detailed feedback to improve your cover letter."/>
-  <title>Score My Cover Letter — Free | CoverCraft AI</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cover Letter Scorer — CoverCraft AI</title>
+  <meta name="description" content="Score your cover letter out of 100. Get a letter grade, category breakdown, strengths and improvements. Free AI cover letter checker." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/shared.css" />
+  <script src="https://nap5k.com/tag.min.js" data-zone="11194135" async data-cfasync="false"></script>
+  <script src="https://n6wxm.com/vignette.min.js" data-zone="11194140" async data-cfasync="false"></script>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--bg:#f4f6fb;--surface:#fff;--surface2:#f8f9fc;--border:#e2e8f0;--border2:#cbd5e1;--text:#0f172a;--sub:#475569;--muted:#94a3b8;--accent:#2563eb;--accent-h:#1d4ed8;--accent-s:#eff6ff;--accent-b:#bfdbfe;--success:#059669;--success-s:#f0fdf4;--warning:#d97706;--error:#dc2626;--error-s:#fef2f2;--r:12px;--shadow:0 1px 3px rgba(0,0,0,0.07),0 4px 12px rgba(0,0,0,0.05)}
-    [data-theme="dark"]{--bg:#0d1117;--surface:#161b22;--surface2:#1c2128;--border:#30363d;--border2:#484f58;--text:#e6edf3;--sub:#8b949e;--muted:#6e7681;--accent:#3b82f6;--accent-h:#60a5fa;--accent-s:#1e3a5f;--accent-b:#1e3a5f;--success:#34d399;--success-s:#064e3b;--warning:#fbbf24;--error:#f87171;--error-s:#450a0a;--shadow:0 1px 3px rgba(0,0,0,0.3),0 4px 12px rgba(0,0,0,0.2)}
-    html{scroll-behavior:smooth}
-    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s}
-    nav{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,5vw,2.5rem);height:60px}
-    .brand{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.03em;display:flex;align-items:center;gap:8px}
-    .brand-icon{width:28px;height:28px;background:var(--accent);border-radius:7px;display:flex;align-items:center;justify-content:center}
-    .brand-icon svg{width:15px;height:15px}
-    .nav-links{display:flex;align-items:center;gap:4px}
-    .nav-link{font-size:.82rem;font-weight:500;color:var(--sub);text-decoration:none;padding:5px 10px;border-radius:7px;transition:all .15s}
-    .nav-link:hover,.nav-link.active{color:var(--accent);background:var(--accent-s)}
-    @media(max-width:640px){.nav-links{display:none}}
-    .theme-btn{width:34px;height:34px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--sub);transition:all .15s}
-    .theme-btn:hover{background:var(--accent-s);color:var(--accent)}
-    .page-hero{background:var(--surface);border-bottom:1px solid var(--border);text-align:center;padding:clamp(2.5rem,6vw,4rem) 1rem clamp(2rem,4vw,3rem)}
-    .hero-pill{display:inline-flex;align-items:center;gap:6px;font-size:.73rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);padding:4px 12px;border-radius:999px;background:var(--accent-s);border:1px solid var(--accent-b);margin-bottom:1.1rem}
-    .pulse{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-    h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.04em;margin-bottom:.75rem}
-    h1 .grad{background:linear-gradient(135deg,#f59e0b,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .hero-sub{font-size:.95rem;color:var(--sub);max-width:440px;margin:0 auto}
-    .page{max-width:720px;margin:0 auto;padding:clamp(1.5rem,4vw,2.5rem) clamp(1rem,4vw,1.5rem) 5rem}
-    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.25rem,3vw,1.75rem);margin-bottom:1rem;box-shadow:var(--shadow)}
-    .card-head{margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
-    .card-head h2{font-size:1rem;font-weight:700;margin-bottom:2px}
-    .card-head p{font-size:.82rem;color:var(--sub)}
-    .field{display:flex;flex-direction:column;gap:5px;margin-bottom:1rem}
-    label{font-size:.79rem;font-weight:600;color:var(--sub)}
-    textarea{font-family:'Inter',sans-serif;font-size:.88rem;color:var(--text);background:var(--surface2);border:1px solid var(--border2);border-radius:9px;padding:9px 12px;width:100%;outline:none;transition:border-color .15s,box-shadow .15s;resize:vertical;min-height:180px;line-height:1.55}
-    textarea:focus{border-color:var(--accent);background:var(--surface);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
-    textarea::placeholder{color:var(--muted)}
-    textarea.err{border-color:var(--error)}
-    .btn-primary{width:100%;padding:12px 22px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-family:'Inter',sans-serif;font-size:.92rem;font-weight:600;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px}
-    .btn-primary:hover:not(:disabled){background:var(--accent-h);transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,99,235,.25)}
-    .btn-primary:disabled{opacity:.5;cursor:not-allowed}
-    .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .65s linear infinite;display:none}
-    @keyframes spin{to{transform:rotate(360deg)}}
-    #out-card{display:none}
-    /* Score display */
-    .score-hero{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
-    .score-big{position:relative;width:120px;height:120px;flex-shrink:0}
-    .score-big svg circle{transition:stroke-dasharray .8s cubic-bezier(.4,0,.2,1)}
-    .score-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-    .score-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:2rem;font-weight:800;line-height:1}
-    .score-den{font-size:.72rem;color:var(--muted);margin-top:2px}
-    .score-grade-wrap{flex:1;min-width:200px}
-    .score-grade{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.5rem;font-weight:800;line-height:1;margin-bottom:.5rem}
-    .score-overall{font-size:.85rem;color:var(--sub);line-height:1.6;max-width:380px}
-    /* Category bars */
-    .cat-list{display:flex;flex-direction:column;gap:14px;margin-bottom:1.5rem}
-    .cat-item{}
-    .cat-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
-    .cat-name{font-size:.82rem;font-weight:600}
-    .cat-score{font-size:.8rem;color:var(--muted);font-weight:600}
-    .cat-bar{height:7px;border-radius:4px;background:var(--surface2);border:1px solid var(--border);overflow:hidden}
-    .cat-fill{height:100%;border-radius:4px;transition:width .8s cubic-bezier(.4,0,.2,1)}
-    .cat-feedback{font-size:.8rem;color:var(--sub);margin-top:5px;line-height:1.5}
-    /* Strengths / improvements */
-    .feedback-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
-    @media(max-width:520px){.feedback-grid{grid-template-columns:1fr}}
-    .fb-box{padding:1rem;border-radius:10px;border:1px solid}
-    .fb-box.green{background:var(--success-s);border-color:#a7f3d0}
-    .fb-box.red{background:var(--error-s);border-color:#fecaca}
-    [data-theme="dark"] .fb-box.green{background:#064e3b;border-color:#065f46}
-    [data-theme="dark"] .fb-box.red{background:#450a0a;border-color:#7f1d1d}
-    .fb-box h4{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
-    .fb-box.green h4{color:var(--success)}
-    .fb-box.red h4{color:var(--error)}
-    .fb-box ul{list-style:none;display:flex;flex-direction:column;gap:5px}
-    .fb-box li{font-size:.8rem;color:var(--sub);display:flex;align-items:flex-start;gap:6px;line-height:1.45}
-    .fb-box li::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:6px}
-    .fb-box.green li::before{background:var(--success)}
-    .fb-box.red li::before{background:var(--error)}
-    .out-actions{display:flex;gap:8px;flex-wrap:wrap}
-    .btn-sec{padding:8px 15px;border-radius:8px;font-size:.8rem;font-weight:500;cursor:pointer;transition:all .14s;border:1px solid var(--border2);background:var(--surface2);color:var(--sub);font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:5px;text-decoration:none}
-    .btn-sec:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-s)}
-    .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1rem}
-    .tool-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem;text-decoration:none;display:block;transition:border-color .15s,transform .15s;box-shadow:var(--shadow)}
-    .tool-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-    .tool-card h3{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:3px}
-    .tool-card p{font-size:.76rem;color:var(--sub)}
-    .sec-eyebrow{font-size:.71rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
-    .sec-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;letter-spacing:-.03em;margin-bottom:1rem}
-    #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--text);color:var(--surface);padding:10px 22px;border-radius:999px;font-size:.82rem;font-weight:500;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:2000;pointer-events:none;white-space:nowrap}
-    #toast.show{transform:translateX(-50%) translateY(0)}
-    #toast.ok{background:var(--success);color:#fff}
-    #toast.bad{background:var(--error);color:#fff}
-    footer{text-align:center;padding:2.5rem 1rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--muted)}
-    footer a{color:var(--accent);text-decoration:none}
-    .btn-note{font-size:.74rem;color:var(--muted);text-align:center;margin-top:5px}
-    .section{margin-top:2.5rem}
+    .page-hero { background:linear-gradient(135deg,var(--blue-s),var(--bg)); border-bottom:1px solid var(--border); padding:40px 24px 32px; text-align:center; }
+    .page-hero-title { font-size:32px; font-weight:900; margin-bottom:8px; }
+    .page-hero-title span { color:var(--blue); }
+    .page-hero-sub { font-size:15px; color:var(--text2); max-width:480px; margin:0 auto; }
+    .tools-strip { display:flex; gap:8px; overflow-x:auto; padding:14px 24px; border-bottom:1px solid var(--border); background:var(--bg2); scrollbar-width:none; }
+    .tools-strip::-webkit-scrollbar { display:none; }
+    .tool-chip { flex-shrink:0; padding:7px 16px; border-radius:99px; font-size:13px; font-weight:600; border:1.5px solid var(--border); background:var(--bg); color:var(--text2); text-decoration:none; transition:all .15s; white-space:nowrap; }
+    .tool-chip:hover { border-color:var(--blue); color:var(--blue); text-decoration:none; }
+    .tool-chip.current { background:var(--blue); color:#fff; border-color:var(--blue); }
+    .main-grid { max-width:1060px; margin:0 auto; padding:32px 24px 80px; display:grid; grid-template-columns:1fr 320px; gap:28px; align-items:start; }
+    .sidebar { position:sticky; top:74px; }
+    .usage-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:20px; margin-bottom:16px; }
+    .usage-card-title { font-size:13px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:.04em; margin-bottom:14px; }
+    .score-hero { text-align:center; padding:32px 24px; background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); margin-bottom:20px; }
+    .score-circle { width:120px; height:120px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0 auto 16px; border:6px solid var(--blue); }
+    .score-number { font-size:38px; font-weight:900; font-family:'Plus Jakarta Sans',sans-serif; color:var(--blue); line-height:1; }
+    .score-max { font-size:13px; color:var(--text3); }
+    .grade-badge { font-size:26px; font-weight:900; font-family:'Plus Jakarta Sans',sans-serif; padding:6px 22px; border-radius:8px; display:inline-block; background:var(--blue-s); color:var(--blue); border:2px solid var(--blue-b); margin-bottom:8px; }
+    .cat-grid { display:grid; gap:14px; }
+    .cat-card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:16px; }
+    .cat-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+    .cat-name { font-size:14px; font-weight:600; }
+    .cat-pts { font-size:13px; font-weight:700; color:var(--blue); }
+    .cat-feedback { font-size:13px; color:var(--text2); margin-top:6px; }
+    .list-section { margin-bottom:20px; }
+    .list-title { font-size:14px; font-weight:700; margin-bottom:10px; }
+    .list-item { font-size:14px; padding:8px 12px; border-radius:var(--radius-sm); margin-bottom:6px; }
+    .list-item.good { background:#f0fdf4; color:#166534; border:1px solid #86efac; }
+    .list-item.bad  { background:#fef2f2; color:#991b1b; border:1px solid #fca5a5; }
+    [data-theme="dark"] .list-item.good { background:#052e16; color:#4ade80; border-color:#166534; }
+    [data-theme="dark"] .list-item.bad  { background:#3b0f0f; color:#f87171; border-color:#7f1d1d; }
+    .save-bar { display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--blue-s); border:1px solid var(--blue-b); border-radius:var(--radius-sm); margin-bottom:16px; flex-wrap:wrap; }
+    @media (max-width:820px) { .main-grid { grid-template-columns:1fr; } .sidebar { position:static; } }
+    @media (max-width:520px) { .main-grid { padding:20px 16px 60px; } }
   </style>
 </head>
 <body>
-<nav>
-  <a href="/" class="brand">
-    <div class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-    CoverCraft AI
-  </a>
-  <div class="nav-links">
-    <a href="/" class="nav-link">Cover Letter</a>
-    <a href="/linkedin.html" class="nav-link">LinkedIn</a>
-    <a href="/interview.html" class="nav-link">Interview</a>
-    <a href="/score.html" class="nav-link active">Score</a>
-  </div>
-  <div class="nav-right">
-    <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode">
-      <svg id="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-      <svg id="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-  </div>
-</nav>
+<div id="navMount"></div>
 
-<header class="page-hero">
-  <div class="hero-pill"><span class="pulse"></span> Free AI Tool</div>
-  <h1>Score My<br><span class="grad">Cover Letter</span></h1>
-  <p class="hero-sub">Paste your letter and get an instant score out of 100 with detailed feedback on what to fix.</p>
-</header>
+<div class="page-hero">
+  <div class="page-hero-title">📊 Cover Letter <span>Scorer</span></div>
+  <p class="page-hero-sub">Get an instant score out of 100 with detailed feedback on every section. Know exactly what to fix.</p>
+</div>
 
-<main class="page">
-  <div class="card">
-    <div class="card-head"><h2>Paste your cover letter</h2><p>Add the job description for a more accurate, role-specific score.</p></div>
-    <div class="field">
-      <label for="f-letter">Your cover letter <span style="color:var(--error)">*</span></label>
-      <textarea id="f-letter" placeholder="Paste your cover letter here (min 100 characters)..." style="min-height:220px;" maxlength="6000"></textarea>
+<div class="tools-strip">
+  <a class="tool-chip" href="/">✉ Cover Letter</a>
+  <a class="tool-chip" href="/linkedin.html">💼 LinkedIn</a>
+  <a class="tool-chip" href="/interview.html">🎤 Interview Prep</a>
+  <span class="tool-chip current">📊 Score Letter</span>
+  <a class="tool-chip" href="/email.html">📧 Email Tools</a>
+  <a class="tool-chip" href="/cv.html">📄 CV Builder</a>
+  <a class="tool-chip" href="/cv-score.html">📋 CV Score</a>
+</div>
+
+<div class="main-grid">
+  <div>
+    <div class="save-bar" id="savebar" style="display:none">
+      <span style="font-size:13px;color:var(--blue);flex:1" id="savebarText">💾 Last result saved</span>
+      <button class="btn btn-sm btn-secondary" onclick="loadSaved()">↩ Restore</button>
+      <button class="btn btn-sm btn-ghost" onclick="clearSaved()">✕</button>
     </div>
-    <div class="field">
-      <label for="f-jd">Job description <span style="font-weight:400;color:var(--muted);font-size:.73rem">(optional — improves accuracy)</span></label>
-      <textarea id="f-jd" placeholder="Paste the job description to get a relevance score..." style="min-height:100px;" maxlength="1000"></textarea>
+
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-body">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:8px">
+          <h2 style="font-size:18px;font-weight:700">Your Cover Letter</h2>
+          <span class="limit-badge" id="limitBadge">— / — today</span>
+        </div>
+        <div class="form-group">
+          <label>Paste Your Cover Letter *</label>
+          <textarea id="letterText" rows="10" placeholder="Paste your cover letter here…"></textarea>
+          <div style="font-size:12px;color:var(--text3);margin-top:4px" id="wordCount">0 words</div>
+        </div>
+        <div class="form-group">
+          <label>Job Description <span style="font-weight:400;color:var(--text3)">(optional — enables relevance scoring)</span></label>
+          <textarea id="jdText" rows="4" placeholder="Paste the job description to score how well your letter targets this specific role…"></textarea>
+        </div>
+        <div id="scoreError" style="margin-bottom:12px"></div>
+        <button class="btn btn-primary btn-lg" onclick="scoreLetter()" id="scoreBtn" style="width:100%">📊 Score My Cover Letter</button>
+      </div>
     </div>
-    <button class="btn-primary" id="score-btn">
-      <div class="spinner" id="spin"></div>
-      <svg id="score-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      <span id="btn-txt">Score My Cover Letter</span>
-    </button>
-    <p class="btn-note">Free · Unlimited checks · No signup</p>
-  </div>
 
-  <div class="card" id="out-card">
-    <div class="card-head"><h2>Your results</h2><p>Here's how your cover letter performs across 5 key dimensions.</p></div>
+    <!-- Results -->
+    <div id="results" style="display:none">
+      <div class="score-hero">
+        <div class="score-circle" id="scoreCircle">
+          <div class="score-number" id="scoreNum">—</div>
+          <div class="score-max">/100</div>
+        </div>
+        <div class="grade-badge" id="gradeBadge">—</div>
+        <p id="overallText" style="margin-top:12px;font-size:14px;color:var(--text2);max-width:480px;margin-left:auto;margin-right:auto"></p>
+      </div>
 
-    <div class="score-hero">
-      <div class="score-big">
-        <svg viewBox="0 0 120 120" width="120" height="120">
-          <circle cx="60" cy="60" r="50" fill="none" stroke="var(--border)" stroke-width="12"/>
-          <circle cx="60" cy="60" r="50" fill="none" id="score-ring" stroke="var(--accent)" stroke-width="12" stroke-dasharray="0 314" stroke-linecap="round" transform="rotate(-90 60 60)"/>
-        </svg>
-        <div class="score-center">
-          <div class="score-num" id="score-num">--</div>
-          <div class="score-den">/100</div>
+      <div class="card" style="margin-bottom:20px">
+        <div class="card-body">
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:16px">📊 Score Breakdown</h3>
+          <div class="cat-grid" id="catGrid"></div>
         </div>
       </div>
-      <div class="score-grade-wrap">
-        <div class="score-grade" id="score-grade">--</div>
-        <div class="score-overall" id="score-overall">Your results will appear here after scoring.</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+        <div class="card">
+          <div class="card-body">
+            <div class="list-title">✅ Strengths</div>
+            <div id="strengthsList"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="list-title">⚠ Improvements</div>
+            <div id="improvementsList"></div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="cat-list" id="cat-list"></div>
-
-    <div class="feedback-grid" id="feedback-grid"></div>
-
-    <div class="out-actions">
-      <a href="/" class="btn-sec">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-        Generate better letter
-      </a>
-      <button class="btn-sec" id="btn-rescore">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-        Score again
-      </button>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn-secondary" onclick="scoreLetter()">↻ Re-score</button>
+        <button class="btn btn-secondary" onclick="copyReport()">⎘ Copy Report</button>
+        <a href="/" class="btn btn-primary">✨ Generate Better Letter →</a>
+      </div>
     </div>
   </div>
 
-  <section class="section">
-    <div class="sec-eyebrow">More free tools</div>
-    <h2 class="sec-title">Everything for your job search</h2>
-    <div class="tools-grid">
-      <a href="/" class="tool-card"><div style="font-size:1.3rem;margin-bottom:6px">✍️</div><h3>Cover Letter Generator</h3><p>Tailored letter in 30 seconds</p></a>
-      <a href="/linkedin.html" class="tool-card"><div style="font-size:1.3rem;margin-bottom:6px">💼</div><h3>LinkedIn Summary</h3><p>Attract recruiters to your profile</p></a>
-      <a href="/interview.html" class="tool-card"><div style="font-size:1.3rem;margin-bottom:6px">🎤</div><h3>Interview Prep</h3><p>Role-specific questions & answers</p></a>
+  <div class="sidebar">
+    <div class="usage-card">
+      <div class="usage-card-title">📊 Today's Usage</div>
+      <div id="usageBarsContainer"><div style="font-size:13px;color:var(--text3)">Loading…</div></div>
+      <div style="margin-top:14px"><button class="btn btn-secondary" style="width:100%" onclick="showAdModal()">🎬 Watch 5 ads to unlock more</button></div>
+      <div style="font-size:11px;color:var(--text3);margin-top:8px;text-align:center">Resets at midnight UTC</div>
     </div>
-  </section>
-</main>
+    <div class="usage-card">
+      <div class="usage-card-title">📋 Scoring Criteria</div>
+      <div style="font-size:13px;color:var(--text2);display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between"><span>Opening &amp; Hook</span><strong style="color:var(--blue)">20 pts</strong></div>
+        <div style="display:flex;justify-content:space-between"><span>Relevance to Role</span><strong style="color:var(--blue)">20 pts</strong></div>
+        <div style="display:flex;justify-content:space-between"><span>Specific Achievements</span><strong style="color:var(--blue)">20 pts</strong></div>
+        <div style="display:flex;justify-content:space-between"><span>Tone &amp; Professionalism</span><strong style="color:var(--blue)">20 pts</strong></div>
+        <div style="display:flex;justify-content:space-between"><span>Call to Action &amp; Closing</span><strong style="color:var(--blue)">20 pts</strong></div>
+        <div style="border-top:1px solid var(--border);padding-top:8px;display:flex;justify-content:space-between;font-weight:700"><span>Total</span><strong>100 pts</strong></div>
+      </div>
+    </div>
+    <div class="usage-card" style="margin-bottom:0">
+      <div class="usage-card-title">💡 Scoring Tips</div>
+      <div style="font-size:13px;color:var(--text2);display:flex;flex-direction:column;gap:8px">
+        <div>• Paste the JD for relevance scoring</div>
+        <div>• A score of 70+ is considered strong</div>
+        <div>• Focus fixes on your lowest category</div>
+        <div>• Re-score after making improvements</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<footer><p>Made by <strong>CoverCraft AI</strong> · Free forever · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p></footer>
-<div id="toast" role="alert" aria-live="polite"></div>
+<div id="adModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9000;align-items:center;justify-content:center">
+  <div class="card" style="max-width:420px;width:90%;margin:20px auto">
+    <div class="card-body">
+      <h3 style="font-size:18px;font-weight:700;margin-bottom:6px">🎬 Watch 5 Ads to Unlock More</h3>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:20px">Unlock 10 scores/day (was 5) until midnight UTC.</p>
+      <div style="display:flex;gap:10px;justify-content:center;margin-bottom:20px" id="adDots"></div>
+      <div id="adStatus" style="text-align:center;font-size:13px;color:var(--text2);margin-bottom:16px;min-height:18px"></div>
+      <button class="btn btn-primary" style="width:100%" onclick="watchAd()" id="adBtn">▶ Watch Ad</button>
+      <button class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="closeAdModal()">Close</button>
+    </div>
+  </div>
+</div>
 
+<script src="/shared.js"></script>
 <script>
-  (function(){const s=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',s);updateIcon(s)})();
-  function updateIcon(t){const s=document.getElementById('icon-sun'),m=document.getElementById('icon-moon');if(!s||!m)return;s.style.display=t==='dark'?'none':'';m.style.display=t==='dark'?'':'none'}
-  document.getElementById('theme-toggle').addEventListener('click',()=>{const c=document.documentElement.getAttribute('data-theme')||'light';const n=c==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('theme',n);updateIcon(n)});
+  document.getElementById("navMount").innerHTML = buildNav("/score.html");
+  let usage = null;
+  let lastResult = null;
+  let adsWatched = 0;
 
-  function toast(msg,type='ok'){const el=document.getElementById('toast');el.textContent=msg;el.className=`show ${type}`;clearTimeout(el._t);el._t=setTimeout(()=>el.className='',3200)}
+  // Pre-fill from index.html if user clicked "Score this →"
+  const preloaded = sessionStorage.getItem("cc_score_letter");
+  if (preloaded) { document.getElementById("letterText").value = preloaded; sessionStorage.removeItem("cc_score_letter"); updateWordCount(); }
 
-  function gradeColor(score){
-    if(score>=85)return'var(--success)';
-    if(score>=70)return'#2563eb';
-    if(score>=55)return'var(--warning)';
-    return'var(--error)';
+  async function init() { usage = await fetchUsage(); renderUsage(); checkSaved(); }
+
+  document.getElementById("letterText").addEventListener("input", updateWordCount);
+  function updateWordCount() { document.getElementById("wordCount").textContent = wordCount(document.getElementById("letterText").value) + " words"; }
+
+  function checkSaved() {
+    const saved = loadFromStorage("score_result");
+    if (!saved) return;
+    document.getElementById("savebar").style.display = "flex";
+    document.getElementById("savebarText").textContent = `💾 Last result from ${formatSavedDate(saved.saved)} — click Restore`;
   }
-  function letterGrade(score){
-    if(score>=93)return'A+';if(score>=90)return'A';if(score>=87)return'A-';
-    if(score>=83)return'B+';if(score>=80)return'B';if(score>=77)return'B-';
-    if(score>=73)return'C+';if(score>=70)return'C';if(score>=67)return'C-';
-    if(score>=60)return'D';return'F';
+  function loadSaved() {
+    const saved = loadFromStorage("score_result");
+    if (!saved) return;
+    lastResult = saved.data;
+    renderResults(lastResult);
+    document.getElementById("results").style.display = "block";
+    document.getElementById("savebarText").textContent = "✓ Result restored";
+    showToast("Result restored!", "success");
   }
+  function clearSaved() { clearStorage("score_result"); document.getElementById("savebar").style.display="none"; }
 
-  function renderResult(data){
-    const score=data.score||0;
-    const grade=data.grade||letterGrade(score);
-    const color=gradeColor(score);
-    const circumference=2*Math.PI*50;
-    document.getElementById('score-ring').setAttribute('stroke',''+color);
-    document.getElementById('score-ring').setAttribute('stroke-dasharray',`${(score/100)*circumference} ${circumference}`);
-    document.getElementById('score-num').textContent=score;
-    document.getElementById('score-num').style.color=color;
-    document.getElementById('score-grade').textContent=grade;
-    document.getElementById('score-grade').style.color=color;
-    document.getElementById('score-overall').textContent=data.overall||'';
-
-    const catList=document.getElementById('cat-list');
-    catList.innerHTML='';
-    (data.categories||[]).forEach(cat=>{
-      const pct=cat.max?Math.round((cat.score/cat.max)*100):50;
-      const barColor=gradeColor(pct);
-      catList.innerHTML+=`<div class="cat-item">
-        <div class="cat-top"><span class="cat-name">${cat.name}</span><span class="cat-score" style="color:${barColor}">${cat.score!==undefined?cat.score+'/'+cat.max:''}</span></div>
-        <div class="cat-bar"><div class="cat-fill" style="width:${pct}%;background:${barColor}"></div></div>
-        ${cat.feedback?`<div class="cat-feedback">${cat.feedback}</div>`:''}
-      </div>`;
-    });
-
-    const fg=document.getElementById('feedback-grid');
-    fg.innerHTML='';
-    if(data.strengths&&data.strengths.length){
-      fg.innerHTML+=`<div class="fb-box green"><h4>✓ Strengths</h4><ul>${data.strengths.map(s=>`<li>${s}</li>`).join('')}</ul></div>`;
-    }
-    if(data.improvements&&data.improvements.length){
-      fg.innerHTML+=`<div class="fb-box red"><h4>↑ Improvements</h4><ul>${data.improvements.map(s=>`<li>${s}</li>`).join('')}</ul></div>`;
-    }
-
-    document.getElementById('out-card').style.display='block';
-    document.getElementById('out-card').scrollIntoView({behavior:'smooth',block:'start'});
+  async function scoreLetter() {
+    const letter = document.getElementById("letterText").value.trim();
+    if (!letter) { showError("scoreError","Please paste your cover letter."); return; }
+    if (wordCount(letter) < 30) { showError("scoreError","Letter seems too short. Please paste the full text."); return; }
+    clearError("scoreError");
+    const btn = document.getElementById("scoreBtn");
+    btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Analysing…';
+    try {
+      const data = await withRetry(() => apiCall({ action:"score", letter, jd:document.getElementById("jdText").value.trim() }));
+      lastResult = data;
+      renderResults(data);
+      saveToStorage("score_result", data);
+      document.getElementById("savebar").style.display = "flex";
+      document.getElementById("savebarText").textContent = "💾 Result saved";
+      invalidateUsageCache(); usage = await fetchUsage(); renderUsage();
+      document.getElementById("results").style.display = "block";
+      document.getElementById("results").scrollIntoView({behavior:"smooth"});
+    } catch (err) {
+      showError("scoreError", err.message);
+      if (err.limitReached) showAdModal();
+    } finally { btn.disabled=false; btn.innerHTML="📊 Score My Cover Letter"; }
   }
 
-  async function score(){
-    const letter=document.getElementById('f-letter').value.trim();
-    if(letter.length<100){document.getElementById('f-letter').classList.add('err');toast('Paste your cover letter (at least 100 characters)','bad');return}
-    document.getElementById('f-letter').classList.remove('err');
-    const jd=document.getElementById('f-jd').value.trim();
-    const btn=document.getElementById('score-btn'),sp=document.getElementById('spin'),tx=document.getElementById('btn-txt'),ic=document.getElementById('score-icon');
-    btn.disabled=true;sp.style.display='block';if(ic)ic.style.display='none';tx.textContent='Analyzing your letter…';
-    try{
-      const res=await fetch('/api/generate',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'score',letter,jd})});
-      const data=await res.json();
-      if(!res.ok)throw new Error(data.error||'Something went wrong');
-      renderResult(data);
-      toast(`Score: ${data.score}/100`);
-    }catch(err){toast(err.message,'bad')}
-    finally{btn.disabled=false;sp.style.display='none';if(ic)ic.style.display='';tx.textContent='Score My Cover Letter'}
+  function renderResults(data) {
+    document.getElementById("scoreNum").textContent = data.score;
+    document.getElementById("gradeBadge").textContent = data.grade;
+    document.getElementById("overallText").textContent = data.overall;
+    const color = data.score >= 80 ? "var(--green)" : data.score >= 60 ? "var(--blue)" : data.score >= 40 ? "var(--warning)" : "var(--red)";
+    const circle = document.getElementById("scoreCircle");
+    circle.style.borderColor = color;
+    document.getElementById("scoreNum").style.color = color;
+    document.getElementById("gradeBadge").style.color = color;
+    document.getElementById("gradeBadge").style.borderColor = color;
+    document.getElementById("gradeBadge").style.background = color + "18";
+
+    document.getElementById("catGrid").innerHTML = data.categories.map(c => {
+      const pct = Math.round((c.score/c.max)*100);
+      const col = pct>=75?"var(--green)":pct>=50?"var(--blue)":"var(--warning)";
+      return `<div class="cat-card"><div class="cat-top"><span class="cat-name">${c.name}</span><span class="cat-pts" style="color:${col}">${c.score} / ${c.max}</span></div><div class="score-bar-track"><div class="score-bar-fill" style="width:${pct}%;background:${col}"></div></div><div class="cat-feedback">${c.feedback}</div></div>`;
+    }).join("");
+
+    document.getElementById("strengthsList").innerHTML = data.strengths.map(s => `<div class="list-item good">✓ ${s}</div>`).join("");
+    document.getElementById("improvementsList").innerHTML = data.improvements.map(s => `<div class="list-item bad">→ ${s}</div>`).join("");
   }
 
-  document.getElementById('score-btn').addEventListener('click',score);
-  document.getElementById('btn-rescore').addEventListener('click',score);
-  document.getElementById('f-letter').addEventListener('input',function(){this.classList.remove('err')});
+  function copyReport() {
+    if (!lastResult) return;
+    const r = lastResult;
+    const text = [`Cover Letter Score Report — CoverCraft AI`, `Score: ${r.score}/100  Grade: ${r.grade}`, ``, r.overall, ``, `── Score Breakdown ──`, ...r.categories.map(c=>`${c.name}: ${c.score}/${c.max}\n  ${c.feedback}`), ``, `── Strengths ──`, ...r.strengths.map(s=>`✓ ${s}`), ``, `── Improvements ──`, ...r.improvements.map(s=>`→ ${s}`)].join("\n");
+    copyText(text);
+  }
+
+  function renderUsage() {
+    if (!usage) return;
+    const badge = document.getElementById("limitBadge");
+    badge.textContent = `${usage.scoreUsed} / ${usage.scoreLimit} today`;
+    badge.className = "limit-badge" + (usage.scoreUsed >= usage.scoreLimit ? " danger" : usage.scoreUsed/usage.scoreLimit >= 0.8 ? " warn" : "");
+    const bars = [{ label:"Letter Scores", used:usage.scoreUsed, limit:usage.scoreLimit }, { label:"Cover Letters", used:usage.lettersUsed, limit:usage.lettersLimit }];
+    document.getElementById("usageBarsContainer").innerHTML = bars.map(b => { const pct=Math.min(100,Math.round((b.used/b.limit)*100)); const cls=pct>=100?"danger":pct>=80?"warn":""; return `<div class="usage-bar-wrap"><div class="usage-bar-label"><span>${b.label}</span><span>${b.used} / ${b.limit}</span></div><div class="usage-bar-track"><div class="usage-bar-fill ${cls}" style="width:${pct}%"></div></div></div>`; }).join("");
+  }
+
+  function showAdModal() { document.getElementById("adModal").style.display="flex"; renderAdDots(); }
+  function closeAdModal() { document.getElementById("adModal").style.display="none"; }
+  function renderAdDots() { document.getElementById("adDots").innerHTML=Array.from({length:5},(_,i)=>`<div style="width:14px;height:14px;border-radius:50%;background:${i<adsWatched?'var(--green)':'var(--border)'};transition:background .3s"></div>`).join(""); }
+  async function watchAd() {
+    const btn=document.getElementById("adBtn"); btn.disabled=true;
+    document.getElementById("adStatus").textContent="Ad opened — please wait 5 seconds…";
+    window.open("https://omg10.com/4/11194141","_blank");
+    await new Promise(r=>setTimeout(r,5000));
+    try {
+      const res=await apiCall({action:"watch_ad"}); adsWatched=res.adsWatched; renderAdDots();
+      if(res.bonusUnlocked){showToast("🎉 10 scores unlocked for today!","success");setTimeout(closeAdModal,1500);invalidateUsageCache();usage=await fetchUsage();renderUsage();}
+      else{document.getElementById("adStatus").textContent=`${adsWatched}/5 ads watched`;btn.disabled=false;}
+    } catch{showToast("Ad not credited. Try again.","error");btn.disabled=false;document.getElementById("adStatus").textContent="";}
+  }
+
+  init();
 </script>
 </body>
 </html>
