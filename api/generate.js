@@ -1,5 +1,6 @@
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
+import { detectAIScore } from "../lib/aidetect.js";
 
 const redis = new Redis({
   url: process.env.UPSTASH_REDIS_REST_URL,
@@ -157,34 +158,39 @@ export default async function handler(req, res) {
     }
 
     // ── DETECT ───────────────────────────────────────────────────────────
+    // Real linguistic-feature heuristic (lib/aidetect.js) instead of asking
+    // the LLM to guess — LLMs are unreliable judges of AI-ness, which is why
+    // scores used to behave inconsistently (e.g. rising after "humanizing").
+    // This runs in plain JS: fast, free, and deterministic for the same input.
     if (action === "detect") {
       const { success } = await limiters.detect.limit(ip);
       if (!success) return res.status(429).json({ error: "Too many requests. Slow down." });
 
       const text = body.text || "";
       if (!text.trim()) return res.status(400).json({ error: "No text provided." });
+      if (text.trim().split(/\s+/).length < 15) {
+        return res.status(400).json({ error: "Please provide at least 15 words for an accurate check." });
+      }
 
-      const result = await callGroq([{
-        role: "user",
-        content: `Analyze this text and estimate what percentage was written by AI vs a human.
-Return ONLY JSON like: {"aiPercent": 62, "humanPercent": 38}
-No explanation. No markdown. Just JSON.
-
-Text:
-${text.slice(0, 3000)}`
-      }], 100);
-
-      const parsed = JSON.parse(result.replace(/```json|```/g, "").trim());
-      return res.status(200).json(parsed);
+      const result = detectAIScore(text);
+      return res.status(200).json(result);
     }
 
     // ── HUMANIZE ─────────────────────────────────────────────────────────
+    // Targets the exact signals the detector measures (burstiness, lexical
+    // diversity, stock phrases, transition density, contractions, repeated
+    // openers) instead of vaguely asking the model to "sound human". After
+    // generating, we re-score with the same real detector and, if it's still
+    // too AI-like, run one corrective pass naming the specific signals to fix.
     if (action === "humanize") {
       const { success } = await limiters.humanize.limit(ip);
       if (!success) return res.status(429).json({ error: "Too many requests. Slow down." });
 
       const usage = await getUsage(ip);
-      const wordCount = (body.text || "").split(/\s+/).filter(Boolean).length;
+      const inputText = body.text || "";
+      const wordCount = inputText.split(/\s+/).filter(Boolean).length;
+
+      if (!inputText.trim()) return res.status(400).json({ error: "No text provided." });
 
       if (usage.wordsUsed >= usage.wordsLimit) {
         return res.status(429).json({
@@ -199,30 +205,73 @@ ${text.slice(0, 3000)}`
         });
       }
 
-      const humanized = await callGroq([{
-        role: "user",
-        content: `Rewrite this text to sound naturally human-written. Use varied sentence lengths, contractions, and a conversational but professional tone. Avoid AI patterns like starting every sentence with "I" or overusing transitional phrases.
+      const HUMANIZE_INSTRUCTIONS = `Rewrite the text below so it reads as naturally human-written. Apply ALL of these concretely — don't just gesture at them:
+
+1. VARY SENTENCE LENGTH a lot. Mix short punchy sentences (4-8 words) with longer ones (20+ words). A flat, even rhythm is the single biggest tell of AI writing.
+2. USE CONTRACTIONS naturally wherever a real person would (don't, I've, it's, that's, we're).
+3. CUT stock AI phrases entirely — do not use: "moreover", "furthermore", "in today's fast-paced world", "it's important to note", "delve into", "leverage", "robust", "seamless", "navigate the complexities", "plays a crucial role", "in conclusion", "a testament to", "unlock the potential", or similar corporate-blog filler.
+4. DON'T start consecutive sentences the same way (e.g. repeating "I" or "This"). Vary sentence openers.
+5. MINIMIZE transition words like "however", "additionally", "consequently" — real people often just juxtapose ideas without announcing the connection.
+6. Prefer plain, specific, concrete language over abstract corporate language.
+7. Keep the original meaning, facts, and overall structure intact. Do not invent new claims.
+
+Text to rewrite:
+${inputText}
+
+Return ONLY the rewritten text. No preamble, no explanation, no markdown.`;
+
+      let humanized = await callGroq([{ role: "user", content: HUMANIZE_INSTRUCTIONS }], 1500);
+      let scoreResult = detectAIScore(humanized);
+
+      // One corrective pass if still scoring high, naming the specific signals to fix.
+      if (scoreResult.aiPercent > 45) {
+        const weakSignals = Object.entries(scoreResult.signals)
+          .filter(([, v]) => v > 55)
+          .map(([k]) => k);
+
+        const FIX_MAP = {
+          burstiness: "Vary your sentence lengths much more dramatically — alternate very short sentences with longer ones.",
+          lexicalDiversity: "Use a wider range of vocabulary — avoid repeating the same words and phrasings.",
+          stockPhrases: "Remove ALL generic business/AI phrases like 'leverage', 'robust', 'seamless', 'delve into', 'moreover'.",
+          transitionDensity: "Cut almost all formal transition words (however, furthermore, additionally, consequently).",
+          contractionUsage: "Add more natural contractions (don't, it's, I've, we're).",
+          sentenceOpenerRepetition: "Stop starting multiple sentences with the same word — vary how each sentence begins.",
+          punctuationPatterns: "Reduce em-dashes and semicolons — use simpler punctuation like periods and commas.",
+          sentenceLength: "Shorten your average sentence length — break up long sentences into shorter, punchier ones.",
+        };
+
+        const fixes = weakSignals.map(s => FIX_MAP[s]).filter(Boolean);
+
+        if (fixes.length > 0) {
+          const retryPrompt = `This rewrite still reads as AI-generated. Rewrite it again, specifically fixing these issues:
+${fixes.map(f => `- ${f}`).join("\n")}
+
+Keep the same meaning and key facts. Make it sound like a real person wrote it in one sitting, with natural imperfections in rhythm.
 
 Text:
-${body.text}
+${humanized}
 
-Return ONLY the rewritten text. No explanation.`
-      }], 1500);
+Return ONLY the rewritten text. No preamble, no explanation.`;
+
+          const retried = await callGroq([{ role: "user", content: retryPrompt }], 1500);
+          const retriedScore = detectAIScore(retried);
+
+          // Keep whichever version scored better
+          if (retriedScore.aiPercent < scoreResult.aiPercent) {
+            humanized = retried;
+            scoreResult = retriedScore;
+          }
+        }
+      }
 
       await incrementUsage(ip, "words", wordCount);
 
-      const detectResult = await callGroq([{
-        role: "user",
-        content: `Analyze this text and estimate what percentage was written by AI vs a human.
-Return ONLY JSON like: {"aiPercent": 22, "humanPercent": 78}
-No explanation. No markdown. Just JSON.
-
-Text:
-${humanized.slice(0, 3000)}`
-      }], 100);
-
-      const { aiPercent, humanPercent } = JSON.parse(detectResult.replace(/```json|```/g, "").trim());
-      return res.status(200).json({ humanized, aiPercent, humanPercent });
+      return res.status(200).json({
+        humanized,
+        aiPercent: scoreResult.aiPercent,
+        humanPercent: scoreResult.humanPercent,
+        confidence: scoreResult.confidence,
+      });
     }
 
     // ── GENERATE COVER LETTER ─────────────────────────────────────────────
