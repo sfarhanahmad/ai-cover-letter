@@ -556,11 +556,13 @@
     const btn = document.getElementById("detectBtn");
     btn.disabled = true; btn.textContent = "Checking…";
     try {
-      const data = await apiCall({ action: "detect", text });
-      document.getElementById("aiPct").textContent = data.aiPercent;
-      document.getElementById("humanPct").textContent = data.humanPercent;
-      document.getElementById("detectResult").style.display = "block";
-      drawPie(data.aiPercent, data.humanPercent);
+     const data = await apiCall({ action: "detect", text });
+document.getElementById("aiPct").textContent = data.aiPercent;
+document.getElementById("humanPct").textContent = data.humanPercent;
+const confLabel = data.confidence === "high" ? "High confidence" : data.confidence === "medium" ? "Medium confidence" : "Low confidence (short text)";
+document.getElementById("detectConfidence").textContent = confLabel;
+document.getElementById("detectResult").style.display = "block";
+drawPie(data.aiPercent, data.humanPercent);
     } catch (err) {
       showError("detectError", err.message);
     } finally {
