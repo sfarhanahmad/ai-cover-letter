@@ -287,17 +287,19 @@
         <div style="font-size:14px;font-weight:700;margin-bottom:12px">🤖 AI Content Check</div>
         <div id="detectError"></div>
         <button class="btn btn-secondary btn-sm" onclick="detectAI()" id="detectBtn">Check AI %</button>
-        <div id="detectResult" style="margin-top:12px;display:none">
-          <div class="pie-wrap">
-            <canvas class="pie" id="pieChart" width="72" height="72"></canvas>
-            <div class="pie-labels">
-              <div class="pie-label"><div class="pie-dot" style="background:#dc2626"></div><span id="aiPct">—</span>% AI-generated</div>
-              <div class="pie-label"><div class="pie-dot" style="background:#059669"></div><span id="humanPct">—</span>% Human</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+  <div id="detectResult" style="margin-top:12px;display:none">
+  <div class="pie-wrap">
+    <canvas class="pie" id="pieChart" width="72" height="72"></canvas>
+    <div class="pie-labels">
+      <div class="pie-label"><div class="pie-dot" style="background:#dc2626"></div><span id="aiPct">—</span>% AI-generated</div>
+      <div class="pie-label"><div class="pie-dot" style="background:#059669"></div><span id="humanPct">—</span>% Human</div>
+      <div style="font-size:11px;color:var(--text3);margin-top:6px" id="detectConfidence"></div>
+    </div>
+  </div>
+  <div style="margin-top:10px;font-size:12px;color:var(--text3)">
+    Based on writing-style analysis (sentence variation, vocabulary, common AI phrasing) — a heuristic estimate, not a certified detector.
+  </div>
+</div>
       <!-- Humanizer -->
       <div class="humanizer-wrap">
         <div style="font-size:14px;font-weight:700;margin-bottom:4px">✍ Humanize This Letter</div>
