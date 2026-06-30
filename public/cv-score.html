@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV / Resume ATS Scorer — CoverCraft AI</title>
+  <meta name="description" content="Score your CV or resume for ATS compatibility and quality. Free AI-powered CV checker." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus Jakarta Sans:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/shared.css" />
+  <style>
+    .score-hero {
+      text-align: center; padding: 32px 24px;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); margin-bottom: 24px;
+    }
+    .score-circle {
+      width: 120px; height: 120px; border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      border: 6px solid var(--blue); position: relative;
+    }
+    .score-number { font-size: 36px; font-weight: 900; font-family: 'Plus Jakarta Sans', sans-serif; color: var(--blue); line-height: 1; }
+    .score-max    { font-size: 13px; color: var(--text3); }
+    .grade-badge  {
+      font-size: 28px; font-weight: 900; font-family: 'Plus Jakarta Sans', sans-serif;
+      padding: 6px 20px; border-radius: 8px; display: inline-block;
+      background: var(--blue-s); color: var(--blue); border: 2px solid var(--blue-b);
+      margin-bottom: 8px;
+    }
+    .ats-score-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 99px; font-size: 13px; font-weight: 600;
+      background: var(--bg3); color: var(--text2); border: 1px solid var(--border);
+    }
+
+    .cat-grid { display: grid; gap: 14px; }
+    .cat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; }
+    .cat-top  { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .cat-name { font-size: 14px; font-weight: 600; }
+    .cat-pts  { font-size: 13px; font-weight: 700; color: var(--blue); }
+    .cat-feedback { font-size: 13px; color: var(--text2); margin-top: 6px; }
+
+    .list-section { margin-bottom: 20px; }
+    .list-title { font-size: 14px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .list-items { display: flex; flex-direction: column; gap: 6px; }
+    .list-item  { font-size: 14px; padding: 8px 12px; border-radius: var(--radius-sm); }
+    .list-item.good { background: #f0fdf4; color: #166534; border: 1px solid #86efac; }
+    .list-item.bad  { background: #fef2f2; color: #991b1b; border: 1px solid #fca5a5; }
+    [data-theme="dark"] .list-item.good { background: #052e16; color: #4ade80; border-color: #166534; }
+    [data-theme="dark"] .list-item.bad  { background: #3b0f0f; color: #f87171; border-color: #7f1d1d; }
+
+    .keywords-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .keyword-chip {
+      padding: 5px 12px; border-radius: 99px; font-size: 13px; font-weight: 500;
+      background: #fef9c3; color: #854d0e; border: 1px solid #fde047;
+    }
+    [data-theme="dark"] .keyword-chip { background: #422006; color: #fbbf24; border-color: #78350f; }
+
+    .usage-inline {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+      padding: 12px 16px; background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+<div id="navMount"></div>
+
+<div class="page">
+  <h1 class="page-title">📋 CV / Resume ATS Scorer</h1>
+  <p class="page-sub">Paste your CV text to get an ATS compatibility score, keyword analysis, and actionable improvements.</p>
+
+  <!-- Usage inline -->
+  <div class="usage-inline">
+    <span style="font-size:13px;font-weight:600;color:var(--text2)">CV Scores today:</span>
+    <span class="limit-badge" id="cvScoreBadge">— / —</span>
+    <span style="font-size:12px;color:var(--text3);margin-left:auto">Resets midnight UTC ·
+      <a href="#" onclick="showAdModal();return false">Watch ads to unlock more →</a>
+    </span>
+  </div>
+
+  <div class="card" style="margin-bottom:24px">
+    <div class="card-body">
+      <div class="form-group">
+        <label>Paste Your CV / Resume Text *</label>
+        <textarea id="cvText" rows="10" placeholder="Paste your full CV or resume text here. The more detail, the more accurate the score…"></textarea>
+        <div style="font-size:12px;color:var(--text3);margin-top:4px" id="cvWordCount">0 words</div>
+      </div>
+      <div class="form-group">
+        <label>Job Description <span style="font-weight:400;color:var(--text3)">(optional — improves relevance scoring)</span></label>
+        <textarea id="jdText" rows="4" placeholder="Paste the job description for role-specific keyword matching and relevance analysis…"></textarea>
+      </div>
+
+      <div id="scoreError"></div>
+
+      <button class="btn btn-primary btn-lg" onclick="scoreCV()" id="scoreBtn" style="width:100%">
+        🔍 Score My CV
+      </button>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div id="results" style="display:none">
+
+    <!-- Score hero -->
+    <div class="score-hero">
+      <div class="score-circle" id="scoreCircle">
+        <div class="score-number" id="scoreNum">—</div>
+        <div class="score-max">/100</div>
+      </div>
+      <div class="grade-badge" id="gradeBadge">—</div>
+      <div style="margin-top:10px">
+        <span class="ats-score-pill">🤖 ATS Score: <strong id="atsNum">—</strong>/100</span>
+      </div>
+      <p id="overallText" style="margin-top:14px;font-size:14px;color:var(--text2);max-width:500px;margin-left:auto;margin-right:auto"></p>
+    </div>
+
+    <!-- Categories -->
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-body">
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:16px">📊 Score Breakdown</h3>
+        <div class="cat-grid" id="catGrid"></div>
+      </div>
+    </div>
+
+    <!-- Strengths + Improvements -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+      <div class="card">
+        <div class="card-body">
+          <div class="list-title">✅ Strengths</div>
+          <div class="list-items" id="strengthsList"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="list-title">⚠ Improvements</div>
+          <div class="list-items" id="improvementsList"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Missing Keywords -->
+    <div class="card" id="keywordsSection" style="margin-bottom:20px;display:none">
+      <div class="card-body">
+        <div class="list-title">🔑 Missing Keywords</div>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:12px">These keywords appear in the job description but not in your CV.</p>
+        <div class="keywords-wrap" id="keywordsList"></div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-secondary" onclick="scoreCV()">↻ Re-score</button>
+      <button class="btn btn-secondary" onclick="copyResults()">⎘ Copy Report</button>
+      <a href="/cv.html" class="btn btn-primary">✏️ Build CV →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Ad Modal -->
+<div id="adModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center">
+  <div class="card" style="max-width:420px;width:90%;margin:0 auto">
+    <div class="card-body">
+      <h3 style="font-size:18px;font-weight:700;margin-bottom:8px">🎬 Watch 5 Ads to Unlock More</h3>
+      <p style="font-size:14px;color:var(--text2);margin-bottom:20px">Unlock 8 CV scores/day (was 3).</p>
+      <div style="display:flex;gap:8px;justify-content:center;margin-bottom:20px" id="adDots"></div>
+      <button class="btn btn-primary" style="width:100%" onclick="watchAd()" id="adBtn">▶ Watch Ad</button>
+      <button class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="closeAdModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="/shared.js"></script>
+<script>
+  document.getElementById("navMount").innerHTML = buildNav("/cv-score.html");
+
+  let usage = null;
+  let lastResult = null;
+
+  // Word count
+  document.getElementById("cvText").addEventListener("input", function() {
+    document.getElementById("cvWordCount").textContent = wordCount(this.value) + " words";
+  });
+
+  async function init() {
+    usage = await fetchUsage();
+    updateBadge();
+  }
+
+  function updateBadge() {
+    if (!usage) return;
+    const badge = document.getElementById("cvScoreBadge");
+    badge.textContent = `${usage.cvScoreUsed} / ${usage.cvScoreLimit}`;
+    const pct = usage.cvScoreUsed / usage.cvScoreLimit;
+    badge.className = "limit-badge" + (pct >= 1 ? " danger" : pct >= 0.8 ? " warn" : "");
+  }
+
+  async function scoreCV() {
+    const cvText = document.getElementById("cvText").value.trim();
+    if (!cvText) { showError("scoreError", "Please paste your CV text."); return; }
+    if (wordCount(cvText) < 50) { showError("scoreError", "CV seems too short. Please paste the full text."); return; }
+    clearError("scoreError");
+
+    const btn = document.getElementById("scoreBtn");
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Analysing…';
+
+    try {
+      const data = await withRetry(() => apiCall({
+        action: "cv_score",
+        cvText,
+        jd: document.getElementById("jdText").value.trim(),
+      }));
+
+      lastResult = data;
+      renderResults(data);
+      invalidateUsageCache();
+      usage = await fetchUsage();
+      updateBadge();
+      document.getElementById("results").style.display = "block";
+      document.getElementById("results").scrollIntoView({ behavior: "smooth" });
+    } catch (err) {
+      showError("scoreError", err.message);
+      if (err.limitReached) showAdModal();
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = "🔍 Score My CV";
+    }
+  }
+
+  function renderResults(data) {
+    // Hero
+    document.getElementById("scoreNum").textContent = data.score;
+    document.getElementById("atsNum").textContent = data.atsScore;
+    document.getElementById("gradeBadge").textContent = data.grade;
+    document.getElementById("overallText").textContent = data.overall;
+
+    // Color the circle by score
+    const circle = document.getElementById("scoreCircle");
+    const color = data.score >= 80 ? "var(--green)" : data.score >= 60 ? "var(--blue)" : data.score >= 40 ? "var(--warning)" : "var(--red)";
+    circle.style.borderColor = color;
+    document.getElementById("scoreNum").style.color = color;
+
+    // Categories
+    document.getElementById("catGrid").innerHTML = data.categories.map(c => {
+      const pct = Math.round((c.score / c.max) * 100);
+      const color = pct >= 75 ? "var(--green)" : pct >= 50 ? "var(--blue)" : "var(--warning)";
+      return `<div class="cat-card">
+        <div class="cat-top">
+          <span class="cat-name">${c.name}</span>
+          <span class="cat-pts" style="color:${color}">${c.score} / ${c.max}</span>
+        </div>
+        <div class="score-bar-track">
+          <div class="score-bar-fill" style="width:${pct}%;background:${color}"></div>
+        </div>
+        <div class="cat-feedback">${c.feedback}</div>
+      </div>`;
+    }).join("");
+
+    // Strengths
+    document.getElementById("strengthsList").innerHTML = data.strengths.map(s =>
+      `<div class="list-item good">✓ ${s}</div>`).join("");
+
+    // Improvements
+    document.getElementById("improvementsList").innerHTML = data.improvements.map(s =>
+      `<div class="list-item bad">→ ${s}</div>`).join("");
+
+    // Missing keywords
+    if (data.missingKeywords && data.missingKeywords.length > 0) {
+      document.getElementById("keywordsSection").style.display = "block";
+      document.getElementById("keywordsList").innerHTML = data.missingKeywords.map(k =>
+        `<span class="keyword-chip">${k}</span>`).join("");
+    } else {
+      document.getElementById("keywordsSection").style.display = "none";
+    }
+  }
+
+  function copyResults() {
+    if (!lastResult) return;
+    const r = lastResult;
+    const text = [
+      `CV Score Report — CoverCraft AI`,
+      `Score: ${r.score}/100  |  Grade: ${r.grade}  |  ATS: ${r.atsScore}/100`,
+      ``,
+      r.overall,
+      ``,
+      `── Score Breakdown ──`,
+      ...r.categories.map(c => `${c.name}: ${c.score}/${c.max}\n  ${c.feedback}`),
+      ``,
+      `── Strengths ──`,
+      ...r.strengths.map(s => `✓ ${s}`),
+      ``,
+      `── Improvements ──`,
+      ...r.improvements.map(s => `→ ${s}`),
+      r.missingKeywords?.length ? `\n── Missing Keywords ──\n${r.missingKeywords.join(", ")}` : "",
+    ].filter(Boolean).join("\n");
+    copyText(text);
+  }
+
+  // ── Ad Modal ──────────────────────────────────────
+  let adsWatched = 0;
+  function showAdModal() { document.getElementById("adModal").style.display = "flex"; renderAdDots(); }
+  function closeAdModal() { document.getElementById("adModal").style.display = "none"; }
+  function renderAdDots() {
+    document.getElementById("adDots").innerHTML = Array.from({length:5}, (_,i) =>
+      `<div style="width:12px;height:12px;border-radius:50%;background:${i<adsWatched?'var(--green)':'var(--border)'};transition:background .3s"></div>`
+    ).join("");
+  }
+  async function watchAd() {
+    window.open("https://omg10.com/4/11194141", "_blank");
+    await new Promise(r => setTimeout(r, 5000));
+    try {
+      const res = await apiCall({ action: "watch_ad" });
+      adsWatched = res.adsWatched;
+      renderAdDots();
+      if (res.bonusUnlocked) {
+        showToast("🎉 Bonus unlocked! 8 CV scores today.", "success");
+        closeAdModal();
+        invalidateUsageCache();
+        usage = await fetchUsage();
+        updateBadge();
+      }
+    } catch { showToast("Ad not credited. Try again.", "error"); }
+  }
+
+  init();
+</script>
+</body>
+</html>

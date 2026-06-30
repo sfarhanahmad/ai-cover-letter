@@ -1,845 +1,835 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>(function(s){s.dataset.zone='11194135',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Free CV & Resume Builder — 5 professional templates, live preview, color picker, PDF download. No signup."/>
-  <title>Free CV Builder — Professional Templates | CoverCraft AI</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800;900&family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Builder — CoverCraft AI</title>
+  <meta name="description" content="Free online CV and resume builder. 5 professional templates, photo upload, live preview, PDF download." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/shared.css" />
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#f1f5f9;--surface:#fff;--surface2:#f8fafc;--border:#e2e8f0;--border2:#cbd5e1;
-      --text:#0f172a;--sub:#475569;--muted:#94a3b8;
-      --blue:#2563eb;--blue-h:#1d4ed8;--blue-s:#eff6ff;--blue-b:#bfdbfe;
-      --green:#059669;--red:#dc2626;--warning:#d97706;
-      --r:10px;--shadow:0 1px 3px rgba(0,0,0,.07),0 4px 16px rgba(0,0,0,.06);
-      --shadow-lg:0 8px 40px rgba(0,0,0,.14);
+    /* ── Layout ── */
+    .builder-layout {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 24px;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 24px;
+      align-items: start;
     }
-    [data-theme="dark"]{
-      --bg:#0d1117;--surface:#161b22;--surface2:#1c2128;--border:#30363d;--border2:#484f58;
-      --text:#e6edf3;--sub:#8b949e;--muted:#6e7681;
-      --blue:#3b82f6;--blue-h:#60a5fa;--blue-s:#1e3a5f;--blue-b:#1e40af;
-      --shadow:0 1px 3px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);
+    .form-panel { position: sticky; top: 74px; max-height: calc(100vh - 100px); overflow-y: auto; }
+    .preview-panel { min-height: 400px; }
+
+    /* ── Template selector ── */
+    .template-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 8px; }
+    .template-btn {
+      padding: 8px 6px; border-radius: var(--radius-sm);
+      border: 2px solid var(--border); background: var(--bg2);
+      cursor: pointer; text-align: center; font-size: 11px;
+      font-weight: 600; color: var(--text2); transition: all .15s;
     }
-    html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
-    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s;overflow:hidden}
-    @media(max-width:900px){body{overflow:auto}}
+    .template-btn:hover  { border-color: var(--blue); color: var(--blue); }
+    .template-btn.active { border-color: var(--blue); background: var(--blue-s); color: var(--blue); }
+    .template-icon { font-size: 18px; display: block; margin-bottom: 4px; }
 
-    /* ── TOP BAR ── */
-    .topbar{height:56px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 1.25rem;gap:1rem;position:fixed;top:0;left:0;right:0;z-index:600}
-    .tb-brand{display:flex;align-items:center;gap:7px;text-decoration:none;flex-shrink:0}
-    .tb-logo{width:28px;height:28px;background:var(--blue);border-radius:7px;display:flex;align-items:center;justify-content:center}
-    .tb-logo svg{width:13px;height:13px}
-    .tb-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:.95rem;font-weight:800;color:var(--text);letter-spacing:-.03em}
-    .tb-sep{width:1px;height:24px;background:var(--border);flex-shrink:0}
-    .tb-title{font-size:.82rem;font-weight:600;color:var(--sub);flex-shrink:0}
-    .tb-nav{display:flex;align-items:center;gap:2px;flex:1}
-    @media(max-width:640px){.tb-nav{display:none}}
-    .tb-a{font-size:.78rem;font-weight:500;color:var(--muted);text-decoration:none;padding:4px 9px;border-radius:6px;transition:all .15s}
-    .tb-a:hover,.tb-a.active{color:var(--blue);background:var(--blue-s)}
-    .tb-right{margin-left:auto;display:flex;align-items:center;gap:7px}
-    .tb-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;border:none;white-space:nowrap}
-    .tb-btn.primary{background:var(--blue);color:#fff}
-    .tb-btn.primary:hover{background:var(--blue-h);transform:translateY(-1px);box-shadow:0 3px 12px rgba(37,99,235,.3)}
-    .tb-btn.sec{background:var(--surface2);color:var(--sub);border:1px solid var(--border2)}
-    .tb-btn.sec:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-s)}
-    .icon-btn{width:34px;height:34px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--sub);transition:all .15s;flex-shrink:0}
-    .icon-btn:hover{background:var(--blue-s);color:var(--blue);border-color:var(--blue-b)}
+    /* ── Color picker ── */
+    .color-presets { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+    .color-dot {
+      width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
+      border: 3px solid transparent; transition: all .15s;
+    }
+    .color-dot.active { border-color: var(--text); transform: scale(1.15); }
+    .color-custom-row { display: flex; gap: 8px; align-items: center; }
+    .color-custom-row input[type="color"] { width: 40px; height: 32px; border-radius: 6px; padding: 2px; cursor: pointer; border: 1px solid var(--border); }
 
-    /* ── LAYOUT ── */
-    .layout{display:grid;grid-template-columns:320px 1fr;height:calc(100vh - 56px);margin-top:56px}
-    @media(max-width:900px){.layout{grid-template-columns:1fr;height:auto}}
+    /* ── Photo upload ── */
+    .photo-wrap {
+      border: 2px dashed var(--border); border-radius: var(--radius-sm);
+      padding: 16px; text-align: center; cursor: pointer;
+      transition: all .18s; position: relative; overflow: hidden;
+    }
+    .photo-wrap:hover { border-color: var(--blue); background: var(--blue-s); }
+    .photo-wrap.has-photo { border-style: solid; border-color: var(--green); }
+    .photo-wrap input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; z-index: 2; }
+    .photo-preview-img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 3px solid var(--blue); display: none; margin: 0 auto 8px; }
+    .photo-remove { font-size: 12px; color: var(--red); cursor: pointer; background: none; border: none; margin-top: 4px; position: relative; z-index: 3; }
 
-    /* ── LEFT PANEL ── */
-    .panel{background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;height:100%;scrollbar-width:thin}
-    .panel::-webkit-scrollbar{width:4px}
-    .panel::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
-    @media(max-width:900px){.panel{height:auto;border-right:none;border-bottom:1px solid var(--border)}}
+    /* ── Section cards ── */
+    .form-section {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); margin-bottom: 12px; overflow: hidden;
+    }
+    .form-section-header {
+      padding: 13px 16px; display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; user-select: none; transition: background .15s;
+      font-weight: 700; font-size: 14px;
+    }
+    .form-section-header:hover { background: var(--bg2); }
+    .form-section-body { padding: 0 16px 16px; border-top: 1px solid var(--border); display: none; }
+    .form-section-body.open { display: block; }
 
-    /* Template tabs */
-    .tpl-header{padding:1rem 1.25rem .75rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:10}
-    .tpl-header-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.75rem}
-    .tpl-tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
-    .tpl-tabs::-webkit-scrollbar{display:none}
-    .tpl-tab{flex-shrink:0;cursor:pointer;border-radius:9px;border:2px solid var(--border);overflow:hidden;transition:all .15s;background:var(--surface2);width:64px}
-    .tpl-tab:hover{border-color:var(--blue-b)}
-    .tpl-tab.active{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
-    .tpl-tab-img{width:64px;height:80px;display:block;object-fit:cover}
-    .tpl-tab-name{font-size:.58rem;font-weight:600;text-align:center;padding:3px 2px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .tpl-tab.active .tpl-tab-name{color:var(--blue)}
+    /* ── Repeater ── */
+    .repeater-item {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 14px; margin-bottom: 10px; position: relative;
+    }
+    .repeater-remove {
+      position: absolute; top: 10px; right: 10px;
+      font-size: 12px; color: var(--red); cursor: pointer;
+      background: none; border: none; font-weight: 700;
+    }
+    .add-item-btn { width: 100%; padding: 8px; border: 1.5px dashed var(--border); border-radius: var(--radius-sm); background: none; cursor: pointer; color: var(--blue); font-size: 13px; font-weight: 600; transition: all .15s; }
+    .add-item-btn:hover { background: var(--blue-s); border-color: var(--blue); }
 
-    /* Color row */
-    .color-section{padding:.85rem 1.25rem;border-bottom:1px solid var(--border)}
-    .color-section-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.6rem}
-    .color-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-    .cswatch{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:all .15s;flex-shrink:0;position:relative}
-    .cswatch:hover{transform:scale(1.2)}
-    .cswatch.active::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:2px solid var(--blue)}
-    .cpicker-wrap{width:24px;height:24px;border-radius:50%;overflow:hidden;cursor:pointer;flex-shrink:0;border:2px solid var(--border2);background:conic-gradient(red 0deg,yellow 60deg,lime 120deg,cyan 180deg,blue 240deg,magenta 300deg,red 360deg)}
-    .cpicker-wrap input{opacity:0;width:100%;height:100%;cursor:pointer}
+    /* ── Preview ── */
+    .preview-controls {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;
+    }
+    .zoom-btn { padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg2); cursor: pointer; font-size: 13px; font-weight: 600; transition: all .15s; }
+    .zoom-btn:hover { background: var(--bg3); }
 
-    /* Form sections */
-    .sections-wrap{padding:.5rem 0 2rem}
-    .form-sect{border-bottom:1px solid var(--border)}
-    .form-sect-head{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.25rem;cursor:pointer;user-select:none;transition:background .12s}
-    .form-sect-head:hover{background:var(--surface2)}
-    .form-sect-left{display:flex;align-items:center;gap:9px}
-    .form-sect-icon{width:28px;height:28px;border-radius:7px;background:var(--blue-s);border:1px solid var(--blue-b);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .form-sect-icon svg{color:var(--blue)}
-    .form-sect-title{font-size:.84rem;font-weight:600;color:var(--text)}
-    .form-sect-arrow{color:var(--muted);transition:transform .2s;flex-shrink:0}
-    .form-sect-head.open .form-sect-arrow{transform:rotate(180deg)}
-    .form-sect-body{display:none;padding:.25rem 1.25rem 1.25rem}
-    .form-sect-body.open{display:flex;flex-direction:column;gap:.7rem}
+    .preview-container {
+      background: #666; border-radius: var(--radius); overflow: hidden;
+      display: flex; align-items: flex-start; justify-content: center;
+      min-height: 500px; padding: 20px;
+    }
+    .preview-scaler { transform-origin: top center; transition: transform .2s; }
 
-    /* Fields */
-    .field{display:flex;flex-direction:column;gap:4px}
-    .field label{font-size:.73rem;font-weight:600;color:var(--sub)}
-    .field input,.field textarea,.field select{font-family:'Inter',sans-serif;font-size:.83rem;color:var(--text);background:var(--surface2);border:1.5px solid var(--border2);border-radius:8px;padding:8px 10px;width:100%;outline:none;transition:border-color .15s,box-shadow .15s,background .15s}
-    .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blue);background:var(--surface);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
-    .field input::placeholder,.field textarea::placeholder{color:var(--muted)}
-    .field textarea{resize:vertical;min-height:72px;line-height:1.55}
-    .fg2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
-
-    /* Repeat items */
-    .rep-item{background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:.85rem;margin-bottom:.6rem;position:relative}
-    .rep-item-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.65rem}
-    .rep-item-label{font-size:.78rem;font-weight:700;color:var(--text)}
-    .rep-actions{display:flex;gap:4px}
-    .rep-btn{background:none;border:none;cursor:pointer;color:var(--muted);padding:3px 6px;border-radius:5px;font-size:.78rem;transition:all .15s;line-height:1}
-    .rep-btn:hover{background:var(--bg);color:var(--red)}
-    .rep-btn.up:hover,.rep-btn.dn:hover{color:var(--blue)}
-    .add-btn{display:flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;color:var(--blue);background:var(--blue-s);border:1.5px dashed var(--blue-b);border-radius:8px;padding:7px 12px;cursor:pointer;transition:all .15s;width:100%;justify-content:center;font-family:'Inter',sans-serif}
-    .add-btn:hover{background:var(--blue-b);border-style:solid}
-
-    /* Skill slider */
-    .skill-slider{-webkit-appearance:none;width:100%;height:4px;border-radius:2px;background:var(--border2);outline:none;cursor:pointer;border:none;padding:0}
-    .skill-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--blue);cursor:pointer;border:2px solid #fff;box-shadow:0 0 0 1px var(--blue)}
-
-    /* ── RIGHT — PREVIEW ── */
-    .preview-wrap{background:#d1d5db;overflow:auto;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem;gap:1rem}
-    [data-theme="dark"] .preview-wrap{background:#090d12}
-    @media(max-width:900px){.preview-wrap{min-height:600px}}
-    .preview-controls{display:flex;align-items:center;gap:8px;flex-shrink:0}
-    .zoom-btn{width:30px;height:30px;border-radius:6px;background:rgba(255,255,255,.9);border:1px solid rgba(0,0,0,.12);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700;color:#1a1a1a;transition:all .15s}
-    .zoom-btn:hover{background:#fff}
-    .zoom-label{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.8);min-width:40px;text-align:center}
-    .preview-scaler{transform-origin:top center;transition:transform .15s}
-    /* A4 page */
-    .cv-page{width:794px;min-height:1123px;background:#fff;box-shadow:0 4px 60px rgba(0,0,0,.22);color:#1a1a1a;font-size:10pt;line-height:1.5;position:relative;font-family:'Inter',sans-serif}
-
-    /* Toast */
-    #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:#0f172a;color:#fff;padding:10px 22px;border-radius:999px;font-size:.81rem;font-weight:500;transition:transform .3s cubic-bezier(.34,1.56,.64,1);z-index:9999;pointer-events:none;white-space:nowrap}
-    #toast.show{transform:translateX(-50%) translateY(0)}
-    #toast.ok{background:#059669} #toast.bad{background:#dc2626}
-
-    /* Print */
-    @media print{
-      .topbar,.panel,.preview-controls{display:none!important}
-      body{overflow:visible!important}
-      .layout{display:block!important;margin-top:0!important;height:auto!important}
-      .preview-wrap{padding:0!important;background:white!important;display:block!important}
-      .preview-scaler{transform:none!important}
-      .cv-page{box-shadow:none!important;width:100%!important}
+    /* ── Save bar ── */
+    .save-bar-cv {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 16px; background: var(--blue-s); border: 1px solid var(--blue-b);
+      border-radius: var(--radius-sm); margin-bottom: 12px; flex-wrap: wrap;
     }
 
-    /* ══════════════════════════════════════════
-       CV TEMPLATE STYLES
-    ══════════════════════════════════════════ */
+    /* ── CV Templates (A4 = 794×1123px) ── */
+    .cv-a4 {
+      width: 794px; min-height: 1123px; background: #fff;
+      font-family: 'Inter', sans-serif; color: #1a1a1a; position: relative;
+      overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,.25);
+    }
+    .cv-a4 * { box-sizing: border-box; }
 
-    /* ── TEMPLATE 1: Classic (resume.io clean) ── */
-    .t-classic .cv-header{padding:36px 48px 24px}
-    .t-classic .cv-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:26pt;font-weight:900;letter-spacing:-.04em;color:#0f172a;line-height:1.05;margin-bottom:4px}
-    .t-classic .cv-jobtitle{font-size:11pt;font-weight:500;color:var(--AC);margin-bottom:12px}
-    .t-classic .cv-contacts{display:flex;gap:14px;flex-wrap:wrap;font-size:8.5pt;color:#64748b;border-top:2px solid var(--AC);padding-top:10px}
-    .t-classic .cv-contact-item{display:flex;align-items:center;gap:4px}
-    .t-classic .cv-body{display:grid;grid-template-columns:1fr 200px;gap:0;padding:24px 48px}
-    .t-classic .cv-main{padding-right:32px;border-right:1px solid #e2e8f0}
-    .t-classic .cv-side{padding-left:28px}
-    .t-classic .cv-section{margin-bottom:22px}
-    .t-classic .cv-section-title{font-size:7.5pt;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--AC);border-bottom:2px solid var(--AC);padding-bottom:4px;margin-bottom:10px}
-    .t-classic .cv-item{margin-bottom:13px}
-    .t-classic .cv-item-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:2px}
-    .t-classic .cv-item-title{font-weight:700;font-size:10pt;color:#0f172a}
-    .t-classic .cv-item-date{font-size:8pt;color:#94a3b8;white-space:nowrap;flex-shrink:0}
-    .t-classic .cv-item-org{font-size:9pt;font-weight:600;color:var(--AC);margin-bottom:3px}
-    .t-classic .cv-item-desc{font-size:8.5pt;color:#475569;line-height:1.6}
-    .t-classic .cv-summary{font-size:9.5pt;color:#475569;line-height:1.7;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #f1f5f9}
-    .t-classic .skill-row{display:flex;flex-direction:column;gap:6px;margin-bottom:6px}
-    .t-classic .skill-name{font-size:8.5pt;color:#0f172a;font-weight:500;margin-bottom:3px}
-    .t-classic .skill-bar{height:4px;border-radius:2px;background:#f1f5f9;overflow:hidden}
-    .t-classic .skill-fill{height:100%;border-radius:2px;background:var(--AC)}
-    .t-classic .lang-item{display:flex;justify-content:space-between;font-size:8.5pt;margin-bottom:5px;padding-bottom:5px;border-bottom:1px solid #f8fafc}
-    .t-classic .lang-level{color:var(--AC);font-weight:600}
-    .t-classic .cv-tag{display:inline-block;font-size:7.5pt;padding:2px 8px;border-radius:3px;background:#f1f5f9;color:#475569;margin:2px 2px 2px 0}
-
-    /* ── TEMPLATE 2: Executive (dark header sidebar) ── */
-    .t-executive .cv-header{background:var(--AC);padding:40px 48px 32px}
-    .t-executive .cv-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:28pt;font-weight:900;letter-spacing:-.045em;color:#fff;line-height:1.05;margin-bottom:5px}
-    .t-executive .cv-jobtitle{font-size:11.5pt;color:rgba(255,255,255,.75);font-weight:400;margin-bottom:14px;letter-spacing:.01em}
-    .t-executive .cv-contacts{display:flex;gap:18px;flex-wrap:wrap;font-size:8.5pt;color:rgba(255,255,255,.7)}
-    .t-executive .cv-contact-item{display:flex;align-items:center;gap:5px}
-    .t-executive .cv-body{display:grid;grid-template-columns:230px 1fr;min-height:900px}
-    .t-executive .cv-side{background:#f8fafc;padding:28px 22px;border-right:1px solid #e8ecf0}
-    .t-executive .cv-main{padding:28px 36px 28px 32px}
-    .t-executive .cv-section{margin-bottom:22px}
-    .t-executive .cv-section-title{font-size:7.5pt;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--AC);border-bottom:2px solid var(--AC);padding-bottom:4px;margin-bottom:10px}
-    .t-executive .cv-item{margin-bottom:14px}
-    .t-executive .cv-item-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:2px}
-    .t-executive .cv-item-title{font-weight:700;font-size:10.5pt;color:#0f172a}
-    .t-executive .cv-item-date{font-size:8pt;color:#94a3b8;white-space:nowrap;flex-shrink:0}
-    .t-executive .cv-item-org{font-size:9pt;font-weight:600;color:var(--AC);margin-bottom:4px}
-    .t-executive .cv-item-desc{font-size:8.5pt;color:#475569;line-height:1.6}
-    .t-executive .cv-summary{font-size:9.5pt;color:#475569;line-height:1.7;margin-bottom:22px}
-    .t-executive .skill-row{margin-bottom:10px}
-    .t-executive .skill-name{font-size:8.5pt;color:#334155;font-weight:500;margin-bottom:4px}
-    .t-executive .skill-bar{height:4px;border-radius:2px;background:#e2e8f0;overflow:hidden}
-    .t-executive .skill-fill{height:100%;background:var(--AC);border-radius:2px}
-    .t-executive .lang-item{display:flex;justify-content:space-between;font-size:8.5pt;margin-bottom:7px}
-    .t-executive .lang-level{color:var(--AC);font-weight:600}
-    .t-executive .cv-tag{display:inline-block;font-size:7.5pt;padding:3px 8px;border-radius:4px;background:#e8ecf0;color:#475569;margin:2px}
-
-    /* ── TEMPLATE 3: Europass (EU official style) ── */
-    .t-europass{font-family:'Inter',sans-serif}
-    .t-europass .cv-eurobar{height:6px;background:var(--AC)}
-    .t-europass .cv-header{padding:24px 48px 20px;display:grid;grid-template-columns:1fr 88px;gap:24px;align-items:start;border-bottom:1px solid #dde3ec}
-    .t-europass .cv-name{font-size:20pt;font-weight:800;color:var(--AC);letter-spacing:-.03em;margin-bottom:2px;line-height:1.1}
-    .t-europass .cv-jobtitle{font-size:10pt;color:#64748b;font-weight:400;margin-bottom:10px}
-    .t-europass .cv-contacts{display:flex;flex-direction:column;gap:4px;font-size:8pt;color:#64748b}
-    .t-europass .cv-contact-item{display:flex;align-items:center;gap:5px}
-    .t-europass .cv-photo{width:88px;height:110px;border:2px solid #e2e8f0;border-radius:4px;background:#f1f5f9;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
-    .t-europass .cv-photo svg{color:#94a3b8}
-    .t-europass .cv-body{padding:0 48px 32px}
-    .t-europass .cv-section{display:grid;grid-template-columns:150px 1fr;margin-bottom:4px;border-top:1px solid #e8ecf0;padding-top:14px;margin-top:10px}
-    .t-europass .cv-section-title{font-size:8pt;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--AC);padding-right:16px;padding-top:2px}
-    .t-europass .cv-section-content{padding-left:16px;border-left:2px solid var(--AC)}
-    .t-europass .cv-summary{font-size:9pt;color:#475569;line-height:1.65}
-    .t-europass .cv-item{margin-bottom:12px}
-    .t-europass .cv-item-row{display:flex;gap:16px;margin-bottom:2px}
-    .t-europass .cv-item-date{font-size:8.5pt;color:#94a3b8;min-width:96px;flex-shrink:0;font-weight:500}
-    .t-europass .cv-item-right{}
-    .t-europass .cv-item-title{font-weight:700;font-size:9.5pt;color:#0f172a}
-    .t-europass .cv-item-org{font-size:8.5pt;color:#475569;margin-bottom:3px}
-    .t-europass .cv-item-desc{font-size:8.5pt;color:#64748b;line-height:1.55}
-    .t-europass .eu-skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-    .t-europass .eu-skill-box{border:1px solid #e2e8f0;border-radius:5px;padding:5px 9px}
-    .t-europass .eu-skill-name{font-size:8pt;font-weight:600;color:#0f172a;margin-bottom:3px}
-    .t-europass .eu-skill-bar{height:3px;background:#e2e8f0;border-radius:2px;overflow:hidden}
-    .t-europass .eu-skill-fill{height:100%;background:var(--AC);border-radius:2px}
-    .t-europass .lang-table{width:100%;border-collapse:collapse;font-size:8pt}
-    .t-europass .lang-table th{background:#f8fafc;color:#64748b;font-weight:600;text-transform:uppercase;font-size:7pt;letter-spacing:.06em;padding:5px 8px;border:1px solid #e8ecf0;text-align:left}
-    .t-europass .lang-table td{padding:5px 8px;border:1px solid #e8ecf0;color:#475569}
-    .t-europass .lang-table td:first-child{font-weight:600;color:#0f172a}
-
-    /* ── TEMPLATE 4: Creative (colored sidebar) ── */
-    .t-creative{display:flex;min-height:1123px}
-    .t-creative .cv-sidebar{width:220px;flex-shrink:0;background:var(--AC);padding:32px 20px;display:flex;flex-direction:column;gap:0}
-    .t-creative .cv-main-area{flex:1;padding:36px 32px}
-    .t-creative .cv-photo-circle{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
-    .t-creative .cv-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:15pt;font-weight:800;color:#fff;text-align:center;line-height:1.15;margin-bottom:4px}
-    .t-creative .cv-jobtitle{font-size:8pt;color:rgba(255,255,255,.7);text-align:center;margin-bottom:20px;font-weight:400}
-    .t-creative .sb-section{margin-bottom:18px}
-    .t-creative .sb-title{font-size:7pt;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:4px;margin-bottom:8px}
-    .t-creative .cv-contact-item{display:flex;align-items:center;gap:6px;font-size:7.5pt;color:rgba(255,255,255,.8);margin-bottom:6px}
-    .t-creative .skill-row{margin-bottom:8px}
-    .t-creative .skill-name{font-size:8pt;color:rgba(255,255,255,.9);margin-bottom:3px}
-    .t-creative .skill-bar{height:3px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden}
-    .t-creative .skill-fill{height:100%;background:#fff;border-radius:2px}
-    .t-creative .lang-item{display:flex;justify-content:space-between;font-size:7.5pt;margin-bottom:5px}
-    .t-creative .lang-name{color:rgba(255,255,255,.85)}
-    .t-creative .lang-level{color:rgba(255,255,255,.55)}
-    .t-creative .sb-edu-item{margin-bottom:10px}
-    .t-creative .sb-edu-deg{font-size:8pt;font-weight:700;color:rgba(255,255,255,.9);line-height:1.3}
-    .t-creative .sb-edu-sch{font-size:7.5pt;color:rgba(255,255,255,.6);margin-top:1px}
-    .t-creative .sb-edu-date{font-size:7pt;color:rgba(255,255,255,.45);margin-top:2px}
-    .t-creative .cv-section{margin-bottom:20px}
-    .t-creative .cv-section-title{font-size:8pt;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--AC);border-left:3px solid var(--AC);padding-left:8px;margin-bottom:10px}
-    .t-creative .cv-item{margin-bottom:12px}
-    .t-creative .cv-item-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:2px}
-    .t-creative .cv-item-title{font-weight:700;font-size:10pt;color:#0f172a}
-    .t-creative .cv-item-date{font-size:8pt;color:#94a3b8}
-    .t-creative .cv-item-org{font-size:8.5pt;font-weight:600;color:var(--AC);margin-bottom:3px}
-    .t-creative .cv-item-desc{font-size:8.5pt;color:#475569;line-height:1.6}
-    .t-creative .cv-summary{font-size:9.5pt;color:#475569;line-height:1.7;margin-bottom:20px}
-
-    /* ── TEMPLATE 5: Modern (gradient header) ── */
-    .t-modern .cv-header{background:linear-gradient(120deg, var(--AC) 0%, var(--AC2,#6366f1) 100%);padding:40px 48px 32px}
-    .t-modern .cv-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:26pt;font-weight:900;letter-spacing:-.04em;color:#fff;line-height:1.05;margin-bottom:4px}
-    .t-modern .cv-jobtitle{font-size:10.5pt;color:rgba(255,255,255,.8);font-weight:400;margin-bottom:12px}
-    .t-modern .cv-contacts{display:flex;gap:16px;flex-wrap:wrap;font-size:8.5pt;color:rgba(255,255,255,.7)}
-    .t-modern .cv-contact-item{display:flex;align-items:center;gap:4px}
-    .t-modern .cv-body{display:grid;grid-template-columns:1fr 220px;gap:0;padding:24px 48px}
-    .t-modern .cv-main{padding-right:28px}
-    .t-modern .cv-side{padding-left:24px;border-left:1px solid #e2e8f0}
-    .t-modern .cv-section{margin-bottom:20px}
-    .t-modern .cv-section-title{font-size:8pt;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--AC);display:flex;align-items:center;gap:8px;margin-bottom:10px}
-    .t-modern .cv-section-title::after{content:'';flex:1;height:1.5px;background:linear-gradient(90deg,var(--AC) 0%,transparent 100%);opacity:.3}
-    .t-modern .cv-item{margin-bottom:14px}
-    .t-modern .cv-item-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:2px}
-    .t-modern .cv-item-title{font-weight:700;font-size:10pt;color:#0f172a}
-    .t-modern .cv-item-date{font-size:8pt;color:#94a3b8;white-space:nowrap;flex-shrink:0}
-    .t-modern .cv-item-org{font-size:9pt;font-weight:600;color:var(--AC);margin-bottom:3px}
-    .t-modern .cv-item-desc{font-size:8.5pt;color:#475569;line-height:1.6}
-    .t-modern .cv-summary{font-size:9.5pt;color:#475569;line-height:1.7;margin-bottom:20px}
-    .t-modern .skill-row{margin-bottom:9px}
-    .t-modern .skill-name{font-size:8.5pt;font-weight:600;color:#334155;margin-bottom:4px;display:flex;justify-content:space-between}
-    .t-modern .skill-bar{height:5px;border-radius:3px;background:#f1f5f9;overflow:hidden}
-    .t-modern .skill-fill{height:100%;border-radius:3px;background:var(--AC)}
-    .t-modern .lang-item{display:flex;justify-content:space-between;font-size:8.5pt;margin-bottom:6px;padding-bottom:6px;border-bottom:1px solid #f1f5f9}
-    .t-modern .lang-level{color:var(--AC);font-weight:600}
-    .t-modern .cv-tag{display:inline-block;font-size:7.5pt;padding:3px 8px;border-radius:999px;background:#f1f5f9;color:#475569;margin:2px}
+    @media (max-width: 900px) {
+      .builder-layout { grid-template-columns: 1fr; }
+      .form-panel { position: static; max-height: none; overflow: visible; }
+    }
+    @media (max-width: 600px) {
+      .template-grid { grid-template-columns: repeat(3,1fr); }
+      .builder-layout { padding: 16px; gap: 16px; }
+    }
   </style>
 </head>
 <body>
+<div id="navMount"></div>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <a href="/" class="tb-brand">
-    <div class="tb-logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-    <span class="tb-name">CoverCraft AI</span>
-  </a>
-  <div class="tb-sep"></div>
-  <span class="tb-title">CV Builder</span>
-  <div class="tb-nav">
-    <a href="/" class="tb-a">Cover Letter</a>
-    <a href="/linkedin.html" class="tb-a">LinkedIn</a>
-    <a href="/interview.html" class="tb-a">Interview</a>
-    <a href="/score.html" class="tb-a">Score</a>
-    <a href="/cv.html" class="tb-a active">CV Builder</a>
-  </div>
-  <div class="tb-right">
-    <button class="tb-btn sec" onclick="loadExample()">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-      Example
-    </button>
-    <button class="tb-btn sec" onclick="printCV()">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-      Print
-    </button>
-    <button class="tb-btn primary" onclick="downloadPDF()">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download PDF
-    </button>
-    <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">
-      <svg id="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-      <svg id="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
+<div style="background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+  <span style="font-size:13px;font-weight:700;color:var(--text2)">✏️ CV Builder</span>
+  <span style="font-size:12px;color:var(--text3)">All data saved locally in your browser</span>
+  <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap">
+    <button class="btn btn-sm btn-secondary" onclick="loadExample()">📋 Load Example</button>
+    <button class="btn btn-sm btn-secondary" onclick="clearAll()">🗑 Clear All</button>
+    <button class="btn btn-sm btn-primary" onclick="downloadPDF()">↓ Download PDF</button>
   </div>
 </div>
 
-<!-- MAIN LAYOUT -->
-<div class="layout">
+<div class="builder-layout">
 
-  <!-- LEFT PANEL -->
-  <div class="panel" id="panel">
+  <!-- ══ FORM PANEL ══ -->
+  <div class="form-panel" id="formPanel">
 
-    <!-- Template Chooser -->
-    <div class="tpl-header">
-      <div class="tpl-header-title">Choose Template</div>
-      <div class="tpl-tabs" id="tpl-tabs">
-        <div class="tpl-tab active" data-tpl="classic">
-          <svg class="tpl-tab-img" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="80" fill="#fff"/><rect x="6" y="7" width="25" height="4" rx="1" fill="#1a1a1a" opacity=".8"/><rect x="6" y="13" width="16" height="2" rx="1" fill="#2563eb" opacity=".7"/><rect x="6" y="18" width="52" height="1" fill="#2563eb" opacity=".4"/><rect x="6" y="22" width="10" height="1.5" rx=".5" fill="#2563eb" opacity=".6"/><rect x="6" y="26" width="34" height="1.5" rx=".5" fill="#e2e8f0"/><rect x="6" y="29" width="28" height="1.5" rx=".5" fill="#e2e8f0"/><rect x="6" y="34" width="10" height="1.5" rx=".5" fill="#2563eb" opacity=".6"/><rect x="6" y="38" width="34" height="1.5" rx=".5" fill="#e2e8f0"/><rect x="6" y="41" width="22" height="1.5" rx=".5" fill="#e2e8f0"/><rect x="44" y="22" width="14" height="52" rx="1" fill="#f8fafc"/><rect x="46" y="26" width="10" height="1.5" rx=".5" fill="#2563eb" opacity=".5"/><rect x="46" y="31" width="10" height="1" rx=".5" fill="#e2e8f0"/><rect x="46" y="34" width="7" height="1" rx=".5" fill="#e2e8f0"/></svg>
-          <div class="tpl-tab-name">Classic</div>
+    <!-- Save/Load bar -->
+    <div class="save-bar-cv" id="saveBar" style="display:none">
+      <span style="font-size:13px;color:var(--blue)" id="saveBarText">💾 Auto-saved</span>
+      <button class="btn btn-sm btn-secondary" style="margin-left:auto" onclick="confirmClear()">✕ Clear</button>
+    </div>
+
+    <!-- Template -->
+    <div class="form-section">
+      <div class="form-section-header" onclick="toggleSection(this)">
+        🎨 Template & Style <span class="chevron">▾</span>
+      </div>
+      <div class="form-section-body open">
+        <div class="template-grid" style="margin-bottom:16px">
+          <button class="template-btn active" onclick="setTemplate('classic',this)"><span class="template-icon">📄</span>Classic</button>
+          <button class="template-btn" onclick="setTemplate('executive',this)"><span class="template-icon">💼</span>Executive</button>
+          <button class="template-btn" onclick="setTemplate('europass',this)"><span class="template-icon">🇪🇺</span>Europass</button>
+          <button class="template-btn" onclick="setTemplate('creative',this)"><span class="template-icon">🎨</span>Creative</button>
+          <button class="template-btn" onclick="setTemplate('modern',this)"><span class="template-icon">✨</span>Modern</button>
         </div>
-        <div class="tpl-tab" data-tpl="executive">
-          <svg class="tpl-tab-img" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="80" fill="#fff"/><rect width="64" height="20" fill="#0f172a"/><rect x="6" y="6" width="24" height="5" rx="1" fill="#fff" opacity=".9"/><rect x="6" y="13" width="16" height="2" rx="1" fill="#fff" opacity=".5"/><rect width="22" height="60" y="20" fill="#f8fafc"/><rect x="3" y="26" width="16" height="1.5" rx=".5" fill="#0f172a" opacity=".5"/><rect x="3" y="30" width="16" height="1" rx=".5" fill="#e2e8f0"/><rect x="3" y="33" width="12" height="1" rx=".5" fill="#e2e8f0"/><rect x="3" y="39" width="16" height="1.5" rx=".5" fill="#0f172a" opacity=".5"/><rect x="26" y="26" width="32" height="1.5" rx=".5" fill="#0f172a" opacity=".5"/><rect x="26" y="30" width="32" height="1" rx=".5" fill="#e2e8f0"/><rect x="26" y="33" width="22" height="1" rx=".5" fill="#e2e8f0"/><rect x="26" y="39" width="32" height="1.5" rx=".5" fill="#0f172a" opacity=".5"/><rect x="26" y="43" width="32" height="1" rx=".5" fill="#e2e8f0"/></svg>
-          <div class="tpl-tab-name">Executive</div>
+        <label>Accent Colour</label>
+        <div class="color-presets" id="colorPresets">
+          <div class="color-dot active" style="background:#2563eb" data-color="#2563eb" onclick="setColor('#2563eb',this)" title="Blue"></div>
+          <div class="color-dot" style="background:#7c3aed" data-color="#7c3aed" onclick="setColor('#7c3aed',this)" title="Purple"></div>
+          <div class="color-dot" style="background:#059669" data-color="#059669" onclick="setColor('#059669',this)" title="Green"></div>
+          <div class="color-dot" style="background:#dc2626" data-color="#dc2626" onclick="setColor('#dc2626',this)" title="Red"></div>
+          <div class="color-dot" style="background:#d97706" data-color="#d97706" onclick="setColor('#d97706',this)" title="Amber"></div>
+          <div class="color-dot" style="background:#0891b2" data-color="#0891b2" onclick="setColor('#0891b2',this)" title="Cyan"></div>
+          <div class="color-dot" style="background:#db2777" data-color="#db2777" onclick="setColor('#db2777',this)" title="Pink"></div>
+          <div class="color-dot" style="background:#1d4ed8" data-color="#1d4ed8" onclick="setColor('#1d4ed8',this)" title="Indigo"></div>
+          <div class="color-dot" style="background:#374151" data-color="#374151" onclick="setColor('#374151',this)" title="Slate"></div>
+          <div class="color-dot" style="background:#92400e" data-color="#92400e" onclick="setColor('#92400e',this)" title="Brown"></div>
         </div>
-        <div class="tpl-tab" data-tpl="europass">
-          <svg class="tpl-tab-img" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="80" fill="#fff"/><rect width="64" height="5" fill="#003399"/><rect x="6" y="9" width="30" height="4" rx="1" fill="#003399" opacity=".7"/><rect x="6" y="15" width="20" height="1.5" rx=".5" fill="#94a3b8"/><rect x="6" y="18" width="16" height="1" rx=".5" fill="#e2e8f0"/><rect x="46" y="8" width="12" height="14" rx="1" fill="#e8eeff"/><rect x="6" y="26" width="52" height="1" fill="#dde3ec"/><rect x="6" y="30" width="14" height="1.5" rx=".5" fill="#003399" opacity=".6"/><rect x="24" y="30" width="34" height="1" rx=".5" fill="#e2e8f0"/><rect x="24" y="33" width="26" height="1" rx=".5" fill="#e2e8f0"/><rect x="6" y="40" width="52" height="1" fill="#dde3ec"/><rect x="6" y="44" width="14" height="1.5" rx=".5" fill="#003399" opacity=".6"/><rect x="24" y="44" width="34" height="1" rx=".5" fill="#e2e8f0"/></svg>
-          <div class="tpl-tab-name">Europass</div>
-        </div>
-        <div class="tpl-tab" data-tpl="creative">
-          <svg class="tpl-tab-img" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="80" fill="#fff"/><rect width="22" height="80" fill="#7c3aed"/><rect x="4" y="12" width="14" height="14" rx="7" fill="#fff" opacity=".25"/><rect x="4" y="30" width="14" height="2" rx="1" fill="#fff" opacity=".7"/><rect x="4" y="34" width="10" height="1" rx=".5" fill="#fff" opacity=".4"/><rect x="4" y="40" width="14" height="1.5" rx=".5" fill="#fff" opacity=".3"/><rect x="4" y="43" width="12" height="1" rx=".5" fill="#fff" opacity=".25"/><rect x="4" y="46" width="8" height="1" rx=".5" fill="#fff" opacity=".2"/><rect x="4" y="53" width="14" height="1.5" rx=".5" fill="#fff" opacity=".3"/><rect x="26" y="8" width="32" height="3" rx="1" fill="#7c3aed" opacity=".5"/><rect x="26" y="15" width="32" height="1.5" rx=".5" fill="#e2e8f0"/><rect x="26" y="18" width="24" height="1.5" rx=".5" fill="#e2e8f0"/><rect x="26" y="26" width="32" height="2" rx="1" fill="#7c3aed" opacity=".4"/><rect x="26" y="31" width="32" height="1" rx=".5" fill="#e2e8f0"/><rect x="26" y="34" width="24" height="1" rx=".5" fill="#e2e8f0"/><rect x="26" y="41" width="32" height="2" rx="1" fill="#7c3aed" opacity=".4"/></svg>
-          <div class="tpl-tab-name">Creative</div>
-        </div>
-        <div class="tpl-tab" data-tpl="modern">
-          <svg class="tpl-tab-img" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="80" fill="#fff"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0ea5e9"/><stop offset="100%" stop-color="#6366f1"/></linearGradient></defs><rect width="64" height="20" fill="url(#g)"/><rect x="6" y="5" width="22" height="4" rx="1" fill="#fff" opacity=".9"/><rect x="6" y="12" width="16" height="2" rx="1" fill="#fff" opacity=".55"/><rect x="6" y="24" width="34" height="1.5" rx=".5" fill="#0ea5e9" opacity=".5"/><rect x="6" y="28" width="34" height="1" rx=".5" fill="#e2e8f0"/><rect x="6" y="31" width="26" height="1" rx=".5" fill="#e2e8f0"/><rect x="6" y="37" width="34" height="1.5" rx=".5" fill="#0ea5e9" opacity=".5"/><rect x="6" y="41" width="34" height="1" rx=".5" fill="#e2e8f0"/><rect x="44" y="22" width="14" height="52" rx="1" fill="#f8fafc"/><rect x="46" y="26" width="10" height="1.5" rx=".5" fill="#0ea5e9" opacity=".5"/><rect x="46" y="31" width="10" height="1" rx=".5" fill="#e2e8f0"/></svg>
-          <div class="tpl-tab-name">Modern</div>
+        <div class="color-custom-row">
+          <input type="color" id="customColor" value="#2563eb" onchange="setColor(this.value, null)" title="Custom colour" />
+          <label style="margin:0;font-weight:400;font-size:13px;color:var(--text2)">Custom hex</label>
+          <input type="text" id="customHex" placeholder="#2563eb" style="width:110px;font-size:13px;padding:7px 10px" onchange="setColor(this.value,null)" />
         </div>
       </div>
     </div>
 
-    <!-- Color Picker -->
-    <div class="color-section">
-      <div class="color-section-title">Accent Color</div>
-      <div class="color-row" id="color-row">
-        <div class="cswatch active" data-c="#2563eb" style="background:#2563eb" title="Blue"></div>
-        <div class="cswatch" data-c="#0f172a" style="background:#0f172a" title="Navy"></div>
-        <div class="cswatch" data-c="#003399" style="background:#003399" title="Europass"></div>
-        <div class="cswatch" data-c="#7c3aed" style="background:#7c3aed" title="Purple"></div>
-        <div class="cswatch" data-c="#059669" style="background:#059669" title="Green"></div>
-        <div class="cswatch" data-c="#dc2626" style="background:#dc2626" title="Red"></div>
-        <div class="cswatch" data-c="#d97706" style="background:#d97706" title="Amber"></div>
-        <div class="cswatch" data-c="#0891b2" style="background:#0891b2" title="Teal"></div>
-        <div class="cswatch" data-c="#6366f1" style="background:#6366f1" title="Indigo"></div>
-        <div class="cswatch" data-c="#be185d" style="background:#be185d" title="Pink"></div>
-        <div class="cpicker-wrap" title="Custom color"><input type="color" id="custom-color" value="#2563eb"/></div>
+    <!-- Photo -->
+    <div class="form-section">
+      <div class="form-section-header" onclick="toggleSection(this)">
+        📷 Photo <span style="font-size:12px;font-weight:400;color:var(--text3)">(optional)</span> <span class="chevron">▾</span>
+      </div>
+      <div class="form-section-body open">
+        <div class="photo-wrap" id="photoWrap">
+          <input type="file" id="photoInput" accept="image/*" onchange="handlePhotoUpload(event)" />
+          <img id="photoPreview" class="photo-preview-img" alt="Your photo" />
+          <div id="photoLabel">
+            <div style="font-size:24px;margin-bottom:6px">📷</div>
+            <div style="font-size:13px;color:var(--text2)"><strong style="color:var(--blue)">Click or drag</strong> to upload photo</div>
+            <div style="font-size:11px;color:var(--text3);margin-top:4px">JPG, PNG, WebP · Max 5 MB</div>
+          </div>
+          <button class="photo-remove" id="photoRemove" style="display:none" onclick="removePhoto(event)">✕ Remove photo</button>
+        </div>
+        <p style="font-size:12px;color:var(--text3);margin-top:8px">Shown in: Executive, Europass, Creative templates.</p>
       </div>
     </div>
 
-    <!-- Form Sections -->
-    <div class="sections-wrap">
-
-      <!-- Personal -->
-      <div class="form-sect">
-        <div class="form-sect-head open" data-s="personal">
-          <div class="form-sect-left">
-            <div class="form-sect-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-            <span class="form-sect-title">Personal Information</span>
-          </div>
-          <svg class="form-sect-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    <!-- Personal Info -->
+    <div class="form-section">
+      <div class="form-section-header" onclick="toggleSection(this)">
+        👤 Personal Information <span class="chevron">▾</span>
+      </div>
+      <div class="form-section-body open">
+        <div class="form-row">
+          <div class="form-group"><label>Full Name</label><input id="name" placeholder="Alex Johnson" oninput="scheduleRender()" /></div>
+          <div class="form-group"><label>Job Title</label><input id="title" placeholder="Product Manager" oninput="scheduleRender()" /></div>
         </div>
-        <div class="form-sect-body open" id="body-personal">
-          <div class="field"><label>Full Name</label><input id="f-name" placeholder="e.g. Sarah Johnson" oninput="S.name=this.value;R()"/></div>
-          <div class="field"><label>Job Title</label><input id="f-title" placeholder="e.g. Senior Marketing Manager" oninput="S.title=this.value;R()"/></div>
-          <div class="fg2">
-            <div class="field"><label>Email</label><input id="f-email" type="email" placeholder="you@email.com" oninput="S.email=this.value;R()"/></div>
-            <div class="field"><label>Phone</label><input id="f-phone" placeholder="+1 234 567 8900" oninput="S.phone=this.value;R()"/></div>
-          </div>
-          <div class="fg2">
-            <div class="field"><label>City, Country</label><input id="f-loc" placeholder="New York, USA" oninput="S.location=this.value;R()"/></div>
-            <div class="field"><label>LinkedIn</label><input id="f-li" placeholder="linkedin.com/in/you" oninput="S.linkedin=this.value;R()"/></div>
-          </div>
-          <div class="field"><label>Website / Portfolio</label><input id="f-web" placeholder="yoursite.com" oninput="S.website=this.value;R()"/></div>
-          <div class="field"><label>Professional Summary</label><textarea id="f-sum" placeholder="2–3 sentences summarising your expertise, biggest achievements, and career goal..." oninput="S.summary=this.value;R()"></textarea></div>
+        <div class="form-row">
+          <div class="form-group"><label>Email</label><input id="email" type="email" placeholder="alex@email.com" oninput="scheduleRender()" /></div>
+          <div class="form-group"><label>Phone</label><input id="phone" placeholder="+1 555 000 1234" oninput="scheduleRender()" /></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Location</label><input id="location" placeholder="New York, NY" oninput="scheduleRender()" /></div>
+          <div class="form-group"><label>LinkedIn</label><input id="linkedin" placeholder="linkedin.com/in/alexj" oninput="scheduleRender()" /></div>
+        </div>
+        <div class="form-group"><label>Website / Portfolio</label><input id="website" placeholder="alexjohnson.dev" oninput="scheduleRender()" /></div>
+        <div class="form-group"><label>Professional Summary</label><textarea id="summary" rows="3" placeholder="Brief 2-3 sentence overview of your professional background and goals…" oninput="scheduleRender()"></textarea></div>
+      </div>
+    </div>
+
+    <!-- Work Experience -->
+    <div class="form-section">
+      <div class="form-section-header" onclick="toggleSection(this)">
+        💼 Work Experience <span class="chevron">▾</span>
+      </div>
+      <div class="form-section-body" id="expBody">
+        <div id="expList"></div>
+        <button class="add-item-btn" onclick="addExp()">+ Add Experience</button>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="form-section">
+      <div class="form-section-header" onclick="toggleSection(this)">
+        🎓 Education <span class="chevron">▾</span>
+      </div>
+      <div class="form-section-body" id="eduBody">
+        <div id="eduList"></div>
+        <button class="add-item-btn" onclick="addEdu()">+ Add Education</button>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="form-section">
+      <div class="form-section-header" onclick="toggleSection(this)">
+        🛠 Skills <span class="chevron">▾</span>
+      </div>
+      <div class="form-section-body" id="skillBody">
+        <div id="skillList"></div>
+        <button class="add-item-btn" onclick="addSkill()">+ Add Skill</button>
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div class="form-section">
+      <div class="form-section-header" onclick="toggleSection(this)">
+        🌍 Languages <span class="chevron">▾</span>
+      </div>
+      <div class="form-section-body" id="langBody">
+        <div id="langList"></div>
+        <button class="add-item-btn" onclick="addLang()">+ Add Language</button>
+      </div>
+    </div>
+
+    <!-- Interests -->
+    <div class="form-section">
+      <div class="form-section-header" onclick="toggleSection(this)">
+        ⭐ Interests & Hobbies <span class="chevron">▾</span>
+      </div>
+      <div class="form-section-body">
+        <div class="form-group">
+          <label>Interests <span style="font-weight:400;color:var(--text3)">(comma-separated)</span></label>
+          <input id="interests" placeholder="Photography, Rock Climbing, Open Source…" oninput="scheduleRender()" />
         </div>
       </div>
+    </div>
 
-      <!-- Experience -->
-      <div class="form-sect">
-        <div class="form-sect-head open" data-s="exp">
-          <div class="form-sect-left">
-            <div class="form-sect-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
-            <span class="form-sect-title">Work Experience</span>
-          </div>
-          <svg class="form-sect-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="form-sect-body open" id="body-exp">
-          <div id="exp-list"></div>
-          <button class="add-btn" onclick="addExp()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add Experience</button>
-        </div>
-      </div>
+  </div><!-- /form-panel -->
 
-      <!-- Education -->
-      <div class="form-sect">
-        <div class="form-sect-head open" data-s="edu">
-          <div class="form-sect-left">
-            <div class="form-sect-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-            <span class="form-sect-title">Education</span>
-          </div>
-          <svg class="form-sect-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="form-sect-body open" id="body-edu">
-          <div id="edu-list"></div>
-          <button class="add-btn" onclick="addEdu()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add Education</button>
-        </div>
-      </div>
-
-      <!-- Skills -->
-      <div class="form-sect">
-        <div class="form-sect-head open" data-s="skills">
-          <div class="form-sect-left">
-            <div class="form-sect-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-            <span class="form-sect-title">Skills</span>
-          </div>
-          <svg class="form-sect-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="form-sect-body open" id="body-skills">
-          <div id="skill-list"></div>
-          <button class="add-btn" onclick="addSkill()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add Skill</button>
-        </div>
-      </div>
-
-      <!-- Languages -->
-      <div class="form-sect">
-        <div class="form-sect-head open" data-s="lang">
-          <div class="form-sect-left">
-            <div class="form-sect-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-            <span class="form-sect-title">Languages</span>
-          </div>
-          <svg class="form-sect-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="form-sect-body open" id="body-lang">
-          <div id="lang-list"></div>
-          <button class="add-btn" onclick="addLang()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add Language</button>
-        </div>
-      </div>
-
-      <!-- Hobbies -->
-      <div class="form-sect">
-        <div class="form-sect-head" data-s="hobbies">
-          <div class="form-sect-left">
-            <div class="form-sect-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-            <span class="form-sect-title">Interests / Hobbies</span>
-          </div>
-          <svg class="form-sect-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="form-sect-body" id="body-hobbies">
-          <div class="field"><label>Interests (comma separated)</label><input id="f-hobbies" placeholder="Photography, Hiking, Open Source, Travel" oninput="S.hobbies=this.value;R()"/></div>
-        </div>
-      </div>
-
-    </div><!-- /sections-wrap -->
-  </div><!-- /panel -->
-
-  <!-- RIGHT — PREVIEW -->
-  <div class="preview-wrap" id="preview-wrap">
+  <!-- ══ PREVIEW PANEL ══ -->
+  <div class="preview-panel">
     <div class="preview-controls">
-      <button class="zoom-btn" onclick="zoom(-0.1)">−</button>
-      <span class="zoom-label" id="zoom-lbl">100%</span>
-      <button class="zoom-btn" onclick="zoom(0.1)">+</button>
-      <button class="zoom-btn" onclick="resetZoom()" style="font-size:.65rem;width:auto;padding:0 8px;font-weight:600">Fit</button>
+      <button class="zoom-btn" onclick="adjustZoom(-0.1)">−</button>
+      <span id="zoomLabel" style="font-size:13px;font-weight:600;min-width:44px;text-align:center">100%</span>
+      <button class="zoom-btn" onclick="adjustZoom(0.1)">+</button>
+      <button class="zoom-btn" onclick="fitZoom()">Fit</button>
+      <div style="flex:1"></div>
+      <button class="btn btn-sm btn-secondary" onclick="downloadPDF()">↓ PDF</button>
+      <a href="/cv-score.html" class="btn btn-sm btn-primary">📋 Score my CV →</a>
     </div>
-    <div class="preview-scaler" id="scaler">
-      <div class="cv-page" id="cv-out"></div>
+    <div class="preview-container" id="previewContainer">
+      <div class="preview-scaler" id="previewScaler">
+        <div class="cv-a4" id="cvPreview"></div>
+      </div>
     </div>
   </div>
 
-</div><!-- /layout -->
+</div><!-- /builder-layout -->
 
-<div id="toast"></div>
-
+<script src="/shared.js"></script>
 <script>
-// ── Theme ───────────────────────────────────────────────────
-(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);ti(t)})();
-function ti(t){const s=document.getElementById('icon-sun'),m=document.getElementById('icon-moon');if(!s||!m)return;s.style.display=t==='dark'?'none':'';m.style.display=t==='dark'?'':'none'}
-document.getElementById('theme-toggle').addEventListener('click',()=>{const c=document.documentElement.getAttribute('data-theme')||'light';const n=c==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('theme',n);ti(n)});
+// ══ STATE ══════════════════════════════════════════════
+document.getElementById("navMount").innerHTML = buildNav("/cv.html");
 
-// ── State ────────────────────────────────────────────────────
-const S={
-  tpl:'classic', color:'#2563eb',
-  name:'',title:'',email:'',phone:'',location:'',linkedin:'',website:'',summary:'',hobbies:'',
-  exp:[], edu:[], skills:[], langs:[]
-};
-let _expId=0, _eduId=0, _skId=0, _lgId=0;
+let currentTemplate = "classic";
+let accentColor = "#2563eb";
+let photoDataUrl = null;
+let zoomLevel = 0.75;
 
-// ── Section collapse ──────────────────────────────────────────
-document.querySelectorAll('.form-sect-head').forEach(h=>{
-  h.addEventListener('click',()=>{
-    const s=h.dataset.s, body=document.getElementById('body-'+s);
-    h.classList.toggle('open'); body.classList.toggle('open');
-  });
+let exp   = [];
+let edu   = [];
+let skills = [];
+let langs  = [];
+
+let renderTimer = null;
+let saveTimer   = null;
+
+// ══ INIT ═══════════════════════════════════════════════
+window.addEventListener("load", () => {
+  loadFromLocalStorage();
+  fitZoom();
+  render();
+  window.addEventListener("resize", fitZoom);
 });
 
-// ── Template tabs ─────────────────────────────────────────────
-const TPL_COLORS={classic:'#2563eb',executive:'#0f172a',europass:'#003399',creative:'#7c3aed',modern:'#0ea5e9'};
-document.querySelectorAll('.tpl-tab').forEach(t=>{
-  t.addEventListener('click',()=>{
-    document.querySelectorAll('.tpl-tab').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active'); S.tpl=t.dataset.tpl;
-    setColor(TPL_COLORS[S.tpl]||'#2563eb'); R();
-  });
+// ══ SECTION TOGGLE ════════════════════════════════════
+function toggleSection(header) {
+  const body = header.nextElementSibling;
+  const chevron = header.querySelector(".chevron");
+  const isOpen = body.classList.contains("open");
+  body.classList.toggle("open", !isOpen);
+  if (chevron) chevron.style.transform = isOpen ? "" : "rotate(180deg)";
+}
+
+// ══ TEMPLATE ══════════════════════════════════════════
+function setTemplate(name, btn) {
+  currentTemplate = name;
+  document.querySelectorAll(".template-btn").forEach(b => b.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+  scheduleRender();
+  scheduleSave();
+}
+
+// ══ COLOR ═════════════════════════════════════════════
+function setColor(hex, dotEl) {
+  if (!/^#[0-9a-fA-F]{3,6}$/.test(hex)) return;
+  accentColor = hex;
+  document.getElementById("customColor").value = hex;
+  document.getElementById("customHex").value = hex;
+  document.querySelectorAll(".color-dot").forEach(d => d.classList.remove("active"));
+  if (dotEl) dotEl.classList.add("active");
+  scheduleRender();
+  scheduleSave();
+}
+
+// ══ PHOTO ═════════════════════════════════════════════
+function handlePhotoUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  if (!file.type.startsWith("image/")) { showToast("Please select an image file.", "error"); return; }
+  if (file.size > 5 * 1024 * 1024) { showToast("Image must be under 5 MB.", "error"); return; }
+  const reader = new FileReader();
+  reader.onload = ev => {
+    photoDataUrl = ev.target.result;
+    document.getElementById("photoPreview").src = photoDataUrl;
+    document.getElementById("photoPreview").style.display = "block";
+    document.getElementById("photoLabel").style.display = "none";
+    document.getElementById("photoRemove").style.display = "inline-block";
+    document.getElementById("photoWrap").classList.add("has-photo");
+    scheduleRender();
+    scheduleSave();
+  };
+  reader.readAsDataURL(file);
+}
+
+// Drag & drop photo
+const photoWrap = document.getElementById("photoWrap");
+photoWrap.addEventListener("dragover", e => { e.preventDefault(); photoWrap.style.borderColor = "var(--blue)"; });
+photoWrap.addEventListener("dragleave", () => photoWrap.style.borderColor = "");
+photoWrap.addEventListener("drop", e => {
+  e.preventDefault(); photoWrap.style.borderColor = "";
+  const file = e.dataTransfer.files[0];
+  if (!file || !file.type.startsWith("image/")) return;
+  const fakeEvent = { target: { files: [file] } };
+  handlePhotoUpload(fakeEvent);
 });
 
-// ── Colors ───────────────────────────────────────────────────
-function setColor(c){
-  S.color=c;
-  document.getElementById('custom-color').value=c;
-  document.querySelectorAll('.cswatch').forEach(s=>s.classList.toggle('active',s.dataset.c===c));
-  R();
+function removePhoto(e) {
+  e.stopPropagation();
+  photoDataUrl = null;
+  document.getElementById("photoPreview").src = "";
+  document.getElementById("photoPreview").style.display = "none";
+  document.getElementById("photoLabel").style.display = "block";
+  document.getElementById("photoRemove").style.display = "none";
+  document.getElementById("photoWrap").classList.remove("has-photo");
+  document.getElementById("photoInput").value = "";
+  scheduleRender();
+  scheduleSave();
 }
-document.querySelectorAll('.cswatch').forEach(s=>s.addEventListener('click',()=>setColor(s.dataset.c)));
-document.getElementById('custom-color').addEventListener('input',e=>{
-  S.color=e.target.value;
-  document.querySelectorAll('.cswatch').forEach(s=>s.classList.remove('active'));
-  R();
-});
 
-// ── Helpers ───────────────────────────────────────────────────
-const esc=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-const sv=id=>document.getElementById(id)?.value||'';
-function syncBasic(){
-  ['name','title','email','phone','location','linkedin','website','summary','hobbies'].forEach(k=>{
-    const el=document.getElementById('f-'+({'name':'name','title':'title','email':'email','phone':'phone','location':'loc','linkedin':'li','website':'web','summary':'sum','hobbies':'hobbies'}[k]));
-    if(el) S[k]=el.value;
-  });
+// ══ REPEATERS ═════════════════════════════════════════
+function addExp(data = {}) {
+  const id = Date.now();
+  exp.push({ id, ...{ role:"", company:"", from:"", to:"", current:false, bullets:"", ...data }});
+  renderExpList();
+  scheduleRender();
 }
-function icon(t){
-  const I={email:`<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,phone:`<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,loc:`<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,link:`<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`};
-  return I[t]||I.link;
-}
-function contacts(light=false){
-  const col=light?'rgba(255,255,255,.75)':'#64748b';
-  const items=[
-    S.email&&`<span class="cv-contact-item" style="color:${col}">${icon('email')} ${esc(S.email)}</span>`,
-    S.phone&&`<span class="cv-contact-item" style="color:${col}">${icon('phone')} ${esc(S.phone)}</span>`,
-    S.location&&`<span class="cv-contact-item" style="color:${col}">${icon('loc')} ${esc(S.location)}</span>`,
-    S.linkedin&&`<span class="cv-contact-item" style="color:${col}">${icon('link')} ${esc(S.linkedin)}</span>`,
-    S.website&&`<span class="cv-contact-item" style="color:${col}">${icon('link')} ${esc(S.website)}</span>`,
-  ].filter(Boolean);
-  return items.join('');
-}
-function descHTML(d){
-  if(!d)return'';
-  return d.split('\n').filter(l=>l.trim()).map(l=>{
-    const t=l.trim();
-    return `<div style="margin-bottom:2px;${t.startsWith('•')||t.startsWith('-')?'padding-left:0':''}">${esc(t)}</div>`;
-  }).join('');
-}
-function sbar(pct,color,h=4){return`<div style="height:${h}px;border-radius:${h/2}px;background:#f1f5f9;overflow:hidden"><div style="height:100%;width:${pct}%;background:${color};border-radius:${h/2}px"></div></div>`}
-function personIcon(){return`<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#94a3b8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`}
-
-// ── RENDER ────────────────────────────────────────────────────
-function R(){
-  const cv=document.getElementById('cv-out');
-  const c=S.color;
-  cv.className='cv-page t-'+S.tpl;
-  cv.style.setProperty('--AC',c);
-
-  const expH=S.exp.map(e=>`<div class="cv-item"><div class="cv-item-row"><span class="cv-item-title">${esc(e.title)}</span><span class="cv-item-date">${esc(e.from)}${e.from&&e.to?' – ':''}${esc(e.to)}</span></div>${e.org?`<div class="cv-item-org">${esc(e.org)}</div>`:''}<div class="cv-item-desc">${descHTML(e.desc)}</div></div>`).join('');
-  const eduH=S.edu.map(e=>`<div class="cv-item"><div class="cv-item-row"><span class="cv-item-title">${esc(e.degree)}</span><span class="cv-item-date">${esc(e.from)}${e.from&&e.to?' – ':''}${esc(e.to)}</span></div>${e.school?`<div class="cv-item-org">${esc(e.school)}</div>`:''}<div class="cv-item-desc">${esc(e.note)}</div></div>`).join('');
-  const skillsH_bars=S.skills.map(s=>`<div class="skill-row"><div class="skill-name">${esc(s.name)}</div>${sbar(s.lvl,c)}</div>`).join('');
-  const skillsH_bars5=S.skills.map(s=>`<div class="skill-row"><div class="skill-name">${esc(s.name)}</div>${sbar(s.lvl,c,5)}</div>`).join('');
-  const langsH_classic=S.langs.map(l=>`<div class="lang-item"><span>${esc(l.name)}</span><span class="lang-level">${esc(l.level)}</span></div>`).join('');
-  const hobbies=S.hobbies?S.hobbies.split(',').map(h=>`<span class="cv-tag">${esc(h.trim())}</span>`).join(''):'';
-
-  if(S.tpl==='classic'){
-    cv.innerHTML=`
-    <div class="cv-header">
-      <div class="cv-name">${esc(S.name)||'Your Name'}</div>
-      <div class="cv-jobtitle">${esc(S.title)||'Job Title'}</div>
-      <div class="cv-contacts">${contacts()}</div>
-    </div>
-    <div class="cv-body">
-      <div class="cv-main">
-        ${S.summary?`<div class="cv-summary">${esc(S.summary)}</div>`:''}
-        ${S.exp.length?`<div class="cv-section"><div class="cv-section-title">Work Experience</div>${expH}</div>`:''}
-        ${S.edu.length?`<div class="cv-section"><div class="cv-section-title">Education</div>${eduH}</div>`:''}
-        ${hobbies?`<div class="cv-section"><div class="cv-section-title">Interests</div><div>${hobbies}</div></div>`:''}
+function removeExp(id) { exp = exp.filter(e => e.id !== id); renderExpList(); scheduleRender(); }
+function renderExpList() {
+  document.getElementById("expList").innerHTML = exp.map(e => `
+    <div class="repeater-item">
+      <button class="repeater-remove" onclick="removeExp(${e.id})">✕</button>
+      <div class="form-row">
+        <div class="form-group"><label>Job Title</label><input value="${esc(e.role)}" onchange="updateExp(${e.id},'role',this.value)" placeholder="Software Engineer" /></div>
+        <div class="form-group"><label>Company</label><input value="${esc(e.company)}" onchange="updateExp(${e.id},'company',this.value)" placeholder="Google" /></div>
       </div>
-      <div class="cv-side">
-        ${S.skills.length?`<div class="cv-section"><div class="cv-section-title">Skills</div>${skillsH_bars}</div>`:''}
-        ${S.langs.length?`<div class="cv-section"><div class="cv-section-title">Languages</div>${langsH_classic}</div>`:''}
+      <div class="form-row">
+        <div class="form-group"><label>From</label><input value="${esc(e.from)}" onchange="updateExp(${e.id},'from',this.value)" placeholder="Jan 2021" /></div>
+        <div class="form-group"><label>To</label><input value="${esc(e.to)}" onchange="updateExp(${e.id},'to',this.value)" placeholder="Present" ${e.current?'disabled':''} /></div>
       </div>
-    </div>`;
+      <label style="display:flex;align-items:center;gap:6px;font-weight:500;cursor:pointer;margin-bottom:10px">
+        <input type="checkbox" ${e.current?'checked':''} onchange="updateExp(${e.id},'current',this.checked);updateExp(${e.id},'to',this.checked?'Present':'')"> Currently working here
+      </label>
+      <div class="form-group"><label>Description / Bullet Points</label>
+        <textarea rows="3" onchange="updateExp(${e.id},'bullets',this.value)" placeholder="• Led a team of 5 engineers to ship X…&#10;• Increased performance by 30%…">${esc(e.bullets)}</textarea>
+      </div>
+    </div>`).join("");
+}
+function updateExp(id, field, val) {
+  const item = exp.find(e => e.id === id);
+  if (item) { item[field] = val; scheduleRender(); scheduleSave(); }
+}
 
-  } else if(S.tpl==='executive'){
-    cv.innerHTML=`
-    <div class="cv-header"><div class="cv-name">${esc(S.name)||'Your Name'}</div><div class="cv-jobtitle">${esc(S.title)||'Job Title'}</div><div class="cv-contacts">${contacts(true)}</div></div>
-    <div class="cv-body">
-      <div class="cv-side">
-        ${S.skills.length?`<div class="cv-section"><div class="cv-section-title">Skills</div>${skillsH_bars}</div>`:''}
-        ${S.langs.length?`<div class="cv-section"><div class="cv-section-title">Languages</div>${langsH_classic}</div>`:''}
-        ${S.edu.length?`<div class="cv-section"><div class="cv-section-title">Education</div>${S.edu.map(e=>`<div class="cv-item"><div style="font-weight:700;font-size:9pt">${esc(e.degree)}</div><div style="font-size:8.5pt;color:#475569">${esc(e.school)}</div><div style="font-size:8pt;color:#94a3b8">${esc(e.from)}${e.from&&e.to?' – ':''}${esc(e.to)}</div></div>`).join('')}</div>`:''}
-        ${hobbies?`<div class="cv-section"><div class="cv-section-title">Interests</div><div>${hobbies}</div></div>`:''}
+function addEdu(data = {}) {
+  const id = Date.now();
+  edu.push({ id, ...{ degree:"", school:"", from:"", to:"", notes:"", ...data }});
+  renderEduList();
+  scheduleRender();
+}
+function removeEdu(id) { edu = edu.filter(e => e.id !== id); renderEduList(); scheduleRender(); }
+function renderEduList() {
+  document.getElementById("eduList").innerHTML = edu.map(e => `
+    <div class="repeater-item">
+      <button class="repeater-remove" onclick="removeEdu(${e.id})">✕</button>
+      <div class="form-row">
+        <div class="form-group"><label>Degree / Qualification</label><input value="${esc(e.degree)}" onchange="updateEdu(${e.id},'degree',this.value)" placeholder="BSc Computer Science" /></div>
+        <div class="form-group"><label>School / University</label><input value="${esc(e.school)}" onchange="updateEdu(${e.id},'school',this.value)" placeholder="MIT" /></div>
       </div>
-      <div class="cv-main">
-        ${S.summary?`<div class="cv-summary">${esc(S.summary)}</div>`:''}
-        ${S.exp.length?`<div class="cv-section"><div class="cv-section-title">Professional Experience</div>${expH}</div>`:''}
+      <div class="form-row">
+        <div class="form-group"><label>From</label><input value="${esc(e.from)}" onchange="updateEdu(${e.id},'from',this.value)" placeholder="Sep 2017" /></div>
+        <div class="form-group"><label>To</label><input value="${esc(e.to)}" onchange="updateEdu(${e.id},'to',this.value)" placeholder="Jun 2021" /></div>
       </div>
-    </div>`;
+      <div class="form-group"><label>Notes / GPA</label><input value="${esc(e.notes)}" onchange="updateEdu(${e.id},'notes',this.value)" placeholder="GPA: 3.8, Dean's List" /></div>
+    </div>`).join("");
+}
+function updateEdu(id, field, val) {
+  const item = edu.find(e => e.id === id);
+  if (item) { item[field] = val; scheduleRender(); scheduleSave(); }
+}
 
-  } else if(S.tpl==='europass'){
-    const langTable=S.langs.length?`<table class="lang-table"><thead><tr><th>Language</th><th>Listening</th><th>Reading</th><th>Speaking</th><th>Writing</th></tr></thead><tbody>${S.langs.map(l=>`<tr><td>${esc(l.name)}</td><td>${esc(l.level)}</td><td>${esc(l.level)}</td><td>${esc(l.level)}</td><td>${esc(l.level)}</td></tr>`).join('')}</tbody></table>`:'';
-    const euSkills=S.skills.length?`<div class="eu-skill-grid">${S.skills.map(s=>`<div class="eu-skill-box"><div class="eu-skill-name">${esc(s.name)}</div><div class="eu-skill-bar"><div class="eu-skill-fill" style="width:${s.lvl}%"></div></div></div>`).join('')}</div>`:'';
-    const sec=(t,body)=>`<div class="cv-section"><div class="cv-section-title">${t}</div><div class="cv-section-content">${body}</div></div>`;
-    const euExp=S.exp.map(e=>`<div class="cv-item"><div class="cv-item-row"><span class="cv-item-date">${esc(e.from)}${e.from&&e.to?' – ':''}${esc(e.to)}</span><div class="cv-item-right"><div class="cv-item-title">${esc(e.title)}</div><div class="cv-item-org">${esc(e.org)}</div><div class="cv-item-desc">${descHTML(e.desc)}</div></div></div></div>`).join('');
-    const euEdu=S.edu.map(e=>`<div class="cv-item"><div class="cv-item-row"><span class="cv-item-date">${esc(e.from)}${e.from&&e.to?' – ':''}${esc(e.to)}</span><div class="cv-item-right"><div class="cv-item-title">${esc(e.degree)}</div><div class="cv-item-org">${esc(e.school)}</div>${e.note?`<div class="cv-item-desc">${esc(e.note)}</div>`:''}</div></div></div>`).join('');
-    cv.innerHTML=`
-    <div class="cv-eurobar"></div>
-    <div class="cv-header">
-      <div>
-        <div class="cv-name">${esc(S.name)||'Your Name'}</div>
-        <div class="cv-jobtitle">${esc(S.title)||'Curriculum Vitae'}</div>
-        <div class="cv-contacts" style="display:flex;flex-direction:column;gap:4px">
-          ${S.email?`<div class="cv-contact-item">${icon('email')} ${esc(S.email)}</div>`:''}
-          ${S.phone?`<div class="cv-contact-item">${icon('phone')} ${esc(S.phone)}</div>`:''}
-          ${S.location?`<div class="cv-contact-item">${icon('loc')} ${esc(S.location)}</div>`:''}
-          ${S.linkedin?`<div class="cv-contact-item">${icon('link')} ${esc(S.linkedin)}</div>`:''}
+function addSkill(data = {}) {
+  const id = Date.now();
+  skills.push({ id, ...{ name:"", level:80, ...data }});
+  renderSkillList();
+  scheduleRender();
+}
+function removeSkill(id) { skills = skills.filter(s => s.id !== id); renderSkillList(); scheduleRender(); }
+function renderSkillList() {
+  document.getElementById("skillList").innerHTML = skills.map(s => `
+    <div class="repeater-item" style="padding:10px 14px">
+      <button class="repeater-remove" onclick="removeSkill(${s.id})">✕</button>
+      <div class="form-row">
+        <div class="form-group"><label>Skill</label><input value="${esc(s.name)}" onchange="updateSkill(${s.id},'name',this.value)" placeholder="React.js" /></div>
+        <div class="form-group"><label>Level: <strong id="slv-${s.id}">${s.level}%</strong></label>
+          <input type="range" min="10" max="100" step="5" value="${s.level}" style="width:100%;padding:0;margin-top:8px;border:none;box-shadow:none" oninput="updateSkill(${s.id},'level',+this.value);document.getElementById('slv-${s.id}').textContent=this.value+'%'" />
         </div>
       </div>
-      <div class="cv-photo">${personIcon()}</div>
-    </div>
-    <div class="cv-body">
-      ${S.summary?sec('Personal Statement',`<div class="cv-summary">${esc(S.summary)}</div>`):''}
-      ${S.exp.length?sec('Work Experience',euExp):''}
-      ${S.edu.length?sec('Education & Training',euEdu):''}
-      ${euSkills?sec('Digital Competences',euSkills):''}
-      ${langTable?sec('Language Skills',langTable):''}
-      ${hobbies?sec('Personal Interests',`<div>${hobbies}</div>`):''}
-    </div>`;
+    </div>`).join("");
+}
+function updateSkill(id, field, val) {
+  const item = skills.find(s => s.id === id);
+  if (item) { item[field] = val; scheduleRender(); scheduleSave(); }
+}
 
-  } else if(S.tpl==='creative'){
-    cv.innerHTML=`
-    <div class="cv-sidebar">
-      <div class="cv-photo-circle">${personIcon()}</div>
-      <div class="cv-name">${esc(S.name)||'Your Name'}</div>
-      <div class="cv-jobtitle">${esc(S.title)||'Job Title'}</div>
-      <div class="sb-section">
-        <div class="sb-title">Contact</div>
-        ${S.email?`<div class="cv-contact-item">${icon('email')} ${esc(S.email)}</div>`:''}
-        ${S.phone?`<div class="cv-contact-item">${icon('phone')} ${esc(S.phone)}</div>`:''}
-        ${S.location?`<div class="cv-contact-item">${icon('loc')} ${esc(S.location)}</div>`:''}
-        ${S.linkedin?`<div class="cv-contact-item">${icon('link')} ${esc(S.linkedin)}</div>`:''}
-        ${S.website?`<div class="cv-contact-item">${icon('link')} ${esc(S.website)}</div>`:''}
+const CEFR = ["Native","C2","C1","B2","B1","A2","A1 (Beginner)"];
+function addLang(data = {}) {
+  const id = Date.now();
+  langs.push({ id, ...{ name:"", level:"Native", ...data }});
+  renderLangList();
+  scheduleRender();
+}
+function removeLang(id) { langs = langs.filter(l => l.id !== id); renderLangList(); scheduleRender(); }
+function renderLangList() {
+  document.getElementById("langList").innerHTML = langs.map(l => `
+    <div class="repeater-item" style="padding:10px 14px">
+      <button class="repeater-remove" onclick="removeLang(${l.id})">✕</button>
+      <div class="form-row">
+        <div class="form-group"><label>Language</label><input value="${esc(l.name)}" onchange="updateLang(${l.id},'name',this.value)" placeholder="Spanish" /></div>
+        <div class="form-group"><label>CEFR Level</label>
+          <select onchange="updateLang(${l.id},'level',this.value)">${CEFR.map(c=>`<option ${c===l.level?'selected':''}>${c}</option>`).join("")}</select>
+        </div>
       </div>
-      ${S.skills.length?`<div class="sb-section"><div class="sb-title">Skills</div>${S.skills.map(s=>`<div class="skill-row"><div class="skill-name">${esc(s.name)}</div><div class="skill-bar"><div class="skill-fill" style="width:${s.lvl}%"></div></div></div>`).join('')}</div>`:''}
-      ${S.langs.length?`<div class="sb-section"><div class="sb-title">Languages</div>${S.langs.map(l=>`<div class="lang-item"><span class="lang-name">${esc(l.name)}</span><span class="lang-level">${esc(l.level)}</span></div>`).join('')}</div>`:''}
-      ${S.edu.length?`<div class="sb-section"><div class="sb-title">Education</div>${S.edu.map(e=>`<div class="sb-edu-item"><div class="sb-edu-deg">${esc(e.degree)}</div><div class="sb-edu-sch">${esc(e.school)}</div><div class="sb-edu-date">${esc(e.from)}${e.from&&e.to?' – ':''}${esc(e.to)}</div></div>`).join('')}</div>`:''}
-    </div>
-    <div class="cv-main-area">
-      ${S.summary?`<div class="cv-summary">${esc(S.summary)}</div>`:''}
-      ${S.exp.length?`<div class="cv-section"><div class="cv-section-title">Experience</div>${expH}</div>`:''}
-      ${hobbies?`<div class="cv-section"><div class="cv-section-title">Interests</div><div>${hobbies}</div></div>`:''}
-    </div>`;
+    </div>`).join("");
+}
+function updateLang(id, field, val) {
+  const item = langs.find(l => l.id === id);
+  if (item) { item[field] = val; scheduleRender(); scheduleSave(); }
+}
 
-  } else if(S.tpl==='modern'){
-    // Compute a second gradient color (shifted hue)
-    cv.style.setProperty('--AC2', shiftHue(c, 60));
-    cv.innerHTML=`
-    <div class="cv-header">
-      <div class="cv-name">${esc(S.name)||'Your Name'}</div>
-      <div class="cv-jobtitle">${esc(S.title)||'Job Title'}</div>
-      <div class="cv-contacts">${contacts(true)}</div>
-    </div>
-    <div class="cv-body">
-      <div class="cv-main">
-        ${S.summary?`<div class="cv-section"><div class="cv-summary">${esc(S.summary)}</div></div>`:''}
-        ${S.exp.length?`<div class="cv-section"><div class="cv-section-title">Experience</div>${expH}</div>`:''}
-        ${S.edu.length?`<div class="cv-section"><div class="cv-section-title">Education</div>${eduH}</div>`:''}
-        ${hobbies?`<div class="cv-section"><div class="cv-section-title">Interests</div><div>${hobbies}</div></div>`:''}
+// ══ HELPERS ═══════════════════════════════════════════
+function esc(str) { return (str || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function g(id)    { return (document.getElementById(id)?.value || "").trim(); }
+function scheduleRender() { clearTimeout(renderTimer); renderTimer = setTimeout(render, 120); }
+function scheduleSave()   { clearTimeout(saveTimer);   saveTimer   = setTimeout(saveData, 800); }
+
+document.querySelectorAll("#formPanel input, #formPanel textarea, #formPanel select").forEach(el => {
+  el.addEventListener("input", () => { scheduleRender(); scheduleSave(); });
+});
+
+// ══ ZOOM ══════════════════════════════════════════════
+function adjustZoom(delta) {
+  zoomLevel = Math.max(0.3, Math.min(1.5, zoomLevel + delta));
+  applyZoom();
+}
+function fitZoom() {
+  const container = document.getElementById("previewContainer");
+  const available = container.clientWidth - 40;
+  zoomLevel = Math.min(1, available / 794);
+  applyZoom();
+}
+function applyZoom() {
+  document.getElementById("previewScaler").style.transform = `scale(${zoomLevel})`;
+  document.getElementById("zoomLabel").textContent = Math.round(zoomLevel * 100) + "%";
+  // Update container height so it doesn't clip
+  document.getElementById("previewContainer").style.minHeight = (1123 * zoomLevel + 40) + "px";
+}
+
+// ══ RENDER ════════════════════════════════════════════
+function render() {
+  const data = collectData();
+  const html = templates[currentTemplate](data);
+  document.getElementById("cvPreview").innerHTML = html;
+}
+
+function collectData() {
+  return {
+    name:      g("name"),
+    title:     g("title"),
+    email:     g("email"),
+    phone:     g("phone"),
+    location:  g("location"),
+    linkedin:  g("linkedin"),
+    website:   g("website"),
+    summary:   g("summary"),
+    interests: g("interests"),
+    photo:     photoDataUrl,
+    accent:    accentColor,
+    exp, edu, skills, langs,
+  };
+}
+
+// ── Bullet parser ──
+function parseBullets(text) {
+  if (!text) return "";
+  return text.split("\n").filter(l => l.trim()).map(l => {
+    const clean = l.replace(/^[•\-\*]\s*/, "").trim();
+    return `<div style="margin-bottom:3px;padding-left:12px;position:relative"><span style="position:absolute;left:0;top:0">•</span>${clean}</div>`;
+  }).join("");
+}
+
+// ── Contact line ──
+function contactLine(d, color = "#555") {
+  const parts = [d.email, d.phone, d.location, d.linkedin, d.website].filter(Boolean);
+  return parts.map(p => `<span style="margin-right:14px;color:${color}">${p}</span>`).join("");
+}
+
+// ══ TEMPLATES ═════════════════════════════════════════
+const templates = {
+
+  // ── CLASSIC ──────────────────────────────────────────
+  classic: (d) => `
+    <div style="padding:48px 52px;font-family:'Inter',sans-serif">
+      <div style="border-bottom:3px solid ${d.accent};padding-bottom:20px;margin-bottom:24px">
+        <div style="font-size:30px;font-weight:800;letter-spacing:-.5px;color:#111;margin-bottom:4px">${d.name || "Your Name"}</div>
+        <div style="font-size:16px;color:${d.accent};font-weight:600;margin-bottom:10px">${d.title || "Job Title"}</div>
+        <div style="font-size:12px">${contactLine(d)}</div>
       </div>
-      <div class="cv-side">
-        ${S.skills.length?`<div class="cv-section"><div class="cv-section-title">Skills</div>${skillsH_bars5}</div>`:''}
-        ${S.langs.length?`<div class="cv-section"><div class="cv-section-title">Languages</div>${langsH_classic}</div>`:''}
+      ${d.summary ? `<div style="margin-bottom:24px"><div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};margin-bottom:8px">Profile</div><div style="font-size:13px;line-height:1.7;color:#333">${d.summary}</div></div>` : ""}
+      ${d.exp.length ? `<div style="margin-bottom:24px"><div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};margin-bottom:12px">Experience</div>${d.exp.map(e => `<div style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:14px;font-weight:700;color:#111">${e.role}</div><div style="font-size:12px;color:#888">${e.from}${e.to?" – "+e.to:""}</div></div><div style="font-size:13px;color:${d.accent};font-weight:600;margin-bottom:4px">${e.company}</div><div style="font-size:12.5px;color:#444;line-height:1.6">${parseBullets(e.bullets)}</div></div>`).join("")}</div>` : ""}
+      ${d.edu.length ? `<div style="margin-bottom:24px"><div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};margin-bottom:12px">Education</div>${d.edu.map(e => `<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:14px;font-weight:700">${e.degree}</div><div style="font-size:12px;color:#888">${e.from}${e.to?" – "+e.to:""}</div></div><div style="font-size:13px;color:${d.accent};font-weight:600">${e.school}</div>${e.notes?`<div style="font-size:12px;color:#666;margin-top:2px">${e.notes}</div>`:""}</div>`).join("")}</div>` : ""}
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        ${d.skills.length ? `<div><div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};margin-bottom:10px">Skills</div>${d.skills.map(s => `<div style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:3px"><span>${s.name}</span><span style="color:${d.accent}">${s.level}%</span></div><div style="height:5px;background:#eee;border-radius:3px;overflow:hidden"><div style="height:100%;width:${s.level}%;background:${d.accent};border-radius:3px"></div></div></div>`).join("")}</div>` : ""}
+        <div>
+          ${d.langs.length ? `<div style="margin-bottom:16px"><div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};margin-bottom:8px">Languages</div>${d.langs.map(l=>`<div style="font-size:13px;margin-bottom:4px"><span style="font-weight:600">${l.name}</span> <span style="color:#888">— ${l.level}</span></div>`).join("")}</div>` : ""}
+          ${d.interests ? `<div><div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};margin-bottom:8px">Interests</div><div style="display:flex;flex-wrap:wrap;gap:6px">${d.interests.split(",").map(i=>`<span style="background:#f1f5f9;padding:3px 10px;border-radius:99px;font-size:12px;color:#475569">${i.trim()}</span>`).join("")}</div></div>` : ""}
+        </div>
+      </div>
+    </div>`,
+
+  // ── EXECUTIVE ────────────────────────────────────────
+  executive: (d) => `
+    <div style="font-family:'Inter',sans-serif">
+      <div style="background:${d.accent};padding:36px 48px;display:flex;gap:24px;align-items:center">
+        ${d.photo ? `<img src="${d.photo}" style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.4);flex-shrink:0" />` : ""}
+        <div>
+          <div style="font-size:28px;font-weight:800;color:#fff;letter-spacing:-.4px">${d.name || "Your Name"}</div>
+          <div style="font-size:15px;color:rgba(255,255,255,.85);font-weight:500;margin-top:4px">${d.title || ""}</div>
+          <div style="margin-top:10px;font-size:12px;color:rgba(255,255,255,.7)">${contactLine(d,"rgba(255,255,255,.85)")}</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 1fr">
+        <div style="background:#f8fafc;padding:28px 20px;border-right:1px solid #e2e8f0">
+          ${d.skills.length ? `<div style="margin-bottom:20px"><div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:${d.accent};margin-bottom:10px">Skills</div>${d.skills.map(s=>`<div style="margin-bottom:8px"><div style="font-size:12px;font-weight:600;margin-bottom:3px">${s.name}</div><div style="height:4px;background:#ddd;border-radius:3px;overflow:hidden"><div style="height:100%;width:${s.level}%;background:${d.accent}"></div></div></div>`).join("")}</div>` : ""}
+          ${d.langs.length ? `<div style="margin-bottom:20px"><div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:${d.accent};margin-bottom:8px">Languages</div>${d.langs.map(l=>`<div style="font-size:12px;margin-bottom:4px"><span style="font-weight:600">${l.name}</span><br/><span style="color:#666;font-size:11px">${l.level}</span></div>`).join("")}</div>` : ""}
+          ${d.interests ? `<div><div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:${d.accent};margin-bottom:8px">Interests</div>${d.interests.split(",").map(i=>`<div style="font-size:12px;margin-bottom:3px">• ${i.trim()}</div>`).join("")}</div>` : ""}
+        </div>
+        <div style="padding:28px 32px">
+          ${d.summary ? `<div style="margin-bottom:22px"><div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:${d.accent};margin-bottom:8px">Profile</div><div style="font-size:13px;line-height:1.7;color:#374151">${d.summary}</div></div>` : ""}
+          ${d.exp.length ? `<div style="margin-bottom:22px"><div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:${d.accent};margin-bottom:12px">Experience</div>${d.exp.map(e=>`<div style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:14px;font-weight:700">${e.role}</span><span style="font-size:11px;color:#888">${e.from}${e.to?" – "+e.to:""}</span></div><div style="font-size:12px;color:${d.accent};font-weight:600;margin-bottom:4px">${e.company}</div><div style="font-size:12.5px;color:#444;line-height:1.6">${parseBullets(e.bullets)}</div></div>`).join("")}</div>` : ""}
+          ${d.edu.length ? `<div><div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:${d.accent};margin-bottom:12px">Education</div>${d.edu.map(e=>`<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between"><span style="font-size:14px;font-weight:700">${e.degree}</span><span style="font-size:11px;color:#888">${e.from}${e.to?" – "+e.to:""}</span></div><div style="font-size:12px;color:${d.accent};font-weight:600">${e.school}</div>${e.notes?`<div style="font-size:11px;color:#666;margin-top:2px">${e.notes}</div>`:""}</div>`).join("")}</div>` : ""}
+        </div>
+      </div>
+    </div>`,
+
+  // ── MODERN ───────────────────────────────────────────
+  modern: (d) => {
+    const c2 = d.accent + "cc";
+    return `
+    <div style="font-family:'Inter',sans-serif">
+      <div style="background:linear-gradient(135deg,${d.accent},${c2});padding:44px 52px">
+        <div style="font-size:32px;font-weight:900;color:#fff;letter-spacing:-.6px">${d.name || "Your Name"}</div>
+        <div style="font-size:15px;color:rgba(255,255,255,.85);margin-top:4px;font-weight:500">${d.title || ""}</div>
+        <div style="margin-top:12px;font-size:12px">${contactLine(d,"rgba(255,255,255,.9)")}</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 220px;min-height:900px">
+        <div style="padding:32px 36px">
+          ${d.summary ? `<div style="margin-bottom:24px"><div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:${d.accent};border-bottom:2px solid ${d.accent};padding-bottom:4px;margin-bottom:10px">About Me</div><div style="font-size:13px;line-height:1.75;color:#374151">${d.summary}</div></div>` : ""}
+          ${d.exp.length ? `<div style="margin-bottom:24px"><div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:${d.accent};border-bottom:2px solid ${d.accent};padding-bottom:4px;margin-bottom:12px">Experience</div>${d.exp.map(e=>`<div style="margin-bottom:18px;padding-left:14px;border-left:3px solid ${d.accent}"><div style="display:flex;justify-content:space-between"><span style="font-size:14px;font-weight:700">${e.role}</span><span style="font-size:11px;color:#888">${e.from}${e.to?" – "+e.to:""}</span></div><div style="font-size:12.5px;color:${d.accent};font-weight:600;margin-bottom:4px">${e.company}</div><div style="font-size:12.5px;color:#444;line-height:1.6">${parseBullets(e.bullets)}</div></div>`).join("")}</div>` : ""}
+          ${d.edu.length ? `<div><div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:${d.accent};border-bottom:2px solid ${d.accent};padding-bottom:4px;margin-bottom:12px">Education</div>${d.edu.map(e=>`<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between"><span style="font-size:14px;font-weight:700">${e.degree}</span><span style="font-size:11px;color:#888">${e.from}${e.to?" – "+e.to:""}</span></div><div style="font-size:12.5px;color:${d.accent};font-weight:600">${e.school}</div>${e.notes?`<div style="font-size:11px;color:#666;margin-top:2px">${e.notes}</div>`:""}</div>`).join("")}</div>` : ""}
+        </div>
+        <div style="background:#f8fafc;padding:28px 20px;border-left:1px solid #e2e8f0">
+          ${d.skills.length ? `<div style="margin-bottom:20px"><div style="font-size:11px;font-weight:800;text-transform:uppercase;color:${d.accent};margin-bottom:10px">Skills</div>${d.skills.map(s=>`<div style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span>${s.name}</span><span style="color:${d.accent}">${s.level}%</span></div><div style="height:4px;background:#ddd;border-radius:3px;overflow:hidden"><div style="height:100%;width:${s.level}%;background:${d.accent}"></div></div></div>`).join("")}</div>` : ""}
+          ${d.langs.length ? `<div style="margin-bottom:20px"><div style="font-size:11px;font-weight:800;text-transform:uppercase;color:${d.accent};margin-bottom:8px">Languages</div>${d.langs.map(l=>`<div style="font-size:12px;margin-bottom:5px"><span style="font-weight:600">${l.name}</span> <span style="color:#888">— ${l.level}</span></div>`).join("")}</div>` : ""}
+          ${d.interests ? `<div><div style="font-size:11px;font-weight:800;text-transform:uppercase;color:${d.accent};margin-bottom:8px">Interests</div>${d.interests.split(",").map(i=>`<div style="font-size:12px;margin-bottom:3px">• ${i.trim()}</div>`).join("")}</div>` : ""}
+        </div>
       </div>
     </div>`;
-  }
+  },
+
+  // ── CREATIVE ─────────────────────────────────────────
+  creative: (d) => `
+    <div style="font-family:'Inter',sans-serif;display:grid;grid-template-columns:230px 1fr;min-height:1123px">
+      <div style="background:${d.accent};padding:36px 20px;color:#fff">
+        ${d.photo ? `<div style="text-align:center;margin-bottom:20px"><img src="${d.photo}" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,.3)" /></div>` : ""}
+        <div style="font-size:18px;font-weight:800;margin-bottom:2px">${d.name || "Your Name"}</div>
+        <div style="font-size:12px;opacity:.85;margin-bottom:20px">${d.title || ""}</div>
+        <div style="margin-bottom:20px">
+          ${[d.email,d.phone,d.location,d.linkedin,d.website].filter(Boolean).map(p=>`<div style="font-size:11px;opacity:.8;margin-bottom:5px;word-break:break-all">${p}</div>`).join("")}
+        </div>
+        ${d.skills.length ? `<div style="margin-bottom:20px"><div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;opacity:.7;margin-bottom:8px">Skills</div>${d.skills.map(s=>`<div style="margin-bottom:7px"><div style="font-size:12px;margin-bottom:3px">${s.name}</div><div style="height:4px;background:rgba(255,255,255,.25);border-radius:3px;overflow:hidden"><div style="height:100%;width:${s.level}%;background:#fff"></div></div></div>`).join("")}</div>` : ""}
+        ${d.langs.length ? `<div style="margin-bottom:20px"><div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;opacity:.7;margin-bottom:8px">Languages</div>${d.langs.map(l=>`<div style="font-size:12px;margin-bottom:5px;opacity:.9"><span style="font-weight:700">${l.name}</span> — ${l.level}</div>`).join("")}</div>` : ""}
+        ${d.interests ? `<div><div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;opacity:.7;margin-bottom:8px">Interests</div>${d.interests.split(",").map(i=>`<div style="font-size:12px;opacity:.85;margin-bottom:3px">• ${i.trim()}</div>`).join("")}</div>` : ""}
+      </div>
+      <div style="padding:36px 32px">
+        ${d.summary ? `<div style="margin-bottom:22px"><div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};margin-bottom:8px">Profile</div><div style="font-size:13px;line-height:1.75;color:#374151">${d.summary}</div></div>` : ""}
+        ${d.exp.length ? `<div style="margin-bottom:22px"><div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};margin-bottom:12px">Experience</div>${d.exp.map(e=>`<div style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:14px;font-weight:700">${e.role}</span><span style="font-size:11px;color:#888">${e.from}${e.to?" – "+e.to:""}</span></div><div style="font-size:12px;color:${d.accent};font-weight:600;margin-bottom:4px">${e.company}</div><div style="font-size:12.5px;color:#444;line-height:1.6">${parseBullets(e.bullets)}</div></div>`).join("")}</div>` : ""}
+        ${d.edu.length ? `<div><div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};margin-bottom:12px">Education</div>${d.edu.map(e=>`<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between"><span style="font-size:14px;font-weight:700">${e.degree}</span><span style="font-size:11px;color:#888">${e.from}${e.to?" – "+e.to:""}</span></div><div style="font-size:12px;color:${d.accent};font-weight:600">${e.school}</div>${e.notes?`<div style="font-size:11px;color:#666;margin-top:2px">${e.notes}</div>`:""}</div>`).join("")}</div>` : ""}
+      </div>
+    </div>`,
+
+  // ── EUROPASS ─────────────────────────────────────────
+  europass: (d) => `
+    <div style="font-family:'Inter',sans-serif;padding:0">
+      <div style="background:${d.accent};height:8px"></div>
+      <div style="padding:32px 48px">
+        <div style="display:flex;gap:24px;align-items:flex-start;margin-bottom:24px">
+          <div style="flex:1">
+            <div style="font-size:26px;font-weight:800;color:#111;letter-spacing:-.4px">${d.name || "Your Name"}</div>
+            <div style="font-size:14px;color:${d.accent};font-weight:600;margin-top:4px">${d.title || ""}</div>
+          </div>
+          ${d.photo ? `<img src="${d.photo}" style="width:80px;height:96px;object-fit:cover;border:1px solid #ddd" />` : ""}
+        </div>
+        <table style="width:100%;border-collapse:collapse;margin-bottom:20px">
+          ${[[d.email,"Email"],[d.phone,"Phone"],[d.location,"Address"],[d.linkedin,"LinkedIn"],[d.website,"Website"]].filter(r=>r[0]).map(r=>`<tr style="border-top:1px solid #eee"><td style="padding:5px 0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#666;width:140px">${r[1]}</td><td style="padding:5px 0;font-size:12.5px;color:#333">${r[0]}</td></tr>`).join("")}
+        </table>
+        ${d.summary ? `<div style="margin-bottom:20px"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};border-bottom:1px solid ${d.accent};padding-bottom:3px;margin-bottom:8px">Personal Statement</div><div style="font-size:13px;line-height:1.7;color:#333">${d.summary}</div></div>` : ""}
+        ${d.exp.length ? `<div style="margin-bottom:20px"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};border-bottom:1px solid ${d.accent};padding-bottom:3px;margin-bottom:12px">Work Experience</div>${d.exp.map(e=>`<div style="display:grid;grid-template-columns:140px 1fr;gap:12px;margin-bottom:14px"><div style="font-size:12px;color:#666">${e.from}${e.to?" – "+e.to:""}</div><div><div style="font-size:13px;font-weight:700">${e.role}</div><div style="font-size:12px;color:${d.accent};font-weight:600;margin-bottom:4px">${e.company}</div><div style="font-size:12.5px;color:#444;line-height:1.6">${parseBullets(e.bullets)}</div></div></div>`).join("")}</div>` : ""}
+        ${d.edu.length ? `<div style="margin-bottom:20px"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};border-bottom:1px solid ${d.accent};padding-bottom:3px;margin-bottom:12px">Education & Training</div>${d.edu.map(e=>`<div style="display:grid;grid-template-columns:140px 1fr;gap:12px;margin-bottom:12px"><div style="font-size:12px;color:#666">${e.from}${e.to?" – "+e.to:""}</div><div><div style="font-size:13px;font-weight:700">${e.degree}</div><div style="font-size:12px;color:${d.accent};font-weight:600">${e.school}</div>${e.notes?`<div style="font-size:11px;color:#666;margin-top:2px">${e.notes}</div>`:""}</div></div>`).join("")}</div>` : ""}
+        ${d.skills.length ? `<div style="margin-bottom:20px"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};border-bottom:1px solid ${d.accent};padding-bottom:3px;margin-bottom:10px">Skills</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${d.skills.map(s=>`<div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span>${s.name}</span><span style="color:${d.accent}">${s.level}%</span></div><div style="height:4px;background:#eee;border-radius:2px;overflow:hidden"><div style="height:100%;width:${s.level}%;background:${d.accent}"></div></div></div>`).join("")}</div></div>` : ""}
+        ${d.langs.length ? `<div style="margin-bottom:20px"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};border-bottom:1px solid ${d.accent};padding-bottom:3px;margin-bottom:10px">Languages</div><table style="width:100%;border-collapse:collapse;font-size:12px"><tr style="background:#f8fafc"><th style="padding:6px 10px;text-align:left;font-weight:700">Language</th><th style="padding:6px 10px;text-align:left;font-weight:700">CEFR Level</th></tr>${d.langs.map((l,i)=>`<tr style="background:${i%2===0?"#fff":"#f8fafc"}"><td style="padding:6px 10px">${l.name}</td><td style="padding:6px 10px;color:${d.accent};font-weight:600">${l.level}</td></tr>`).join("")}</table></div>` : ""}
+        ${d.interests ? `<div><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${d.accent};border-bottom:1px solid ${d.accent};padding-bottom:3px;margin-bottom:8px">Interests & Hobbies</div><div style="display:flex;flex-wrap:wrap;gap:6px">${d.interests.split(",").map(i=>`<span style="background:#f1f5f9;padding:3px 10px;border-radius:99px;font-size:12px">${i.trim()}</span>`).join("")}</div></div>` : ""}
+      </div>
+    </div>`,
+};
+
+// ══ PDF ═══════════════════════════════════════════════
+function downloadPDF() {
+  window.print();
 }
 
-function shiftHue(hex, deg){
-  let r=parseInt(hex.slice(1,3),16)/255,g=parseInt(hex.slice(3,5),16)/255,b=parseInt(hex.slice(5,7),16)/255;
-  const max=Math.max(r,g,b),min=Math.min(r,g,b),l=(max+min)/2;
-  if(max===min)return hex;
-  const d=max-min,s=l>0.5?d/(2-max-min):d/(max+min);
-  let h=max===r?(g-b)/d+(g<b?6:0):max===g?(b-r)/d+2:(r-g)/d+4;
-  h=(h/6*360+deg)%360;
-  function hsl2rgb(h,s,l){const a=s*Math.min(l,1-l);const f=n=>{const k=(n+h/30)%12;return l-a*Math.max(Math.min(k-3,9-k,1),-1)};
-  return[Math.round(f(0)*255),Math.round(f(8)*255),Math.round(f(4)*255)]}
-  const[rr,gg,bb]=hsl2rgb(h,s,l);
-  return'#'+[rr,gg,bb].map(v=>v.toString(16).padStart(2,'0')).join('');
+// ══ SAVE / LOAD ═══════════════════════════════════════
+const SAVE_KEY = "cc_cv_data";
+
+function saveData() {
+  const data = {
+    template: currentTemplate,
+    accent: accentColor,
+    photo: photoDataUrl,
+    fields: {
+      name:g("name"), title:g("title"), email:g("email"), phone:g("phone"),
+      location:g("location"), linkedin:g("linkedin"), website:g("website"),
+      summary:g("summary"), interests:g("interests"),
+    },
+    exp, edu, skills, langs,
+    saved: Date.now(),
+  };
+  try {
+    localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+    const bar = document.getElementById("saveBar");
+    bar.style.display = "flex";
+    document.getElementById("saveBarText").textContent = `💾 Saved ${new Date().toLocaleTimeString()}`;
+  } catch(e) { showToast("Auto-save failed (storage full?).", "error"); }
 }
 
-// ── Experience ──────────────────────────────────────────────
-function addExp(d={}){
-  const id=++_expId;
-  S.exp.push({id,title:d.title||'',org:d.org||'',from:d.from||'',to:d.to||'',desc:d.desc||''});
-  renderExp(); R();
-}
-function removeExp(id){S.exp=S.exp.filter(e=>e.id!==id);renderExp();R()}
-function renderExp(){
-  const el=document.getElementById('exp-list');el.innerHTML='';
-  S.exp.forEach((e,i)=>{
-    const d=document.createElement('div');d.className='rep-item';
-    d.innerHTML=`<div class="rep-item-head"><span class="rep-item-label">${e.org||e.title||'Experience '+(i+1)}</span><div class="rep-actions"><button class="rep-btn" onclick="removeExp(${e.id})" title="Remove">✕</button></div></div>
-    <div class="fg2"><div class="field"><label>Job Title</label><input value="${esc(e.title)}" placeholder="Marketing Manager" oninput="S.exp[${i}].title=this.value;R();this.closest('.rep-item').querySelector('.rep-item-label').textContent=S.exp[${i}].org||S.exp[${i}].title||'Experience'"/></div>
-    <div class="field"><label>Company</label><input value="${esc(e.org)}" placeholder="Google" oninput="S.exp[${i}].org=this.value;R();this.closest('.rep-item').querySelector('.rep-item-label').textContent=this.value||S.exp[${i}].title||'Experience'"/></div></div>
-    <div class="fg2"><div class="field"><label>From</label><input value="${esc(e.from)}" placeholder="Jan 2020" oninput="S.exp[${i}].from=this.value;R()"/></div>
-    <div class="field"><label>To</label><input value="${esc(e.to)}" placeholder="Present" oninput="S.exp[${i}].to=this.value;R()"/></div></div>
-    <div class="field"><label>Description</label><textarea placeholder="• Led a team of 8 and grew revenue 40%&#10;• Launched 3 campaigns with 12,000+ leads" oninput="S.exp[${i}].desc=this.value;R()">${esc(e.desc)}</textarea></div>`;
-    el.appendChild(d);
-  });
+function loadFromLocalStorage() {
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+
+    setTemplate(data.template, document.querySelector(`.template-btn[onclick*="${data.template}"]`));
+    setColor(data.accent || "#2563eb", null);
+
+    if (data.photo) {
+      photoDataUrl = data.photo;
+      const prev = document.getElementById("photoPreview");
+      prev.src = data.photo;
+      prev.style.display = "block";
+      document.getElementById("photoLabel").style.display = "none";
+      document.getElementById("photoRemove").style.display = "inline-block";
+      document.getElementById("photoWrap").classList.add("has-photo");
+    }
+
+    if (data.fields) {
+      Object.entries(data.fields).forEach(([k,v]) => {
+        const el = document.getElementById(k);
+        if (el) el.value = v || "";
+      });
+    }
+
+    exp    = (data.exp    || []).map(e => ({...e, id: e.id || Date.now() + Math.random()}));
+    edu    = (data.edu    || []).map(e => ({...e, id: e.id || Date.now() + Math.random()}));
+    skills = (data.skills || []).map(s => ({...s, id: s.id || Date.now() + Math.random()}));
+    langs  = (data.langs  || []).map(l => ({...l, id: l.id || Date.now() + Math.random()}));
+
+    renderExpList();
+    renderEduList();
+    renderSkillList();
+    renderLangList();
+
+    const bar = document.getElementById("saveBar");
+    bar.style.display = "flex";
+    document.getElementById("saveBarText").textContent = `💾 Restored from ${new Date(data.saved).toLocaleDateString()}`;
+    showToast("CV data restored from last session.", "info");
+  } catch(e) { console.warn("Could not load saved data:", e); }
 }
 
-// ── Education ───────────────────────────────────────────────
-function addEdu(d={}){
-  const id=++_eduId;
-  S.edu.push({id,degree:d.degree||'',school:d.school||'',from:d.from||'',to:d.to||'',note:d.note||''});
-  renderEdu(); R();
-}
-function removeEdu(id){S.edu=S.edu.filter(e=>e.id!==id);renderEdu();R()}
-function renderEdu(){
-  const el=document.getElementById('edu-list');el.innerHTML='';
-  S.edu.forEach((e,i)=>{
-    const d=document.createElement('div');d.className='rep-item';
-    d.innerHTML=`<div class="rep-item-head"><span class="rep-item-label">${e.school||e.degree||'Education '+(i+1)}</span><div class="rep-actions"><button class="rep-btn" onclick="removeEdu(${e.id})">✕</button></div></div>
-    <div class="fg2"><div class="field"><label>Degree</label><input value="${esc(e.degree)}" placeholder="BSc Computer Science" oninput="S.edu[${i}].degree=this.value;R()"/></div>
-    <div class="field"><label>School</label><input value="${esc(e.school)}" placeholder="MIT" oninput="S.edu[${i}].school=this.value;R();this.closest('.rep-item').querySelector('.rep-item-label').textContent=this.value||S.edu[${i}].degree||'Education'"/></div></div>
-    <div class="fg2"><div class="field"><label>From</label><input value="${esc(e.from)}" placeholder="2018" oninput="S.edu[${i}].from=this.value;R()"/></div>
-    <div class="field"><label>To</label><input value="${esc(e.to)}" placeholder="2022" oninput="S.edu[${i}].to=this.value;R()"/></div></div>
-    <div class="field"><label>Notes</label><input value="${esc(e.note)}" placeholder="First Class Honours, GPA 3.9, Dean's List" oninput="S.edu[${i}].note=this.value;R()"/></div>`;
-    el.appendChild(d);
-  });
+function clearAll() {
+  if (!confirm("Clear all CV data? This cannot be undone.")) return;
+  localStorage.removeItem(SAVE_KEY);
+  location.reload();
 }
 
-// ── Skills ──────────────────────────────────────────────────
-function addSkill(d={}){
-  const id=++_skId;
-  S.skills.push({id,name:d.name||'',lvl:d.lvl||80});
-  renderSkills(); R();
+function confirmClear() { clearAll(); }
+
+// ══ LOAD EXAMPLE ══════════════════════════════════════
+function loadExample() {
+  document.getElementById("name").value      = "Alex Johnson";
+  document.getElementById("title").value     = "Senior Product Manager";
+  document.getElementById("email").value     = "alex@alexjohnson.dev";
+  document.getElementById("phone").value     = "+1 (555) 012-3456";
+  document.getElementById("location").value  = "San Francisco, CA";
+  document.getElementById("linkedin").value  = "linkedin.com/in/alexjohnson";
+  document.getElementById("website").value   = "alexjohnson.dev";
+  document.getElementById("summary").value   = "Results-driven Product Manager with 7+ years of experience leading cross-functional teams to ship customer-centric products. Track record of growing user bases by 40%+ and driving $10M+ in ARR. Passionate about combining data insights with user empathy.";
+  document.getElementById("interests").value = "Rock Climbing, Open Source, Photography, Chess";
+
+  exp = [
+    { id:1, role:"Senior Product Manager", company:"Stripe", from:"Mar 2021", to:"Present", current:true, bullets:"• Led 0→1 launch of Stripe Tax product, serving 15,000+ businesses in first 6 months\n• Managed 3 cross-functional squads (12 engineers, 2 designers, 2 analysts)\n• Grew merchant activation rate by 34% through a personalised onboarding revamp" },
+    { id:2, role:"Product Manager", company:"Airbnb", from:"Jan 2019", to:"Feb 2021", current:false, bullets:"• Owned the host reliability product, reducing booking cancellations by 22%\n• Ran 40+ A/B experiments per quarter using Optimizely and internal tooling\n• Partnered with Data Science to build a host quality score model (AUC 0.86)" },
+    { id:3, role:"Associate PM", company:"Google", from:"Jun 2017", to:"Dec 2018", current:false, bullets:"• Contributed to Google Maps local search ranking improvements\n• Coordinated user research studies across 5 international markets" },
+  ];
+  edu = [
+    { id:4, degree:"MBA, Technology & Innovation", school:"Stanford Graduate School of Business", from:"Sep 2015", to:"Jun 2017", notes:"GPA: 3.9 / Dean's List" },
+    { id:5, degree:"BSc Computer Science", school:"UC Berkeley", from:"Sep 2011", to:"Jun 2015", notes:"" },
+  ];
+  skills = [
+    { id:6, name:"Product Strategy", level:95 },
+    { id:7, name:"SQL & Data Analysis", level:80 },
+    { id:8, name:"A/B Testing", level:90 },
+    { id:9, name:"Figma / Prototyping", level:70 },
+    { id:10, name:"Agile / Scrum", level:90 },
+    { id:11, name:"Stakeholder Management", level:85 },
+  ];
+  langs = [
+    { id:12, name:"English", level:"Native" },
+    { id:13, name:"Spanish", level:"B2" },
+    { id:14, name:"Mandarin", level:"A2" },
+  ];
+
+  renderExpList();
+  renderEduList();
+  renderSkillList();
+  renderLangList();
+  scheduleRender();
+  scheduleSave();
+  showToast("Example CV loaded!", "success");
 }
-function removeSkill(id){S.skills=S.skills.filter(s=>s.id!==id);renderSkills();R()}
-function renderSkills(){
-  const el=document.getElementById('skill-list');el.innerHTML='';
-  S.skills.forEach((sk,i)=>{
-    const d=document.createElement('div');d.className='rep-item';
-    d.innerHTML=`<div class="rep-item-head"><span class="rep-item-label">${sk.name||'Skill '+(i+1)}</span><div class="rep-actions"><button class="rep-btn" onclick="removeSkill(${sk.id})">✕</button></div></div>
-    <div class="fg2"><div class="field"><label>Skill name</label><input value="${esc(sk.name)}" placeholder="e.g. Figma" oninput="S.skills[${i}].name=this.value;R();this.closest('.rep-item').querySelector('.rep-item-label').textContent=this.value||'Skill'"/></div>
-    <div class="field"><label>Level: <strong id="sk${sk.id}">${sk.lvl}%</strong></label><input type="range" class="skill-slider" min="10" max="100" step="5" value="${sk.lvl}" oninput="S.skills[${i}].lvl=+this.value;document.getElementById('sk${sk.id}').textContent=this.value+'%';R()"/></div></div>`;
-    el.appendChild(d);
-  });
-}
-
-// ── Languages ───────────────────────────────────────────────
-const LEVELS=['Native','Fluent','Advanced (C1)','Upper Intermediate (B2)','Intermediate (B1)','Elementary (A2)','Beginner (A1)'];
-function addLang(d={}){
-  const id=++_lgId;
-  S.langs.push({id,name:d.name||'',level:d.level||'Intermediate (B1)'});
-  renderLangs(); R();
-}
-function removeLang(id){S.langs=S.langs.filter(l=>l.id!==id);renderLangs();R()}
-function renderLangs(){
-  const el=document.getElementById('lang-list');el.innerHTML='';
-  S.langs.forEach((l,i)=>{
-    const d=document.createElement('div');d.className='rep-item';
-    d.innerHTML=`<div class="rep-item-head"><span class="rep-item-label">${l.name||'Language '+(i+1)}</span><div class="rep-actions"><button class="rep-btn" onclick="removeLang(${l.id})">✕</button></div></div>
-    <div class="fg2"><div class="field"><label>Language</label><input value="${esc(l.name)}" placeholder="Spanish" oninput="S.langs[${i}].name=this.value;R();this.closest('.rep-item').querySelector('.rep-item-label').textContent=this.value||'Language'"/></div>
-    <div class="field"><label>Level</label><select oninput="S.langs[${i}].level=this.value;R()">${LEVELS.map(lv=>`<option${lv===l.level?' selected':''}>${lv}</option>`).join('')}</select></div></div>`;
-    el.appendChild(d);
-  });
-}
-
-// ── Zoom ────────────────────────────────────────────────────
-let scale=1;
-function zoom(delta){scale=Math.max(0.4,Math.min(1.5,scale+delta));applyScale()}
-function resetZoom(){autoFit()}
-function applyScale(){document.getElementById('scaler').style.transform=`scale(${scale})`;document.getElementById('scaler').style.marginBottom=`${(1123*scale)-1123+32}px`;document.getElementById('zoom-lbl').textContent=Math.round(scale*100)+'%'}
-function autoFit(){const w=document.getElementById('preview-wrap').clientWidth-48;scale=Math.min(1,w/794);applyScale()}
-window.addEventListener('resize',autoFit);
-
-// ── Toast ────────────────────────────────────────────────────
-function toast(m,t='ok'){const el=document.getElementById('toast');el.textContent=m;el.className='show '+t;clearTimeout(el._t);el._t=setTimeout(()=>el.className='',3000)}
-
-// ── Download ──────────────────────────────────────────────────
-function downloadPDF(){toast('Opening print dialog — choose "Save as PDF"');setTimeout(()=>window.print(),350)}
-function printCV(){window.print()}
-
-// ── Example ──────────────────────────────────────────────────
-function loadExample(){
-  document.getElementById('f-name').value='Sarah Johnson'; S.name='Sarah Johnson';
-  document.getElementById('f-title').value='Senior Marketing Manager'; S.title='Senior Marketing Manager';
-  document.getElementById('f-email').value='sarah@example.com'; S.email='sarah@example.com';
-  document.getElementById('f-phone').value='+1 (555) 234 5678'; S.phone='+1 (555) 234 5678';
-  document.getElementById('f-loc').value='New York, USA'; S.location='New York, USA';
-  document.getElementById('f-li').value='linkedin.com/in/sarahjohnson'; S.linkedin='linkedin.com/in/sarahjohnson';
-  document.getElementById('f-web').value='sarahjohnson.co'; S.website='sarahjohnson.co';
-  document.getElementById('f-sum').value='Results-driven marketing leader with 8+ years scaling B2B SaaS brands. Led campaigns generating $12M+ in pipeline and grew organic traffic 300% at two fast-growing startups. Passionate about data-driven storytelling and building high-performing teams.'; S.summary=document.getElementById('f-sum').value;
-  document.getElementById('f-hobbies').value='Photography, Hiking, Open Source, Travel'; S.hobbies=document.getElementById('f-hobbies').value;
-  S.exp=[];S.edu=[];S.skills=[];S.langs=[];_expId=_eduId=_skId=_lgId=0;
-  addExp({title:'Senior Marketing Manager',org:'TechCorp Inc.',from:'Jan 2021',to:'Present',desc:'• Led full-funnel marketing strategy growing ARR from $3M to $18M\n• Managed a team of 8 across content, paid, and growth channels\n• Launched 3 product campaigns each generating 4,000+ qualified leads'});
-  addExp({title:'Marketing Manager',org:'StartupXYZ',from:'Mar 2018',to:'Dec 2020',desc:'• Grew organic traffic 300% through SEO and content strategy\n• Reduced customer acquisition cost by 40% via paid campaign optimisation\n• Built brand social presence from 0 to 50,000 engaged followers'});
-  addEdu({degree:'BSc Marketing & Communications',school:'New York University',from:'2014',to:'2018',note:'First Class Honours · Dean\'s List 2016–2018'});
-  addSkill({name:'Digital Marketing',lvl:95});addSkill({name:'SEO & Content',lvl:90});addSkill({name:'Google Ads / Meta',lvl:85});addSkill({name:'Data Analytics',lvl:75});addSkill({name:'Team Leadership',lvl:88});
-  addLang({name:'English',level:'Native'});addLang({name:'Spanish',level:'Intermediate (B1)'});
-  R(); toast('Example loaded — customize it to fit your profile.');
-}
-
-// ── Init ─────────────────────────────────────────────────────
-R(); setTimeout(autoFit, 100);
 </script>
+
+<style>
+@media print {
+  body * { visibility: hidden !important; }
+  .cv-a4, .cv-a4 * { visibility: visible !important; }
+  .cv-a4 { position: fixed !important; left: 0 !important; top: 0 !important; width: 210mm !important; min-height: 297mm !important; transform: none !important; box-shadow: none !important; }
+  .preview-scaler { transform: none !important; }
+}
+</style>
 </body>
 </html>

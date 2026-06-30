@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Tools — CoverCraft AI</title>
+  <meta name="description" content="Generate job application email subject lines and post-interview thank-you emails free with AI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/shared.css" />
+  <style>
+    .tool-tabs { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+    .tool-tab {
+      padding: 9px 20px; border-radius: 99px; font-size: 14px; font-weight: 600;
+      cursor: pointer; border: 1.5px solid var(--border);
+      background: var(--bg2); color: var(--text2); transition: all .18s ease;
+    }
+    .tool-tab.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .tool-panel { display: none; }
+    .tool-panel.active { display: block; }
+
+    .subject-list { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+    .subject-item {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; padding: 13px 16px;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px; transition: border-color .18s;
+    }
+    .subject-item:hover { border-color: var(--blue); }
+    .subject-text { flex: 1; font-weight: 500; }
+    .subject-copy { flex-shrink: 0; }
+
+    .usage-panel {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 20px; margin-bottom: 28px;
+    }
+    .usage-panel-title { font-size: 13px; font-weight: 700; color: var(--text2); margin-bottom: 12px; text-transform: uppercase; letter-spacing: .04em; }
+    .usage-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .usage-label { font-size: 13px; color: var(--text2); }
+
+    .save-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; padding: 10px 14px;
+      background: var(--blue-s); border: 1px solid var(--blue-b);
+      border-radius: var(--radius-sm); margin-bottom: 16px; flex-wrap: wrap;
+    }
+    .save-bar-text { font-size: 13px; color: var(--blue); }
+  </style>
+</head>
+<body>
+<div id="navMount"></div>
+
+<div class="page">
+  <h1 class="page-title">✉️ Email Tools</h1>
+  <p class="page-sub">Generate job application subject lines and post-interview thank-you emails.</p>
+
+  <!-- Usage panel -->
+  <div class="usage-panel" id="usagePanel">
+    <div class="usage-panel-title">📊 Today's Usage</div>
+    <div id="usageBars">
+      <div style="color:var(--text3);font-size:13px">Loading usage…</div>
+    </div>
+    <div style="margin-top:12px;font-size:12px;color:var(--text3)">Resets at midnight UTC · <a href="#" onclick="showAdModal();return false">Watch 5 ads to unlock more →</a></div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tool-tabs">
+    <button class="tool-tab active" onclick="switchTab('subjects', this)">📧 Subject Lines</button>
+    <button class="tool-tab" onclick="switchTab('thankyou', this)">🙏 Thank-You Email</button>
+  </div>
+
+  <!-- ── SUBJECT LINES ── -->
+  <div class="tool-panel active" id="panel-subjects">
+    <div class="card">
+      <div class="card-body">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
+          <h2 style="font-size:18px;font-weight:700">Email Subject Line Generator</h2>
+          <span id="subjectBadge" class="limit-badge">— / — today</span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Job Title *</label>
+            <input type="text" id="sJob" placeholder="e.g. Product Manager" />
+          </div>
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" id="sCompany" placeholder="e.g. Google" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="sName" placeholder="e.g. Alex Johnson" />
+          </div>
+          <div class="form-group">
+            <label>Tone</label>
+            <select id="sTone">
+              <option>Professional</option>
+              <option>Confident</option>
+              <option>Friendly</option>
+              <option>Concise</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="sError"></div>
+
+        <button class="btn btn-primary btn-lg" onclick="generateSubjects()" id="sBtn" style="width:100%">
+          ✨ Generate 5 Subject Lines
+        </button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="sResults" style="display:none;margin-top:20px">
+      <div id="sSavebar" class="save-bar" style="display:none">
+        <span class="save-bar-text" id="sSavebarText"></span>
+        <button class="btn btn-sm btn-secondary" onclick="loadSubjects()">↩ Restore</button>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+            <h3 style="font-size:16px;font-weight:700">Generated Subject Lines</h3>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button class="btn btn-sm btn-secondary" onclick="generateSubjects()">↻ Regenerate</button>
+              <button class="btn btn-sm btn-secondary" onclick="copyAllSubjects()">⎘ Copy All</button>
+            </div>
+          </div>
+          <div class="subject-list" id="subjectList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── THANK-YOU EMAIL ── -->
+  <div class="tool-panel" id="panel-thankyou">
+    <div class="card">
+      <div class="card-body">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
+          <h2 style="font-size:18px;font-weight:700">Post-Interview Thank-You Email</h2>
+          <span id="thankBadge" class="limit-badge">— / — today</span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Job Title *</label>
+            <input type="text" id="tJob" placeholder="e.g. Software Engineer" />
+          </div>
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" id="tCompany" placeholder="e.g. Meta" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Interviewer's Name</label>
+            <input type="text" id="tInterviewer" placeholder="e.g. Sarah Chen" />
+          </div>
+          <div class="form-group">
+            <label>Tone</label>
+            <select id="tTone">
+              <option>Professional</option>
+              <option>Warm & Friendly</option>
+              <option>Concise</option>
+              <option>Enthusiastic</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Key Points from Interview <span style="color:var(--text3);font-weight:400">(optional — topics you discussed)</span></label>
+          <textarea id="tKeyPoints" rows="3" placeholder="e.g. discussed the team's roadmap for Q3, talked about my experience scaling APIs, mentioned the company culture..."></textarea>
+        </div>
+
+        <div id="tError"></div>
+
+        <button class="btn btn-primary btn-lg" onclick="generateThankYou()" id="tBtn" style="width:100%">
+          ✨ Generate Thank-You Email
+        </button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="tResults" style="display:none;margin-top:20px">
+      <div id="tSavebar" class="save-bar" style="display:none">
+        <span class="save-bar-text" id="tSavebarText"></span>
+        <button class="btn btn-sm btn-secondary" onclick="loadThankYou()">↩ Restore</button>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+            <h3 style="font-size:16px;font-weight:700">Your Thank-You Email</h3>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button class="btn btn-sm btn-secondary" onclick="generateThankYou()">↻ Regenerate</button>
+              <button class="btn btn-sm btn-secondary" onclick="copyThankYou(this)">⎘ Copy</button>
+              <button class="btn btn-sm btn-secondary" onclick="downloadThankYou()">↓ Download</button>
+            </div>
+          </div>
+          <div class="output-box" id="thankYouOutput"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ad Modal -->
+<div id="adModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center">
+  <div class="card" style="max-width:420px;width:90%;margin:0 auto">
+    <div class="card-body">
+      <h3 style="font-size:18px;font-weight:700;margin-bottom:8px">🎬 Watch 5 Ads to Unlock More</h3>
+      <p style="font-size:14px;color:var(--text2);margin-bottom:20px">Unlock double limits on all tools for today.</p>
+      <div style="display:flex;gap:8px;justify-content:center;margin-bottom:20px" id="adDots"></div>
+      <button class="btn btn-primary" style="width:100%" onclick="watchAd()" id="adBtn">▶ Watch Ad</button>
+      <button class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="closeAdModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="/shared.js"></script>
+<script>
+  // Nav
+  document.getElementById("navMount").innerHTML = buildNav("/email.html");
+
+  let usage = null;
+  let currentSubjects = [];
+  let currentThankYou = "";
+
+  // ── Init ──────────────────────────────────────────
+  async function init() {
+    usage = await fetchUsage();
+    updateUsageUI();
+    checkSavedData();
+  }
+
+  function updateUsageUI() {
+    if (!usage) return;
+    const bars = [
+      { label: "Email Subjects",  used: usage.emailSubjectUsed, limit: usage.emailSubjectLimit },
+      { label: "Thank-You Emails",used: usage.thankYouUsed,     limit: usage.thankYouLimit     },
+    ];
+    const container = document.getElementById("usageBars");
+    container.innerHTML = bars.map(b => {
+      const pct = Math.min(100, Math.round((b.used / b.limit) * 100));
+      const cls = pct >= 100 ? "danger" : pct >= 80 ? "warn" : "";
+      return `<div class="usage-bar-wrap">
+        <div class="usage-bar-label"><span>${b.label}</span><span>${b.used} / ${b.limit}</span></div>
+        <div class="usage-bar-track"><div class="usage-bar-fill ${cls}" style="width:${pct}%"></div></div>
+      </div>`;
+    }).join("");
+
+    // Badges
+    document.getElementById("subjectBadge").textContent = `${usage.emailSubjectUsed}/${usage.emailSubjectLimit} today`;
+    setBadgeClass("subjectBadge", usage.emailSubjectUsed, usage.emailSubjectLimit);
+    document.getElementById("thankBadge").textContent = `${usage.thankYouUsed}/${usage.thankYouLimit} today`;
+    setBadgeClass("thankBadge", usage.thankYouUsed, usage.thankYouLimit);
+  }
+
+  function setBadgeClass(id, used, limit) {
+    const el = document.getElementById(id);
+    el.className = "limit-badge" + (used >= limit ? " danger" : used / limit >= 0.8 ? " warn" : "");
+  }
+
+  // ── Tabs ──────────────────────────────────────────
+  function switchTab(name, btnEl) {
+    document.querySelectorAll(".tool-panel").forEach(p => p.classList.remove("active"));
+    document.querySelectorAll(".tool-tab").forEach(b => b.classList.remove("active"));
+    document.getElementById("panel-" + name).classList.add("active");
+    btnEl.classList.add("active");
+  }
+
+  // ── Subject Lines ─────────────────────────────────
+  async function generateSubjects() {
+    const job = document.getElementById("sJob").value.trim();
+    if (!job) { showError("sError", "Job title is required."); return; }
+    clearError("sError");
+
+    const btn = document.getElementById("sBtn");
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Generating…';
+
+    try {
+      const data = await withRetry(() => apiCall({
+        action: "email_subject",
+        job, company: document.getElementById("sCompany").value.trim(),
+        name: document.getElementById("sName").value.trim(),
+        tone: document.getElementById("sTone").value,
+      }));
+
+      currentSubjects = data.subjects;
+      renderSubjects(currentSubjects);
+      saveToStorage("subjects", { subjects: currentSubjects, job, company: document.getElementById("sCompany").value.trim() });
+      invalidateUsageCache();
+      usage = await fetchUsage();
+      updateUsageUI();
+      document.getElementById("sResults").style.display = "block";
+    } catch (err) {
+      showError("sError", err.message);
+      if (err.limitReached) showAdModal();
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = "✨ Generate 5 Subject Lines";
+    }
+  }
+
+  function renderSubjects(subjects) {
+    document.getElementById("subjectList").innerHTML = subjects.map((s, i) => `
+      <div class="subject-item">
+        <span class="subject-text">${i + 1}. ${s}</span>
+        <button class="btn btn-sm btn-secondary subject-copy" onclick="copyText('${s.replace(/'/g,"\\'")}', this)">⎘ Copy</button>
+      </div>`).join("");
+  }
+
+  function copyAllSubjects() {
+    copyText(currentSubjects.map((s, i) => `${i+1}. ${s}`).join("\n"));
+  }
+
+  function checkSavedData() {
+    const saved = loadFromStorage("subjects");
+    if (saved) {
+      const bar = document.getElementById("sSavebar");
+      bar.style.display = "flex";
+      document.getElementById("sSavebarText").textContent = `💾 Saved on ${formatSavedDate(saved.saved)}`;
+    }
+    const savedT = loadFromStorage("thankyou");
+    if (savedT) {
+      const bar = document.getElementById("tSavebar");
+      bar.style.display = "flex";
+      document.getElementById("tSavebarText").textContent = `💾 Saved on ${formatSavedDate(savedT.saved)}`;
+    }
+  }
+
+  function loadSubjects() {
+    const saved = loadFromStorage("subjects");
+    if (!saved) return;
+    currentSubjects = saved.data.subjects;
+    if (saved.data.job) document.getElementById("sJob").value = saved.data.job;
+    if (saved.data.company) document.getElementById("sCompany").value = saved.data.company;
+    renderSubjects(currentSubjects);
+    document.getElementById("sResults").style.display = "block";
+    showToast("Restored saved subject lines!", "success");
+  }
+
+  // ── Thank-You Email ───────────────────────────────
+  async function generateThankYou() {
+    const job = document.getElementById("tJob").value.trim();
+    if (!job) { showError("tError", "Job title is required."); return; }
+    clearError("tError");
+
+    const btn = document.getElementById("tBtn");
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Generating…';
+
+    try {
+      const data = await withRetry(() => apiCall({
+        action: "thank_you",
+        job, company: document.getElementById("tCompany").value.trim(),
+        interviewerName: document.getElementById("tInterviewer").value.trim(),
+        keyPoints: document.getElementById("tKeyPoints").value.trim(),
+        tone: document.getElementById("tTone").value,
+      }));
+
+      currentThankYou = data.email;
+      document.getElementById("thankYouOutput").textContent = currentThankYou;
+      saveToStorage("thankyou", { email: currentThankYou });
+      document.getElementById("tSavebar").style.display = "flex";
+      document.getElementById("tSavebarText").textContent = `💾 Saved just now`;
+      invalidateUsageCache();
+      usage = await fetchUsage();
+      updateUsageUI();
+      document.getElementById("tResults").style.display = "block";
+    } catch (err) {
+      showError("tError", err.message);
+      if (err.limitReached) showAdModal();
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = "✨ Generate Thank-You Email";
+    }
+  }
+
+  function loadThankYou() {
+    const saved = loadFromStorage("thankyou");
+    if (!saved) return;
+    currentThankYou = saved.data.email;
+    document.getElementById("thankYouOutput").textContent = currentThankYou;
+    document.getElementById("tResults").style.display = "block";
+    showToast("Restored saved email!", "success");
+  }
+
+  function copyThankYou(btn) { copyText(currentThankYou, btn); }
+  function downloadThankYou() { downloadText(currentThankYou, "thank-you-email.txt"); }
+
+  // ── Ad Modal ──────────────────────────────────────
+  let adsWatched = 0;
+  function showAdModal() {
+    document.getElementById("adModal").style.display = "flex";
+    renderAdDots();
+  }
+  function closeAdModal() { document.getElementById("adModal").style.display = "none"; }
+  function renderAdDots() {
+    document.getElementById("adDots").innerHTML = Array.from({length:5}, (_,i) =>
+      `<div style="width:12px;height:12px;border-radius:50%;background:${i < adsWatched ? 'var(--green)' : 'var(--border)'};transition:background .3s"></div>`
+    ).join("");
+  }
+  async function watchAd() {
+    window.open("https://omg10.com/4/11194141", "_blank");
+    await new Promise(r => setTimeout(r, 5000));
+    try {
+      const res = await apiCall({ action: "watch_ad" });
+      adsWatched = res.adsWatched;
+      renderAdDots();
+      if (res.bonusUnlocked) {
+        showToast("🎉 Bonus unlocked! Double limits for today.", "success");
+        closeAdModal();
+        invalidateUsageCache();
+        usage = await fetchUsage();
+        updateUsageUI();
+      }
+    } catch { showToast("Ad not credited. Try again.", "error"); }
+  }
+
+  init();
+</script>
+</body>
+</html>
