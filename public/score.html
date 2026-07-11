@@ -16,10 +16,7 @@
   <meta name="twitter:description" content="Score your cover letter out of 100. Get a letter grade, category breakdown, strengths and improvements. Free AI cover letter checker." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/shared.css" />
-  <script src="https://nap5k.com/tag.min.js" data-zone="11194135" async data-cfasync="false"></script>
-  <script src="https://n6wxm.com/vignette.min.js" data-zone="11194140" async data-cfasync="false"></script>
-  <style>
+  <link rel="stylesheet" href="/shared.css" />  <style>
     .page-hero { background:linear-gradient(135deg,var(--blue-s),var(--bg)); border-bottom:1px solid var(--border); padding:40px 24px 32px; text-align:center; }
     .page-hero-title { font-size:32px; font-weight:900; margin-bottom:8px; }
     .page-hero-title span { color:var(--blue); }
@@ -97,6 +94,10 @@
           <label>Job Description <span style="font-weight:400;color:var(--text3)">(optional — enables relevance scoring)</span></label>
           <textarea id="jdText" rows="4" placeholder="Paste the job description to score how well your letter targets this specific role…"></textarea>
         </div>
+
+        <!-- Ad Slot: between form and score button -->
+        <div class="ad-slot-mount"></div>
+
         <div id="scoreError" style="margin-bottom:12px"></div>
         <button class="btn btn-primary btn-lg" onclick="scoreLetter()" id="scoreBtn" style="width:100%">📊 Score My Cover Letter</button>
       </div>
@@ -141,6 +142,9 @@
         <a href="/" class="btn btn-primary">✨ Generate Better Letter →</a>
       </div>
     </div>
+
+    <!-- Ad Slot: below output content -->
+    <div class="ad-slot-mount"></div>
   </div>
 
   <div class="sidebar">

@@ -237,6 +237,7 @@ function buildNav(activePage) {
     { href: "/email.html",    label: "Email Tools"  },
     { href: "/cv.html",       label: "CV Builder"   },
     { href: "/cv-score.html", label: "CV Score"     },
+    { href: "/blog/",         label: "Blog"         },
   ];
 
   const links = pages.map(p => `
@@ -328,4 +329,73 @@ async function withRetry(fn, maxAttempts = 2) {
       await new Promise(r => setTimeout(r, 1500));
     }
   }
+}
+
+// ── Ad Slots (Adsterra) ────────────────────────────────
+// Renders a responsive banner ad into any element with class "ad-slot-mount".
+// Desktop gets the 728x90 unit, mobile gets 320x50 — both load lazily via
+// IntersectionObserver so they don't slow down initial page render.
+function renderAdSlot(mountEl) {
+  if (!mountEl || mountEl.dataset.adLoaded) return;
+  mountEl.dataset.adLoaded = "true";
+
+  mountEl.innerHTML = `
+    <div class="ad-slot">
+      <div class="ad-slot-inner">
+        <div class="ad-slot-label">Advertisement</div>
+        <div class="ad-slot-desktop" id="ad-d-${Math.random().toString(36).slice(2)}"></div>
+        <div class="ad-slot-mobile" id="ad-m-${Math.random().toString(36).slice(2)}"></div>
+      </div>
+    </div>`;
+
+  const desktopHost = mountEl.querySelector(".ad-slot-desktop");
+  const mobileHost = mountEl.querySelector(".ad-slot-mobile");
+
+  // Desktop 728x90
+  const dScript1 = document.createElement("script");
+  dScript1.type = "text/javascript";
+  dScript1.text = `atOptions = { 'key':'511944ec359449ee6ae32088c351f806', 'format':'iframe', 'height':90, 'width':728, 'params':{} };`;
+  const dScript2 = document.createElement("script");
+  dScript2.type = "text/javascript";
+  dScript2.src = "https://www.highperformanceformat.com/511944ec359449ee6ae32088c351f806/invoke.js";
+  desktopHost.appendChild(dScript1);
+  desktopHost.appendChild(dScript2);
+
+  // Mobile 320x50
+  const mScript1 = document.createElement("script");
+  mScript1.type = "text/javascript";
+  mScript1.text = `atOptions = { 'key':'196b0870b60ff584ee47669585edb76a', 'format':'iframe', 'height':50, 'width':320, 'params':{} };`;
+  const mScript2 = document.createElement("script");
+  mScript2.type = "text/javascript";
+  mScript2.src = "https://www.highperformanceformat.com/196b0870b60ff584ee47669585edb76a/invoke.js";
+  mobileHost.appendChild(mScript1);
+  mobileHost.appendChild(mScript2);
+}
+
+function initAdSlots() {
+  const mounts = document.querySelectorAll(".ad-slot-mount");
+  if (!mounts.length) return;
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          renderAdSlot(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "200px" });
+
+    mounts.forEach(el => observer.observe(el));
+  } else {
+    // Fallback for older browsers: load immediately
+    mounts.forEach(renderAdSlot);
+  }
+}
+
+// Auto-init on DOM ready
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initAdSlots);
+} else {
+  initAdSlots();
 }
